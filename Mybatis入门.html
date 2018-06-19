@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Have Fun">
 <meta property="og:description" content="今天终于开始了我们的Mybatis的学习,之前最主要的操作数据库的手段就是JDBC啦.现在又新学会了SpringDao和Mybatis,就是今儿状态不是很好,困了一天,晚上好好休息~继续努力哈哈哈 Mybatis 简介IBatis     Mybatis     Mybatis Apache     google       GitHub Mybatis的作用可以完成 简单的sql     存储过">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-19T11:38:29.780Z">
+<meta property="og:updated_time" content="2018-06-19T11:41:58.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybatis入门">
 <meta name="twitter:description" content="今天终于开始了我们的Mybatis的学习,之前最主要的操作数据库的手段就是JDBC啦.现在又新学会了SpringDao和Mybatis,就是今儿状态不是很好,困了一天,晚上好好休息~继续努力哈哈哈 Mybatis 简介IBatis     Mybatis     Mybatis Apache     google       GitHub Mybatis的作用可以完成 简单的sql     存储过">
@@ -201,40 +201,39 @@ SqlSession   负责编写程序的核心API
 </code></pre><h5 id="Mybatis-的编程步骤"><a href="#Mybatis-的编程步骤" class="headerlink" title="Mybatis 的编程步骤"></a>Mybatis 的编程步骤</h5><ol>
 <li>建立项目  拷贝jar包(驱动包  mybatis.jar)到 lib    拷贝主配置文件到 src 下</li>
 </ol>
-<ol>
+<ol start="2">
 <li>编写实体类 </li>
 </ol>
-<ol>
+<ol start="3">
 <li>编写 SQL 定义文件 </li>
 </ol>
-<ol>
+<ol start="4">
 <li>构建SqlSession 对象  使用API 完成对应操作</li>
 </ol>
-<ol>
+<ol start="5">
 <li>按照上面的步骤 完成一个银行账户的查询  根据id 查询银行账户 </li>
 </ol>
-<ol>
+<ol start="6">
 <li><p>根据银行账号  查询 对应的银行账户  </p>
 </li>
 <li><p>多个参数的 查询<br> 根据账号 和 密码 进行查询</p>
 </li>
 </ol>
-<ol>
+<ol start="8">
 <li><p>查询 银行账户表中 所有的银行账户  </p>
 <p> 查询  id 大于 某个值  的银行账户列表     id=3测试<br> 查询    id 大于 某个值  并且  acc_money 大于 某个值的银行账户列表<br>   id是3  acc_money是 200<br> 查询    id 大于 某个值  并且  acc_money 小于 某个值的银行账户列表<br>   id是3  acc_money是 200    </p>
 </li>
 </ol>
-<ol>
+<ol start="9">
 <li>Mybatis 实现 增删 改<br>实现银行账户的修改 用来更新密码 和 钱数       </li>
 </ol>
-<ol>
-<li>Mapper 映射器 (SqlSession 可以根据对应的接口产生实现类)规范<br>10.1 SQL定义文件的中的 namespace  要写成 包名.接口名<br>10.2 接口中方法的返回值 一般是和resultType 保持一致<pre><code>查询到数据可能大于一个  应该返回 List&lt;resultType对应的类型&gt;
-</code></pre> 增删改 可以返回int  也可以返回void<br>10.3 接口的方法名  要和 SQL 定义文件中的id 保持一致<br>10.4 接口方法的参数 和 parameterType 保持一致  </li>
+<ol start="10">
+<li>Mapper 映射器 (SqlSession 可以根据对应的接口产生实现类)规范<br>10.1 SQL定义文件的中的 namespace  要写成 包名.接口名<br>10.2 接口中方法的返回值 一般是和resultType 保持一致<br>   查询到数据可能大于一个  应该返回 List&lt;resultType对应的类型&gt;<br>增删改 可以返回int  也可以返回void<br>10.3 接口的方法名  要和 SQL 定义文件中的id 保持一致<br>10.4 接口方法的参数 和 parameterType 保持一致  </li>
 </ol>
-<ol>
+<ol start="11">
 <li>当数据库字段名 和 实体类中属性不一致时 如何解决?<br>使用字段的别名<br>使用resultMap</li>
 </ol>
-<ol>
+<ol start="12">
 <li>使用Mybatis中的别名 简化sql定义文件<br>在主配置文件中  来定义类型的别名  </li>
 </ol>
 
