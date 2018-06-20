@@ -169,6 +169,112 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Mybatis第二蛋" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Mybatis第二蛋.html">Mybatis第二蛋</a>
+    </h1>
+  
+
+        
+        <a href="/Mybatis第二蛋.html" class="archive-article-date">
+  	<time datetime="2018-06-20T11:39:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><ol>
+<li>熟悉框架结构</li>
+<li>熟悉组件编写规则</li>
+<li>熟悉XML和注解配置规则</li>
+<li>了解框架关键部分的底层代码实现</li>
+</ol>
+<h2 id="Spring和MyBatis整合"><a href="#Spring和MyBatis整合" class="headerlink" title="Spring和MyBatis整合"></a>Spring和MyBatis整合</h2><h3 id="MyBatis使用结构"><a href="#MyBatis使用结构" class="headerlink" title="MyBatis使用结构"></a>MyBatis使用结构</h3><p><img src="https://i.imgur.com/Yk3UCwc.png" alt=""></p>
+<h3 id="MyBatis原理结构"><a href="#MyBatis原理结构" class="headerlink" title="MyBatis原理结构"></a>MyBatis原理结构</h3><p><img src="https://i.imgur.com/5ki7SAv.png" alt=""></p>
+<h3 id="Spring-MyBatis使用结构"><a href="#Spring-MyBatis使用结构" class="headerlink" title="Spring+MyBatis使用结构"></a>Spring+MyBatis使用结构</h3><p><img src="https://i.imgur.com/DOkgoBJ.png" alt=""></p>
+<p>Spring开发包: ioc、aop、dao</p>
+<p>补充：引入连接池工具包,配置连接池<br> (连接池类型:dbcp2、c3p0、proxool、druid、Hikari等)</p>
+<pre><code>&lt;bean id=&quot;c3p0&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
+    &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:oracle:thin:@localhost:1521:XE&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;driverClass&quot; value=&quot;oracle.jdbc.OracleDriver&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;user&quot; value=&quot;SCOTT&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;password&quot; value=&quot;TIGER&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><p>SqlSessionFactoryBean配置</p>
+<pre><code>&lt;bean id=&quot;factory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:sqlmap-config.xml&quot;&gt;
+    &lt;/property&gt;
+    &lt;!-- 必须注入一个dataSource --&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;c3p0&quot;&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><p>MapperSannerConfigurer配置</p>
+<pre><code>&lt;bean id=&quot;mappersanner&quot; class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+    &lt;!-- 扫描cn.xdl.dao包下接口，动态创建接口对象 --&gt;
+    &lt;property name=&quot;basePackage&quot; value=&quot;cn.xdl.dao&quot;&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;factory&quot;&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-Mybatis -Spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Mybatis第二蛋.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mybatis入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -460,6 +566,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">-Mybatis -Spring</a>
               </li>
              
               <li class="article-tag-list-item">
