@@ -1,4 +1,4 @@
-http://www.websanshi.com/SpringBoot搭建环境及第一个应用.html
+http://www.websanshi.com/SpringBoot环境搭建及第一个应用.html
 http://www.websanshi.com/Mybatis第二蛋.html
 http://www.websanshi.com/Mybatis入门.html
 http://www.websanshi.com/My-第一个彩蛋.html

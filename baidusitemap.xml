@@ -4,11 +4,28 @@
 
     
   <url>
-    <loc>http://www.websanshi.com//SpringBoot%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83%E5%8F%8A%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8.html</loc>
-    <lastmod>2018-06-21T11:25:46.370Z</lastmod>
+    <loc>http://www.websanshi.com//Mybatis%E5%85%A5%E9%97%A8.html</loc>
+    <lastmod>2018-06-21T11:56:45.876Z</lastmod>
     <data>
         <display>
-        <title>SpringBoot环境搭建</title>
+        <title>Mybatis入门</title>
+        <pubTime>2018-06-19T11:23:20.000Z</pubTime>
+        
+        <tag>第二个蛋 框架学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.websanshi.com//SpringBoot%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8.html</loc>
+    <lastmod>2018-06-21T11:56:26.081Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot环境搭建及第一个应用</title>
         <pubTime>2018-06-21T03:48:48.000Z</pubTime>
         
         <tag>Boot</tag>
@@ -24,7 +41,7 @@
     
   <url>
     <loc>http://www.websanshi.com//Mybatis%E7%AC%AC%E4%BA%8C%E8%9B%8B.html</loc>
-    <lastmod>2018-06-20T12:12:33.967Z</lastmod>
+    <lastmod>2018-06-21T11:56:00.483Z</lastmod>
     <data>
         <display>
         <title>Mybatis第二蛋</title>
@@ -33,23 +50,6 @@
         <tag>Mybatis</tag>
          
         <tag>Spring</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.websanshi.com//Mybatis%E5%85%A5%E9%97%A8.html</loc>
-    <lastmod>2018-06-19T11:41:58.235Z</lastmod>
-    <data>
-        <display>
-        <title>Mybatis入门</title>
-        <pubTime>2018-06-19T11:23:20.000Z</pubTime>
-        
-        <tag>第二个蛋 框架学习</tag>
          
          
            

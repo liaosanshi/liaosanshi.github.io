@@ -179,19 +179,19 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-SpringBoot搭建环境及第一个应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-SpringBoot环境搭建及第一个应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/SpringBoot搭建环境及第一个应用.html">SpringBoot环境搭建</a>
+      <a class="article-title" href="/SpringBoot环境搭建及第一个应用.html">SpringBoot环境搭建及第一个应用</a>
     </h1>
   
 
         
-        <a href="/SpringBoot搭建环境及第一个应用.html" class="archive-article-date">
+        <a href="/SpringBoot环境搭建及第一个应用.html" class="archive-article-date">
   	<time datetime="2018-06-21T03:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-21</time>
 </a>
         
@@ -208,187 +208,10 @@ var _hmt = _hmt || [];
 <li>自动配置Spring</li>
 <li>没有XML配置,完全采用JAVA配置</li>
 </ol>
-<h3 id="Maven安装和配置"><a href="#Maven安装和配置" class="headerlink" title="Maven安装和配置"></a>Maven安装和配置</h3><p>使用maven管理jar包,编译项目</p>
-<p><img src="http://i.imgur.com/wisxW4G.png" alt=""></p>
-<p>Maven在命令行中的使用(不常用):</p>
-<pre><code>mvn archetype:generate 创建Maven项目
-mvn compile 编译源代码
-mvn deploy 发布项目
-mvn test 运行应用程序中的单元测试
-mvn clean 清除项目目录中的生成结果
-mvn install 在本地Repository中安装jar
-mvntomcat:run 启动tomcat服务
-</code></pre><p>Mevan在Eclipse中的使用</p>
-<ol>
-<li>Eclipse进行Mevan设置</li>
-</ol>
-<p><img src="https://i.imgur.com/sfVtinF.png" alt=""></p>
-<p><img src="https://i.imgur.com/Fgse3Eu.png" alt=""></p>
-<ol start="2">
-<li><p>在本地库位置添加资源包</p>
-<p> 本地库路径按上面图Local Repository指定位置添加。</p>
-</li>
-<li><p>使用MAVEN工具创建Maven Project，导入jar包</p>
-<p> <img src="https://i.imgur.com/rjtKxcr.png" alt=""></p>
-<p> <img src="https://i.imgur.com/meQnDNB.png" alt=""></p>
-<p> 在pom.xml添加jar包的xml定义即可，例如</p>
-<pre><code>&lt;dependencies&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-      &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
-      &lt;version&gt;4.1.6.RELEASE&lt;/version&gt;
-    &lt;/dependency&gt;
-&lt;/dependencies&gt;
-</code></pre></li>
-</ol>
-<blockquote>
-<p><a href="http://start.spring.io/" target="_blank" rel="noopener">http://start.spring.io/</a> 自动生成Maven文件</p>
-</blockquote>
-<h3 id="SpringBoot开发包集合"><a href="#SpringBoot开发包集合" class="headerlink" title="SpringBoot开发包集合"></a>SpringBoot开发包集合</h3><p><img src="https://liaoleitupian.oss-cn-beijing.aliyuncs.com/springboot-jar.png?Expires=1529570213&amp;OSSAccessKeyId=TMP.AQFtyBJoa_2FGy9_tFCQeaDS9xLwlIe83-MAxhOGrYSO3M2Y-ZdNwh9F-gDJMC4CFQDTDrO2vklLKg0vllT6dZo7N3pQawIVAPon6QwAdkMR4MhC9R9_LtCOnd0y&amp;Signature=y6uHY00efimzTZfljQ8T3mqGhTA%3D" alt=""><br><img src="http://101.132.235.66/images/springboot-jar.png" alt=""></p>
-<p>通过spring-boot-starter-parent可以控制工程文件编码和JDK版本。</p>
-<pre><code>&lt;parent&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-    &lt;version&gt;2.0.3.RELEASE&lt;/version&gt;
-    &lt;relativePath/&gt; 
-&lt;/parent&gt;
-
-  &lt;properties&gt;
-      &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
-    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
-      &lt;java.version&gt;1.8&lt;/java.version&gt;
-  &lt;/properties&gt;
-</code></pre><p>也可以使用下面定义指定JDK版本</p>
-<pre><code>&lt;build&gt;  
-    &lt;plugins&gt;  
-        &lt;plugin&gt;  
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;  
-            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;  
-            &lt;version&gt;3.1&lt;/version&gt;  
-            &lt;configuration&gt;  
-                &lt;source&gt;1.8&lt;/source&gt;  
-                &lt;target&gt;1.8&lt;/target&gt;  
-            &lt;/configuration&gt;  
-        &lt;/plugin&gt;  
-    &lt;/plugins&gt;  
-&lt;/build&gt;
-</code></pre><h2 id="SpringBoot入门案例"><a href="#SpringBoot入门案例" class="headerlink" title="SpringBoot入门案例"></a>SpringBoot入门案例</h2><ol>
-<li><p>搭建SpringBoot环境</p>
-<ul>
-<li><p>在pom.xml引入boot-web开发包集合</p>
-<pre><code>&lt;parent&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-    &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
-&lt;/parent&gt;
-
-&lt;properties&gt;
-    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
-    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
-    &lt;java.version&gt;1.8&lt;/java.version&gt;
-&lt;/properties&gt;
-
-&lt;dependencies&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-    &lt;/dependency&gt;
-&lt;/dependencies&gt;
-</code></pre></li>
-<li><p>在src\main\resources下引入application.properties配置文件</p>
-<pre><code>server.port=8888
-#2.0之前版本
-#server.contextPath=/boot
-#2.0之后版本
-server.servlet.contextPath=/boot
-</code></pre></li>
-</ul>
-</li>
-<li><p>编写HelloController</p>
-<pre><code>@RestController//@Controller+@ResponseBody
-public class HelloController {
-
-    @RequestMapping(&quot;/hello&quot;)
-    public String hello(){
-        return &quot;Hello SpringBoot&quot;;
-    }
-}
-</code></pre></li>
-<li><p>编写Boot程序启动类</p>
-<pre><code>@SpringBootApplication
-public class MyBootApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(MyBootApplication.class, args);
-    }
-
-}
-</code></pre></li>
-<li><p>启动Boot类测试</p>
-<pre><code>测试地址： http://localhost:8888/boot/hello
-</code></pre></li>
-</ol>
-<h2 id="SpringBoot使用"><a href="#SpringBoot使用" class="headerlink" title="SpringBoot使用"></a>SpringBoot使用</h2><pre><code>@SpringBootApplication
-public class MyBootApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(MyBootApplication.class, args);
-    }
-
-}
-</code></pre><h3 id="SpringApplication-run作用"><a href="#SpringApplication-run作用" class="headerlink" title="SpringApplication.run作用"></a>SpringApplication.run作用</h3><ol>
-<li>加载SpringBoot基础环境信息(启动logo,环境变量,程序是WEB环境还是JAVA环境)</li>
-<li>如果是WEB环境需要启动Tomcat服务器</li>
-<li>创建ApplicationContext Spring容器对象</li>
-<li>初始化Spring容器,将组建对象纳入到Spring容器中</li>
-<li>如果是WEB环境将程序自动发布到Tomcat中</li>
-</ol>
-<h3 id="SpringBootApplica"><a href="#SpringBootApplica" class="headerlink" title="@SpringBootApplica"></a>@SpringBootApplica</h3><p>该注解标记包含很多功能,包含主要标记如下</p>
-<ol>
-<li><p>@SpringBootConfiguration ： 组件配置功能</p>
-<p> 编写组件配置类</p>
-<pre><code>//@SpringBootConfiguration
-@Configuration
-public class MyDataSourceConfiguration {
-
-    @Bean
-    //将返回的对象添加到Spring容器中，id默认为方法名myDataSource
-    public MyDataSource myDataSource(){
-        return new MyDataSource();
-    }
-
-    @Primary//注入时默认使用
-    @Bean(name=&quot;dataSource&quot;)//将返回的对象添加到Spring容器中，id指定为dataSource
-    public MyDataSource createDataSource(){
-        return new MyDataSource();
-    }
-
-}
-</code></pre><p> 实例化Spring容器对象，获取bean对象</p>
-<pre><code>@Test
-public void test1(){
-    //实例化Spring容器
-    ApplicationContext ac = 
-        SpringApplication.run(MyDataSourceConfiguration.class);
-    MyDataSource ds1 = ac.getBean(&quot;myDataSource&quot;,MyDataSource.class);
-    System.out.println(ds1);
-    MyDataSource ds2 = ac.getBean(&quot;dataSource&quot;,MyDataSource.class);
-    System.out.println(ds2);
-}
-</code></pre></li>
-<li><p>@EnableAutoConfiguration ： 自动配置功能</p>
-</li>
-</ol>
-<ol start="3">
-<li><p>@ComponentScan ： 组件扫描功能</p>
-<p> 指定扫描路径，将包中带有@Controller、@Service、@Repository、@Component标记的组件纳入Spring容器</p>
-<pre><code>@ComponentScan(basePackages={&quot;cn.xdl.dao&quot;,&quot;cn.xdl.configuration&quot;})
-</code></pre><p> 默认扫描路径，将当前包及子包中带标记的组件纳入Spring容器。</p>
-<pre><code>@ComponentScan
-</code></pre><p> 提示：如果扫描路径中遇到@Configuration标记也会将@Bean组件对象纳入Spring容器中。</p>
-</li>
-</ol>
-
+<h3 id="Maven安装和配置"><a href="#Maven安装和配置" class="headerlink" title="Maven安装和配置"></a>Maven安装和配置</h3><p>使用maven管理jar包,编译项目<br>
+        
+          <a class="article-more-a" href="/SpringBoot环境搭建及第一个应用.html#more">more&gt;&gt; >></a>
+        
       
 
       
@@ -415,7 +238,7 @@ public void test1(){
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/SpringBoot搭建环境及第一个应用.html">展开全文 >></a>
+          <a class="article-more-a" href="/SpringBoot环境搭建及第一个应用.html">展开全文 >></a>
         </p>
       
 
@@ -471,34 +294,10 @@ public void test1(){
 <li>熟悉XML和注解配置规则</li>
 <li>了解框架关键部分的底层代码实现</li>
 </ol>
-<h2 id="Spring和MyBatis整合"><a href="#Spring和MyBatis整合" class="headerlink" title="Spring和MyBatis整合"></a>Spring和MyBatis整合</h2><h3 id="MyBatis使用结构"><a href="#MyBatis使用结构" class="headerlink" title="MyBatis使用结构"></a>MyBatis使用结构</h3><p><img src="https://i.imgur.com/Yk3UCwc.png" alt=""></p>
-<h3 id="MyBatis原理结构"><a href="#MyBatis原理结构" class="headerlink" title="MyBatis原理结构"></a>MyBatis原理结构</h3><p><img src="https://i.imgur.com/5ki7SAv.png" alt=""></p>
-<h3 id="Spring-MyBatis使用结构"><a href="#Spring-MyBatis使用结构" class="headerlink" title="Spring+MyBatis使用结构"></a>Spring+MyBatis使用结构</h3><p><img src="https://i.imgur.com/DOkgoBJ.png" alt=""></p>
-<p>Spring开发包: ioc、aop、dao</p>
-<p>补充：引入连接池工具包,配置连接池<br> (连接池类型:dbcp2、c3p0、proxool、druid、Hikari等)</p>
-<pre><code>&lt;bean id=&quot;c3p0&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
-    &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:oracle:thin:@localhost:1521:XE&quot;&gt;&lt;/property&gt;
-    &lt;property name=&quot;driverClass&quot; value=&quot;oracle.jdbc.OracleDriver&quot;&gt;&lt;/property&gt;
-    &lt;property name=&quot;user&quot; value=&quot;SCOTT&quot;&gt;&lt;/property&gt;
-    &lt;property name=&quot;password&quot; value=&quot;TIGER&quot;&gt;&lt;/property&gt;
-&lt;/bean&gt;
-</code></pre><p>SqlSessionFactoryBean配置</p>
-<pre><code>&lt;bean id=&quot;factory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:sqlmap-config.xml&quot;&gt;
-    &lt;/property&gt;
-    &lt;!-- 必须注入一个dataSource --&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;c3p0&quot;&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre><p>MapperSannerConfigurer配置</p>
-<pre><code>&lt;bean id=&quot;mappersanner&quot; class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
-    &lt;!-- 扫描cn.xdl.dao包下接口，动态创建接口对象 --&gt;
-    &lt;property name=&quot;basePackage&quot; value=&quot;cn.xdl.dao&quot;&gt;
-    &lt;/property&gt;
-    &lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;factory&quot;&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre>
+<h2 id="Spring和MyBatis整合"><a href="#Spring和MyBatis整合" class="headerlink" title="Spring和MyBatis整合"></a>Spring和MyBatis整合</h2><h3 id="MyBatis使用结构"><a href="#MyBatis使用结构" class="headerlink" title="MyBatis使用结构"></a>MyBatis使用结构</h3><p><img src="https://i.imgur.com/Yk3UCwc.png" alt=""><br>
+        
+          <a class="article-more-a" href="/Mybatis第二蛋.html#more">more&gt;&gt; >></a>
+        
       
 
       
@@ -584,45 +383,10 @@ Mybatis 几乎封装了 所有的jdbc代码  以及参数的手工设置   结�
 SQL定义文件     负责编写的SQL语句 
  实体类                编写用到的  javaBean
 SqlSession   负责编写程序的核心API
-</code></pre><h5 id="Mybatis-的编程步骤"><a href="#Mybatis-的编程步骤" class="headerlink" title="Mybatis 的编程步骤"></a>Mybatis 的编程步骤</h5><ol>
-<li>建立项目  拷贝jar包(驱动包  mybatis.jar)到 lib    拷贝主配置文件到 src 下</li>
-</ol>
-<ol start="2">
-<li>编写实体类 </li>
-</ol>
-<ol start="3">
-<li>编写 SQL 定义文件 </li>
-</ol>
-<ol start="4">
-<li>构建SqlSession 对象  使用API 完成对应操作</li>
-</ol>
-<ol start="5">
-<li>按照上面的步骤 完成一个银行账户的查询  根据id 查询银行账户 </li>
-</ol>
-<ol start="6">
-<li><p>根据银行账号  查询 对应的银行账户  </p>
-</li>
-<li><p>多个参数的 查询<br> 根据账号 和 密码 进行查询</p>
-</li>
-</ol>
-<ol start="8">
-<li><p>查询 银行账户表中 所有的银行账户  </p>
-<p> 查询  id 大于 某个值  的银行账户列表     id=3测试<br> 查询    id 大于 某个值  并且  acc_money 大于 某个值的银行账户列表<br>   id是3  acc_money是 200<br> 查询    id 大于 某个值  并且  acc_money 小于 某个值的银行账户列表<br>   id是3  acc_money是 200    </p>
-</li>
-</ol>
-<ol start="9">
-<li>Mybatis 实现 增删 改<br>实现银行账户的修改 用来更新密码 和 钱数       </li>
-</ol>
-<ol start="10">
-<li>Mapper 映射器 (SqlSession 可以根据对应的接口产生实现类)规范<br>10.1 SQL定义文件的中的 namespace  要写成 包名.接口名<br>10.2 接口中方法的返回值 一般是和resultType 保持一致<br>   查询到数据可能大于一个  应该返回 List&lt;resultType对应的类型&gt;<br>增删改 可以返回int  也可以返回void<br>10.3 接口的方法名  要和 SQL 定义文件中的id 保持一致<br>10.4 接口方法的参数 和 parameterType 保持一致  </li>
-</ol>
-<ol start="11">
-<li>当数据库字段名 和 实体类中属性不一致时 如何解决?<br>使用字段的别名<br>使用resultMap</li>
-</ol>
-<ol start="12">
-<li>使用Mybatis中的别名 简化sql定义文件<br>在主配置文件中  来定义类型的别名  </li>
-</ol>
-
+</code></pre><h5 id="Mybatis-的编程步骤"><a href="#Mybatis-的编程步骤" class="headerlink" title="Mybatis 的编程步骤"></a>Mybatis 的编程步骤</h5>
+        
+          <a class="article-more-a" href="/Mybatis入门.html#more">more&gt;&gt; >></a>
+        
       
 
       
@@ -845,11 +609,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -861,11 +625,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
               </li>
             
             <div class="clearfix"></div>
