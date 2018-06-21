@@ -179,19 +179,19 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-SpringBoot环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-SpringBoot搭建环境及第一个应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/SpringBoot环境搭建.html">SpringBoot环境搭建</a>
+      <a class="article-title" href="/SpringBoot搭建环境及第一个应用.html">SpringBoot环境搭建</a>
     </h1>
   
 
         
-        <a href="/SpringBoot环境搭建.html" class="archive-article-date">
+        <a href="/SpringBoot搭建环境及第一个应用.html" class="archive-article-date">
   	<time datetime="2018-06-21T03:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-21</time>
 </a>
         
@@ -229,20 +229,166 @@ mvntomcat:run 启动tomcat服务
 <p> 本地库路径按上面图Local Repository指定位置添加。</p>
 </li>
 <li><p>使用MAVEN工具创建Maven Project，导入jar包</p>
+<p> <img src="https://i.imgur.com/rjtKxcr.png" alt=""></p>
+<p> <img src="https://i.imgur.com/meQnDNB.png" alt=""></p>
+<p> 在pom.xml添加jar包的xml定义即可，例如</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+      &lt;version&gt;4.1.6.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre></li>
+</ol>
+<blockquote>
+<p><a href="http://start.spring.io/" target="_blank" rel="noopener">http://start.spring.io/</a> 自动生成Maven文件</p>
+</blockquote>
+<h3 id="SpringBoot开发包集合"><a href="#SpringBoot开发包集合" class="headerlink" title="SpringBoot开发包集合"></a>SpringBoot开发包集合</h3><p><img src="https://liaoleitupian.oss-cn-beijing.aliyuncs.com/springboot-jar.png?Expires=1529570213&amp;OSSAccessKeyId=TMP.AQFtyBJoa_2FGy9_tFCQeaDS9xLwlIe83-MAxhOGrYSO3M2Y-ZdNwh9F-gDJMC4CFQDTDrO2vklLKg0vllT6dZo7N3pQawIVAPon6QwAdkMR4MhC9R9_LtCOnd0y&amp;Signature=y6uHY00efimzTZfljQ8T3mqGhTA%3D" alt=""><br><img src="http://101.132.235.66/images/springboot-jar.png" alt=""></p>
+<p>通过spring-boot-starter-parent可以控制工程文件编码和JDK版本。</p>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.0.3.RELEASE&lt;/version&gt;
+    &lt;relativePath/&gt; 
+&lt;/parent&gt;
+
+  &lt;properties&gt;
+      &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+      &lt;java.version&gt;1.8&lt;/java.version&gt;
+  &lt;/properties&gt;
+</code></pre><p>也可以使用下面定义指定JDK版本</p>
+<pre><code>&lt;build&gt;  
+    &lt;plugins&gt;  
+        &lt;plugin&gt;  
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;  
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;  
+            &lt;version&gt;3.1&lt;/version&gt;  
+            &lt;configuration&gt;  
+                &lt;source&gt;1.8&lt;/source&gt;  
+                &lt;target&gt;1.8&lt;/target&gt;  
+            &lt;/configuration&gt;  
+        &lt;/plugin&gt;  
+    &lt;/plugins&gt;  
+&lt;/build&gt;
+</code></pre><h2 id="SpringBoot入门案例"><a href="#SpringBoot入门案例" class="headerlink" title="SpringBoot入门案例"></a>SpringBoot入门案例</h2><ol>
+<li><p>搭建SpringBoot环境</p>
+<ul>
+<li><p>在pom.xml引入boot-web开发包集合</p>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+
+&lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+    &lt;java.version&gt;1.8&lt;/java.version&gt;
+&lt;/properties&gt;
+
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre></li>
+<li><p>在src\main\resources下引入application.properties配置文件</p>
+<pre><code>server.port=8888
+#2.0之前版本
+#server.contextPath=/boot
+#2.0之后版本
+server.servlet.contextPath=/boot
+</code></pre></li>
+</ul>
+</li>
+<li><p>编写HelloController</p>
+<pre><code>@RestController//@Controller+@ResponseBody
+public class HelloController {
+
+    @RequestMapping(&quot;/hello&quot;)
+    public String hello(){
+        return &quot;Hello SpringBoot&quot;;
+    }
+}
+</code></pre></li>
+<li><p>编写Boot程序启动类</p>
+<pre><code>@SpringBootApplication
+public class MyBootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MyBootApplication.class, args);
+    }
+
+}
+</code></pre></li>
+<li><p>启动Boot类测试</p>
+<pre><code>测试地址： http://localhost:8888/boot/hello
+</code></pre></li>
+</ol>
+<h2 id="SpringBoot使用"><a href="#SpringBoot使用" class="headerlink" title="SpringBoot使用"></a>SpringBoot使用</h2><pre><code>@SpringBootApplication
+public class MyBootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MyBootApplication.class, args);
+    }
+
+}
+</code></pre><h3 id="SpringApplication-run作用"><a href="#SpringApplication-run作用" class="headerlink" title="SpringApplication.run作用"></a>SpringApplication.run作用</h3><ol>
+<li>加载SpringBoot基础环境信息(启动logo,环境变量,程序是WEB环境还是JAVA环境)</li>
+<li>如果是WEB环境需要启动Tomcat服务器</li>
+<li>创建ApplicationContext Spring容器对象</li>
+<li>初始化Spring容器,将组建对象纳入到Spring容器中</li>
+<li>如果是WEB环境将程序自动发布到Tomcat中</li>
+</ol>
+<h3 id="SpringBootApplica"><a href="#SpringBootApplica" class="headerlink" title="@SpringBootApplica"></a>@SpringBootApplica</h3><p>该注解标记包含很多功能,包含主要标记如下</p>
+<ol>
+<li><p>@SpringBootConfiguration ： 组件配置功能</p>
+<p> 编写组件配置类</p>
+<pre><code>//@SpringBootConfiguration
+@Configuration
+public class MyDataSourceConfiguration {
+
+    @Bean
+    //将返回的对象添加到Spring容器中，id默认为方法名myDataSource
+    public MyDataSource myDataSource(){
+        return new MyDataSource();
+    }
+
+    @Primary//注入时默认使用
+    @Bean(name=&quot;dataSource&quot;)//将返回的对象添加到Spring容器中，id指定为dataSource
+    public MyDataSource createDataSource(){
+        return new MyDataSource();
+    }
+
+}
+</code></pre><p> 实例化Spring容器对象，获取bean对象</p>
+<pre><code>@Test
+public void test1(){
+    //实例化Spring容器
+    ApplicationContext ac = 
+        SpringApplication.run(MyDataSourceConfiguration.class);
+    MyDataSource ds1 = ac.getBean(&quot;myDataSource&quot;,MyDataSource.class);
+    System.out.println(ds1);
+    MyDataSource ds2 = ac.getBean(&quot;dataSource&quot;,MyDataSource.class);
+    System.out.println(ds2);
+}
+</code></pre></li>
+<li><p>@EnableAutoConfiguration ： 自动配置功能</p>
 </li>
 </ol>
-<p><img src="https://i.imgur.com/rjtKxcr.png" alt=""></p>
-<p><img src="https://i.imgur.com/meQnDNB.png" alt=""></p>
-<pre><code>在pom.xml添加jar包的xml定义即可，例如
+<ol start="3">
+<li><p>@ComponentScan ： 组件扫描功能</p>
+<p> 指定扫描路径，将包中带有@Controller、@Service、@Repository、@Component标记的组件纳入Spring容器</p>
+<pre><code>@ComponentScan(basePackages={&quot;cn.xdl.dao&quot;,&quot;cn.xdl.configuration&quot;})
+</code></pre><p> 默认扫描路径，将当前包及子包中带标记的组件纳入Spring容器。</p>
+<pre><code>@ComponentScan
+</code></pre><p> 提示：如果扫描路径中遇到@Configuration标记也会将@Bean组件对象纳入Spring容器中。</p>
+</li>
+</ol>
 
-    &lt;dependencies&gt;
-        &lt;dependency&gt;
-          &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-          &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
-          &lt;version&gt;4.1.6.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-    &lt;/dependencies&gt;
-</code></pre>
       
 
       
@@ -269,7 +415,7 @@ mvntomcat:run 启动tomcat服务
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/SpringBoot环境搭建.html">展开全文 >></a>
+          <a class="article-more-a" href="/SpringBoot搭建环境及第一个应用.html">展开全文 >></a>
         </p>
       
 
@@ -699,15 +845,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,7 +861,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
             
             <div class="clearfix"></div>
