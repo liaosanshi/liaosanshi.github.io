@@ -6,18 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.websanshi.com">
-  <title>Tag: 第一个蛋 | Have Fun</title>
+  <title>SpringBoot环境搭建 | Have Fun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="好好学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Have Fun">
-<meta property="og:url" content="http://www.websanshi.com/tags/第一个蛋/index.html">
+  <meta name="description" content="SpringBoot框架目的:简化新Spring应用的初始搭建以及开发过程. 特点:  快速创建独立的Spring应用程序 嵌入的Tomcat,无需部署WAR文件 简化Maven配置 自动配置Spring 没有XML配置,完全采用JAVA配置  Maven安装和配置使用maven管理jar包,编译项目  Maven在命令行中的使用(不常用): mvn archetype:generate 创建Ma">
+<meta name="keywords" content="Boot,Maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot环境搭建">
+<meta property="og:url" content="http://www.websanshi.com/SpringBoot环境搭建.html">
 <meta property="og:site_name" content="Have Fun">
-<meta property="og:description" content="好好学习">
+<meta property="og:description" content="SpringBoot框架目的:简化新Spring应用的初始搭建以及开发过程. 特点:  快速创建独立的Spring应用程序 嵌入的Tomcat,无需部署WAR文件 简化Maven配置 自动配置Spring 没有XML配置,完全采用JAVA配置  Maven安装和配置使用maven管理jar包,编译项目  Maven在命令行中的使用(不常用): mvn archetype:generate 创建Ma">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://i.imgur.com/wisxW4G.png">
+<meta property="og:image" content="https://i.imgur.com/sfVtinF.png">
+<meta property="og:image" content="https://i.imgur.com/Fgse3Eu.png">
+<meta property="og:image" content="https://i.imgur.com/rjtKxcr.png">
+<meta property="og:image" content="https://i.imgur.com/meQnDNB.png">
+<meta property="og:updated_time" content="2018-06-21T03:50:14.086Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Have Fun">
-<meta name="twitter:description" content="好好学习">
+<meta name="twitter:title" content="SpringBoot环境搭建">
+<meta name="twitter:description" content="SpringBoot框架目的:简化新Spring应用的初始搭建以及开发过程. 特点:  快速创建独立的Spring应用程序 嵌入的Tomcat,无需部署WAR文件 简化Maven配置 自动配置Spring 没有XML配置,完全采用JAVA配置  Maven安装和配置使用maven管理jar包,编译项目  Maven在命令行中的使用(不常用): mvn archetype:generate 创建Ma">
+<meta name="twitter:image" content="http://i.imgur.com/wisxW4G.png">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -177,60 +185,242 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SpringBoot环境搭建" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/My-第一个彩蛋.html" class="archive-article-date">
-  	<time datetime="2018-06-14T07:18:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/My-第一个彩蛋.html">My-第一个彩蛋</a>
+    <h1 class="article-title" itemprop="name">
+      SpringBoot环境搭建
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/SpringBoot环境搭建.html" class="archive-article-date">
+  	<time datetime="2018-06-21T03:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SpringBoot框架"><a href="#SpringBoot框架" class="headerlink" title="SpringBoot框架"></a>SpringBoot框架</h2><p>目的:简化新Spring应用的初始搭建以及开发过程.</p>
+<p>特点:<br></p>
+<ol>
+<li>快速创建独立的Spring应用程序</li>
+<li>嵌入的Tomcat,无需部署WAR文件</li>
+<li>简化Maven配置</li>
+<li>自动配置Spring</li>
+<li>没有XML配置,完全采用JAVA配置</li>
+</ol>
+<h3 id="Maven安装和配置"><a href="#Maven安装和配置" class="headerlink" title="Maven安装和配置"></a>Maven安装和配置</h3><p>使用maven管理jar包,编译项目</p>
+<p><img src="http://i.imgur.com/wisxW4G.png" alt=""></p>
+<p>Maven在命令行中的使用(不常用):</p>
+<pre><code>mvn archetype:generate 创建Maven项目
+mvn compile 编译源代码
+mvn deploy 发布项目
+mvn test 运行应用程序中的单元测试
+mvn clean 清除项目目录中的生成结果
+mvn install 在本地Repository中安装jar
+mvntomcat:run 启动tomcat服务
+</code></pre><p>Mevan在Eclipse中的使用</p>
+<ol>
+<li>Eclipse进行Mevan设置</li>
+</ol>
+<p><img src="https://i.imgur.com/sfVtinF.png" alt=""></p>
+<p><img src="https://i.imgur.com/Fgse3Eu.png" alt=""></p>
+<ol start="2">
+<li><p>在本地库位置添加资源包</p>
+<p> 本地库路径按上面图Local Repository指定位置添加。</p>
+</li>
+<li><p>使用MAVEN工具创建Maven Project，导入jar包</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/rjtKxcr.png" alt=""></p>
+<p><img src="https://i.imgur.com/meQnDNB.png" alt=""></p>
+<pre><code>在pom.xml添加jar包的xml定义即可，例如
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+          &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+          &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+          &lt;version&gt;4.1.6.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">第一个蛋</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.websanshi.com/SpringBoot环境搭建.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/Mybatis第二蛋.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mybatis第二蛋</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SpringBoot环境搭建" data-title="SpringBoot环境搭建" data-url="http://www.websanshi.com/SpringBoot环境搭建.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-    
+
+  <section id="comments" class="comments">
+    <style>
+      .comments{margin:30px;padding:10px;background:#fff}
+      @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+    </style>
+    <div id="vcomment" class="comment"></div>
+<script src="//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js'></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+   new Valine({
+            av: AV,
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "IgOf2pIKTqcj9jS1YvyuyLvQ-gzGzoHsz",
+            app_key: "XvUL1xm2HDwnMqs7BMEJg6KA",
+            placeholder: "来说点什么吧┑(￣Д ￣)┍",
+            avatar: "retro",
+            avatar_cdn: "",
+            pageSize: 15
+    });
+</script>
+  </section>
+
+
+
+  
+
+  
+
+  
 
 
           </div>
@@ -253,9 +443,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

@@ -179,6 +179,126 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringBoot环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SpringBoot环境搭建.html">SpringBoot环境搭建</a>
+    </h1>
+  
+
+        
+        <a href="/SpringBoot环境搭建.html" class="archive-article-date">
+  	<time datetime="2018-06-21T03:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SpringBoot框架"><a href="#SpringBoot框架" class="headerlink" title="SpringBoot框架"></a>SpringBoot框架</h2><p>目的:简化新Spring应用的初始搭建以及开发过程.</p>
+<p>特点:<br></p>
+<ol>
+<li>快速创建独立的Spring应用程序</li>
+<li>嵌入的Tomcat,无需部署WAR文件</li>
+<li>简化Maven配置</li>
+<li>自动配置Spring</li>
+<li>没有XML配置,完全采用JAVA配置</li>
+</ol>
+<h3 id="Maven安装和配置"><a href="#Maven安装和配置" class="headerlink" title="Maven安装和配置"></a>Maven安装和配置</h3><p>使用maven管理jar包,编译项目</p>
+<p><img src="http://i.imgur.com/wisxW4G.png" alt=""></p>
+<p>Maven在命令行中的使用(不常用):</p>
+<pre><code>mvn archetype:generate 创建Maven项目
+mvn compile 编译源代码
+mvn deploy 发布项目
+mvn test 运行应用程序中的单元测试
+mvn clean 清除项目目录中的生成结果
+mvn install 在本地Repository中安装jar
+mvntomcat:run 启动tomcat服务
+</code></pre><p>Mevan在Eclipse中的使用</p>
+<ol>
+<li>Eclipse进行Mevan设置</li>
+</ol>
+<p><img src="https://i.imgur.com/sfVtinF.png" alt=""></p>
+<p><img src="https://i.imgur.com/Fgse3Eu.png" alt=""></p>
+<ol start="2">
+<li><p>在本地库位置添加资源包</p>
+<p> 本地库路径按上面图Local Repository指定位置添加。</p>
+</li>
+<li><p>使用MAVEN工具创建Maven Project，导入jar包</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/rjtKxcr.png" alt=""></p>
+<p><img src="https://i.imgur.com/meQnDNB.png" alt=""></p>
+<pre><code>在pom.xml添加jar包的xml定义即可，例如
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+          &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+          &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+          &lt;version&gt;4.1.6.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/SpringBoot环境搭建.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mybatis第二蛋" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -579,19 +699,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
               </li>
             
             <div class="clearfix"></div>
