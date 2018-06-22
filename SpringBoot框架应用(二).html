@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.websanshi.com">
-  <title>Tag: Spring | Have Fun</title>
+  <title>SpringBoot框架应用(二) | Have Fun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="好好学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Have Fun">
-<meta property="og:url" content="http://www.websanshi.com/tags/Spring/index.html">
+  <meta name="description" content="Spring容器对象来源 Spring原始框架中  定义的组件对象 context:componentscan/组件扫描 创建Spring容器   ApplicationContext ac =  new ClassPathXmlApplicationContext(&amp;quot;applicationContext.xml&amp;quot;);    Boot框架中  @Configuration+@B">
+<meta name="keywords" content="Boot,Maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot框架应用(二)">
+<meta property="og:url" content="http://www.websanshi.com/SpringBoot框架应用(二).html">
 <meta property="og:site_name" content="Have Fun">
-<meta property="og:description" content="好好学习">
+<meta property="og:description" content="Spring容器对象来源 Spring原始框架中  定义的组件对象 context:componentscan/组件扫描 创建Spring容器   ApplicationContext ac =  new ClassPathXmlApplicationContext(&amp;quot;applicationContext.xml&amp;quot;);    Boot框架中  @Configuration+@B">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-22T09:19:27.937Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Have Fun">
-<meta name="twitter:description" content="好好学习">
+<meta name="twitter:title" content="SpringBoot框架应用(二)">
+<meta name="twitter:description" content="Spring容器对象来源 Spring原始框架中  定义的组件对象 context:componentscan/组件扫描 创建Spring容器   ApplicationContext ac =  new ClassPathXmlApplicationContext(&amp;quot;applicationContext.xml&amp;quot;);    Boot框架中  @Configuration+@B">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -177,64 +179,511 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SpringBoot框架应用(二)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/Mybatis第二蛋.html" class="archive-article-date">
-  	<time datetime="2018-06-20T11:39:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Mybatis第二蛋.html">Mybatis第二蛋</a>
+    <h1 class="article-title" itemprop="name">
+      SpringBoot框架应用(二)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/SpringBoot框架应用(二).html" class="archive-article-date">
+  	<time datetime="2018-06-22T09:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring容器对象来源"><a href="#Spring容器对象来源" class="headerlink" title="Spring容器对象来源"></a>Spring容器对象来源</h2><ol>
+<li><p>Spring原始框架中</p>
+<ul>
+<li><bean>定义的组件对象</bean></li>
+<li><p><a href="context:componentscan/" target="_blank" rel="noopener">context:componentscan/</a>组件扫描</p>
+<p>创建Spring容器</p>
+<p>  ApplicationContext ac = </p>
+<pre><code>new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+</code></pre></li>
+</ul>
+</li>
+<li><p>Boot框架中</p>
+<ul>
+<li>@Configuration+@Bean定义组件对象</li>
+<li>@ComponentScan组件扫描</li>
+<li><p>@EnabledAutoConfiguration自动配置</p>
+<p>创建Boot中Spring容器</p>
+<p>  //@SpringBootApplication<br>  SpringApplication.run(启动类.class);</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>自动配置就是在Boot程序启动时，能自动创建一些组件对象纳入Spring容器中。自动配置底层就是采用了@Configuration+@Bean技术，提前内置很多配置组件，在Boot启动时加载到Spring容器中。</p>
+<p>Boot启动时，会自动加载spring-boot-autoconfigure-2.0.1.RELEASE.jar包中META-INF/spring.factories定义的配置组件，在Spring容器中创建出dispatcherServlet、dataSource、jdbcTemplate等对象。<br><a id="more"></a><br>    org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration,\<br>    org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,\<br>    org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration,\<br>    org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\<br>    org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration,\<br>    org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration,\<br>    org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration,\<br>    org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration,\</p>
+<h2 id="案例1：查看自动配置创建的dispatcherServlet"><a href="#案例1：查看自动配置创建的dispatcherServlet" class="headerlink" title="案例1：查看自动配置创建的dispatcherServlet"></a>案例1：查看自动配置创建的dispatcherServlet</h2><ol>
+<li><p>在pom.xml配置boot-web工具包</p>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;1.4.7.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+
+&lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+    &lt;java.version&gt;1.8&lt;/java.version&gt;
+&lt;/properties&gt;
+
+&lt;dependencies&gt;
+    &lt;!-- 包含自动配置的dispatcherServlet --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+&lt;/dependencies&gt;        
+</code></pre></li>
+</ol>
+<ol start="2">
+<li><p>在application.properties配置参数</p>
+<pre><code>server.port=8888
+</code></pre></li>
+<li><p>创建启动类，开启自动配置功能</p>
+</li>
+</ol>
+<pre><code>@EnableAutoConfiguration//启用自动配置功能
+public class MyBootApplication {
+
+}
+</code></pre><ol start="4">
+<li><p>创建Spring容器测试dispatcherServlet对象</p>
+<pre><code>@Test
+public void test1(){
+    ApplicationContext ac = 
+        SpringApplication.run(MyBootApplication.class);
+    Object obj = ac.getBean(&quot;dispatcherServlet&quot;);
+    System.out.println(obj);
+}
+</code></pre></li>
+</ol>
+<h2 id="案例2：查看自动配置创建的dataSource和jdbcTemplate"><a href="#案例2：查看自动配置创建的dataSource和jdbcTemplate" class="headerlink" title="案例2：查看自动配置创建的dataSource和jdbcTemplate"></a>案例2：查看自动配置创建的dataSource和jdbcTemplate</h2><ol>
+<li><p>在pom.xml配置boot-jdbc和ojdbc6工具包</p>
+<pre><code>&lt;!-- 包含dataSource和jdbcTemplate --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.oracle&lt;/groupId&gt;
+    &lt;artifactId&gt;ojdbc6&lt;/artifactId&gt;
+    &lt;version&gt;11.2.0.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></li>
+<li><p>在application.properties定义参数</p>
+<pre><code>spring.datasource.username=SCOTT
+spring.datasource.password=TIGER
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:XE
+spring.datasource.driverClassName=oracle.jdbc.OracleDriver
+</code></pre></li>
+</ol>
+<ol start="3">
+<li><p>创建Spring容器测试dataSource和jdbcTemplate</p>
+<pre><code>@Test
+public void test2(){
+    ApplicationContext ac = 
+        SpringApplication.run(MyBootApplication.class);
+    Object obj = ac.getBean(&quot;dataSource&quot;);
+    System.out.println(obj);
+    Object obj1 = ac.getBean(&quot;jdbcTemplate&quot;);
+    System.out.println(obj1);
+}
+</code></pre></li>
+</ol>
+<h2 id="案例3-1：properties文件参数注入（-ConfigurationProperties在类前定义）"><a href="#案例3-1：properties文件参数注入（-ConfigurationProperties在类前定义）" class="headerlink" title="案例3-1：properties文件参数注入（@ConfigurationProperties在类前定义）"></a>案例3-1：properties文件参数注入（@ConfigurationProperties在类前定义）</h2><p>将application.properties文件中定义的参数信息给Spring容器中Bean对象属性注入。涉及ConfigurationPropertiesAutoConfiguration</p>
+<ol>
+<li>在主启动类前添加@EnableAutoConfiguration，开启自动配置</li>
+<li><p>在扫描组件前添加@ConfigurationProperties，开启Properties参数注入<br>（规则：属性名和properties文件中key名一致注入，也可以使用@ConfigurationProperties标记的prefix属性指定key前缀，可以将”前缀.key”值注入）</p>
+<pre><code>@ConfigurationProperties
+@ConfigurationProperties(prefix=&quot;spring.datasource&quot;)
+</code></pre></li>
+<li><p>在application.properties定义参数值</p>
+<pre><code>key=value
+前缀.key=value
+</code></pre></li>
+</ol>
+<h2 id="案例3-2：properties文件参数注入（-ConfigurationProperties在-Bean方法前定义）"><a href="#案例3-2：properties文件参数注入（-ConfigurationProperties在-Bean方法前定义）" class="headerlink" title="案例3-2：properties文件参数注入（@ConfigurationProperties在@Bean方法前定义）"></a>案例3-2：properties文件参数注入（@ConfigurationProperties在@Bean方法前定义）</h2><p>也可以将@ConfigurationProperties放在@Bean位置一起使用。</p>
+<pre><code>//@EnableAutoConfiguration//启用自动配置功能
+//@ComponentScan//启用组件扫描,默认扫cn.xdl及其子包
+//@Configuration//启用Bean定义
+@SpringBootApplication
+public class MyBootApplication {
+
+    @Bean
+    @ConfigurationProperties(prefix=&quot;spring.datasource&quot;)
+    public MyDataSource ds(){
+        MyDataSource ds = new MyDataSource();
+        return ds;
+    }
+
+}
+</code></pre><h3 id="案例4：基于JdbcTemplate完成DeptDAO"><a href="#案例4：基于JdbcTemplate完成DeptDAO" class="headerlink" title="案例4：基于JdbcTemplate完成DeptDAO"></a>案例4：基于JdbcTemplate完成DeptDAO</h3><ol>
+<li><p>在pom.xml定义boot-jdbc和驱动包</p>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;1.4.7.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+
+&lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+    &lt;java.version&gt;1.8&lt;/java.version&gt;
+&lt;/properties&gt;
+
+&lt;dependencies&gt;
+    &lt;!-- spring DAO --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.oracle&lt;/groupId&gt;
+        &lt;artifactId&gt;ojdbc6&lt;/artifactId&gt;
+        &lt;version&gt;11.2.0.3&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+&lt;/dependencies&gt;
+</code></pre></li>
+<li><p>在application.properties定义datasource参数</p>
+<pre><code>spring.datasource.username=SCOTT
+spring.datasource.password=TIGER
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:XE
+spring.datasource.driverClassName=oracle.jdbc.OracleDriver
+</code></pre></li>
+<li><p>编写主启动类，追加@SpringBootApplication</p>
+<pre><code>@SpringBootApplication
+public class MyBootApplication {
+
+}
+</code></pre></li>
+<li><p>编写实体类Dept.java</p>
+<pre><code>public class Dept implements Serializable{
+
+    private Integer deptno;
+    private String dname;
+    private String loc;
+
+    public Integer getDeptno() {
+        return deptno;
+    }
+    public void setDeptno(Integer deptno) {
+        this.deptno = deptno;
+    }
+    public String getDname() {
+        return dname;
+    }
+    public void setDname(String dname) {
+        this.dname = dname;
+    }
+    public String getLoc() {
+        return loc;
+    }
+    public void setLoc(String loc) {
+        this.loc = loc;
+    }
+
+}
+</code></pre></li>
+<li><p>编写DAO接口DeptDao.java</p>
+</li>
+</ol>
+<pre><code>public interface DeptDao {
+
+    public List&lt;Dept&gt; findAll();
+
+    public Dept findById(int id);
+}
+</code></pre><ol start="6">
+<li><p>编写DAO实现类JdbcDeptDao.java</p>
+<p> 注入JdbcTemplate对象进行数据表操作。</p>
+<pre><code>@Repository
+public class JdbcDeptDao implements DeptDao{
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    public List&lt;Dept&gt; findAll() {
+        String sql = &quot;select * from dept&quot;;
+        RowMapper&lt;Dept&gt; rowMapper = new BeanPropertyRowMapper&lt;Dept&gt;(Dept.class);
+        List&lt;Dept&gt; list = jdbcTemplate.query(sql, rowMapper);
+        return list;
+    }
+
+    public Dept findById(int id) {
+        String sql = &quot;select * from dept where deptno=?&quot;;
+        Object[] params = {id};
+        RowMapper&lt;Dept&gt; rowMapper = new BeanPropertyRowMapper&lt;Dept&gt;(Dept.class);
+        Dept dept = jdbcTemplate.queryForObject(sql, params, rowMapper);
+        return dept;
+    }
+
+}
+</code></pre></li>
+</ol>
+<h2 id="案例5：基于MyBatis实现DeptDAO组件"><a href="#案例5：基于MyBatis实现DeptDAO组件" class="headerlink" title="案例5：基于MyBatis实现DeptDAO组件"></a>案例5：基于MyBatis实现DeptDAO组件</h2><ol>
+<li><p>在pom.xml引入boot-jdbc、ojdbc6、mybatis-boot包</p>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;1.4.7.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+
+&lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+    &lt;java.version&gt;1.8&lt;/java.version&gt;
+&lt;/properties&gt;
+
+&lt;dependencies&gt;
+     &lt;!-- boot-jdbc、ojdbc6、mybatis-boot --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.oracle&lt;/groupId&gt;
+        &lt;artifactId&gt;ojdbc6&lt;/artifactId&gt;
+        &lt;version&gt;11.2.0.3&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+        &lt;version&gt;1.3.0&lt;/version&gt;
+    &lt;/dependency&gt;
+     &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+&lt;/dependencies&gt;
+</code></pre></li>
+<li><p>在application.properties定义数据库连接参数</p>
+<p> （同上-案例4）</p>
+</li>
+<li><p>编写主启动类，添加@SpringBootApplication、@MapperScan标记</p>
+<pre><code>@SpringBootApplication
+@MapperScan(basePackages={&quot;cn.xdl.dao&quot;})//扫描cn.xdl.dao下接口生成Mapper对象
+public class MyBootApplication {
+
+}
+</code></pre></li>
+<li><p>编写实体类Dept.java</p>
+<p> （同上-案例4）</p>
+</li>
+<li><p>编写DAO接口DeptDao.java</p>
+<p> 使用@Select、@Insert、@Update、@Delete等标记定义SQL语句。</p>
+<pre><code>public interface DeptDao {
+
+    @Select(&quot;select * from dept&quot;)
+    public List&lt;Dept&gt; findAll();
+
+    @Select(&quot;select * from dept where deptno=#{no}&quot;)
+    public Dept findById(@Param(&quot;no&quot;)int id);
+
+}
+</code></pre></li>
+</ol>
+<h2 id="SpringBoot连接池DataSource"><a href="#SpringBoot连接池DataSource" class="headerlink" title="SpringBoot连接池DataSource"></a>SpringBoot连接池DataSource</h2><p>在Boot中有一个自动配置组件DataSourceAutoConfiguration，它能读取application.properties数据库参数，创建dataSource连接池对象。</p>
+<p>Boot自动创建连接池机制：</p>
+<ul>
+<li>首先优先寻找创建tomcat-jdbc连接池（boot-jdbc）</li>
+<li>如果找不到tomcat-jdbc连接池，尝试创建Hikari连接池</li>
+<li>如果找不到hikari连接池，尝试创建dbcp连接池</li>
+<li>如果找不到dbcp连接池，尝试创建dbcp2连接池</li>
+</ul>
+<p>如果存在多个连接池jar包，可以通过spring.datasource.type属性指定创建哪一个。</p>
+<p>提示：boot2.0版本，引入boot-jdbc时，依赖的连接池包由tomcat-jdbc改为hikari，因此默认创建出的连接池是hikari连接池。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.websanshi.com/SpringBoot框架应用(二).html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/SpringBoot环境搭建及第一个应用.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot环境搭建及第一个应用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SpringBoot框架应用(二)" data-title="SpringBoot框架应用(二)" data-url="http://www.websanshi.com/SpringBoot框架应用(二).html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-    
+
+  <section id="comments" class="comments">
+    <style>
+      .comments{margin:30px;padding:10px;background:#fff}
+      @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+    </style>
+    <div id="vcomment" class="comment"></div>
+<script src="//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js'></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+   new Valine({
+            av: AV,
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "IgOf2pIKTqcj9jS1YvyuyLvQ-gzGzoHsz",
+            app_key: "XvUL1xm2HDwnMqs7BMEJg6KA",
+            placeholder: "来说点什么吧┑(￣Д ￣)┍",
+            avatar: "retro",
+            avatar_cdn: "",
+            pageSize: 15
+    });
+</script>
+  </section>
+
+
+
+  
+
+  
+
+  
 
 
           </div>
@@ -257,9 +706,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

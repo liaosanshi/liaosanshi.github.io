@@ -179,6 +179,109 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringBoot框架应用(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SpringBoot框架应用(二).html">SpringBoot框架应用(二)</a>
+    </h1>
+  
+
+        
+        <a href="/SpringBoot框架应用(二).html" class="archive-article-date">
+  	<time datetime="2018-06-22T09:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring容器对象来源"><a href="#Spring容器对象来源" class="headerlink" title="Spring容器对象来源"></a>Spring容器对象来源</h2><ol>
+<li><p>Spring原始框架中</p>
+<ul>
+<li><bean>定义的组件对象</bean></li>
+<li><p><a href="context:componentscan/" target="_blank" rel="noopener">context:componentscan/</a>组件扫描</p>
+<p>创建Spring容器</p>
+<p>  ApplicationContext ac = </p>
+<pre><code>new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+</code></pre></li>
+</ul>
+</li>
+<li><p>Boot框架中</p>
+<ul>
+<li>@Configuration+@Bean定义组件对象</li>
+<li>@ComponentScan组件扫描</li>
+<li><p>@EnabledAutoConfiguration自动配置</p>
+<p>创建Boot中Spring容器</p>
+<p>  //@SpringBootApplication<br>  SpringApplication.run(启动类.class);</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>自动配置就是在Boot程序启动时，能自动创建一些组件对象纳入Spring容器中。自动配置底层就是采用了@Configuration+@Bean技术，提前内置很多配置组件，在Boot启动时加载到Spring容器中。</p>
+<p>Boot启动时，会自动加载spring-boot-autoconfigure-2.0.1.RELEASE.jar包中META-INF/spring.factories定义的配置组件，在Spring容器中创建出dispatcherServlet、dataSource、jdbcTemplate等对象。<br>
+        
+          <a class="article-more-a" href="/SpringBoot框架应用(二).html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/SpringBoot框架应用(二).html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SpringBoot环境搭建及第一个应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -609,6 +712,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
               </li>
              
@@ -622,14 +733,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Boot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
             
             <div class="clearfix"></div>
