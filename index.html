@@ -204,238 +204,19 @@ var _hmt = _hmt || [];
 /dept/put   更新部门信息
 /dept/post  创建一个部门
 /dept/get   查询某个部门
-</code></pre><h5 id="2-开发过程"><a href="#2-开发过程" class="headerlink" title="2. 开发过程"></a>2. 开发过程</h5><ul>
-<li><p>使用spring+mybatis实现DeptDao（参考上一次课案例过程）</p>
-</li>
-<li><p>在pom.xml添加boot-web开发包定义</p>
+</code></pre><h5 id="2-开发过程"><a href="#2-开发过程" class="headerlink" title="2. 开发过程"></a>2. 开发过程</h5><p>使用spring+mybatis实现DeptDao（参考上一次课案例过程）</p>
+<p>在pom.xml添加boot-web开发包定义</p>
 <pre><code>&lt;!-- mvc、restful、tomcat --&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
 &lt;/dependency&gt;
-</code></pre></li>
-<li><p>在application.properties配置tomcat端口</p>
+</code></pre><p>在application.properties配置tomcat端口</p>
 <pre><code>server.port=8888
-</code></pre></li>
-<li><p>编写DeptController组件</p>
-<pre><code>@RestController
-public class DeptController {
-
-    @Autowired
-    private DeptDao deptDao;
-
-    @RequestMapping(value=&quot;/dept/list&quot;,method=RequestMethod.GET)
-    public List&lt;Dept&gt; list(){
-        return deptDao.findAll();
-    }
-
-    @RequestMapping(value=&quot;/dept/get&quot;,method=RequestMethod.GET)
-    public Dept get(int no){
-        return deptDao.findById(no);
-    }
-
-    @RequestMapping(value=&quot;/dept/{id}&quot;,method=RequestMethod.GET)
-    public Dept get1(@PathVariable(&quot;id&quot;)int no){
-        return deptDao.findById(no);
-    }
-
-}    
-</code></pre></li>
-<li><p>运行主启动类启动Tomcat和应用</p>
-<pre><code>@SpringBootApplication
-@MapperScan(basePackages={&quot;cn.xdl.dao&quot;})
-public class MyBootApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(MyBootApplication.class, args);
-    }
-
-}
-</code></pre></li>
-</ul>
-<h5 id="3-采用junit-springtest测试"><a href="#3-采用junit-springtest测试" class="headerlink" title="3. 采用junit+springtest测试"></a>3. 采用junit+springtest测试</h5><ul>
-<li><p>在pom.xml添加junit和springtest包</p>
-  <dependency><br>  <groupid>org.springframework.boot</groupid><br>      <artifactid>spring-boot-starter-test</artifactid><br>  </dependency><br>  <dependency><br>      <groupid>junit</groupid><br>      <artifactid>junit</artifactid><br>  </dependency>
-</li>
-<li><p>编写junit测试类</p>
-<p>  @RunWith(SpringRunner.class)<br>  @SpringBootTest(classes={MyBootApplication.class})<br>  public class TestPost {</p>
-<pre><code>@Autowired
-private DeptController controller;
-private MockMvc mock;
-@Before
-public void init(){
-    mock = MockMvcBuilders.standaloneSetup(controller).build();
-}
-@Test
-public void test1() throws Exception{
-    //创建一个post请求/dept/post
-    RequestBuilder postRequest = 
-        MockMvcRequestBuilders.post(&quot;/dept/post&quot;)
-        .param(&quot;dname&quot;, &quot;boot&quot;)
-        .param(&quot;loc&quot;, &quot;上海&quot;);
-    //发送执行上面post请求,获取返回结果
-    MvcResult result = mock.perform(postRequest).andReturn();
-    String responseTxt = result.getResponse().getContentAsString();
-    System.out.println(responseTxt);
-}
-@Test
-public void test2() throws Exception{
-    //创建一个get请求/dept/list
-    RequestBuilder getRequest = 
-    MockMvcRequestBuilders.get(&quot;/dept/list&quot;);
-    //发送执行上面post请求,获取返回结果
-    MvcResult result = mock.perform(getRequest).andReturn();
-    String responseTxt = result.getResponse().getContentAsString();
-    System.out.println(responseTxt);
-}
-@Test
-public void test3() throws Exception{
-    //创建一个post请求/dept/put
-    RequestBuilder postRequest = 
-         MockMvcRequestBuilders.post(&quot;/dept/put&quot;)
-         .param(&quot;dname&quot;, &quot;BOOT&quot;)
-         .param(&quot;loc&quot;, &quot;上海&quot;)
-        .param(&quot;deptno&quot;, &quot;92&quot;);
-    //发送执行上面post请求,获取返回结果
-    MvcResult result = mock.perform(postRequest).andReturn();
-    String responseTxt = result.getResponse().getContentAsString();
-    System.out.println(responseTxt);
-}
-</code></pre><p>  }</p>
-</li>
-</ul>
-<h3 id="JSP应用快速开发-不建议"><a href="#JSP应用快速开发-不建议" class="headerlink" title="JSP应用快速开发(不建议)"></a>JSP应用快速开发(不建议)</h3><h5 id="1-开发一个hello示例"><a href="#1-开发一个hello示例" class="headerlink" title="1. 开发一个hello示例"></a>1. 开发一个hello示例</h5><pre><code>/jsp/hello--&gt;DispatcherServlet--&gt;HandlerMapping--&gt;HelloController--&gt;返回ModelAndView--&gt;ViewResolver--&gt;/hello.jsp
-</code></pre><h5 id="2-在pom-xml添加boot-web、jasper、jstl定义"><a href="#2-在pom-xml添加boot-web、jasper、jstl定义" class="headerlink" title="2. 在pom.xml添加boot-web、jasper、jstl定义"></a>2. 在pom.xml添加boot-web、jasper、jstl定义</h5><pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-&lt;/dependency&gt;    
-&lt;dependency&gt;
-  &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
-  &lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;
-&lt;/dependency&gt;        
-&lt;dependency&gt;
-  &lt;groupId&gt;jstl&lt;/groupId&gt;
-  &lt;artifactId&gt;jstl&lt;/artifactId&gt;
-  &lt;version&gt;1.2&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><h5 id="3-在application-properties定义server和viewresolver参数"><a href="#3-在application-properties定义server和viewresolver参数" class="headerlink" title="3. 在application.properties定义server和viewresolver参数"></a>3. 在application.properties定义server和viewresolver参数</h5><p><strong>server</strong></p>
-<pre><code>server.port=8888
-</code></pre><p><strong>viewresolver</strong></p>
-<pre><code>spring.mvc.view.prefix=/
-spring.mvc.view.suffix=.jsp
-</code></pre><h5 id="4-编写HelloController"><a href="#4-编写HelloController" class="headerlink" title="4. 编写HelloController"></a>4. 编写HelloController</h5><pre><code>@Controller
-public class HelloController {    
-    @RequestMapping(&quot;/jsp/hello&quot;)
-    public ModelAndView execute(){
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName(&quot;hello&quot;);// /hello.jsp
-        mav.getModel().put(&quot;msg&quot;, &quot;基于Boot的JSP应用&quot;);
-        return mav;
-    }
-}
-</code></pre><h5 id="5-编写hello-jsp"><a href="#5-编写hello-jsp" class="headerlink" title="5. 编写hello.jsp"></a>5. 编写hello.jsp</h5><pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
-pageEncoding=&quot;UTF-8&quot;%&gt;
-&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot; %&gt;
-&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
-&lt;html&gt;
-    &lt;head&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
-    &lt;title&gt;Insert title here&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;h1&gt;JSP应用DEMO&lt;/h1&gt;
-    &lt;h1&gt;${msg}&lt;/h1&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h5 id="6-编写启动类，启动测试"><a href="#6-编写启动类，启动测试" class="headerlink" title="6. 编写启动类，启动测试"></a>6. 编写启动类，启动测试</h5><pre><code>@SpringBootApplication
-public class MyBootApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(MyBootApplication.class, args);
-    }
-}
-</code></pre><h3 id="模板应用快速开发-thymeleaf-建议"><a href="#模板应用快速开发-thymeleaf-建议" class="headerlink" title="模板应用快速开发(thymeleaf,建议)"></a>模板应用快速开发(thymeleaf,建议)</h3><pre><code>thymeleaf模板技术是JSP技术的替代品,作用相同,返回Html响应界面.
-
-JSP--&gt;Servlet--&gt;.class--&gt;HTML响应流
-
-html--&gt;HTML响应流
-
-模板技术(表达式)--&gt;HTML响应流
-</code></pre><h5 id="1-模板技术优点"><a href="#1-模板技术优点" class="headerlink" title="1. 模板技术优点"></a>1. 模板技术优点</h5><ul>
-<li>模板技术执行效率比JSP高</li>
-<li>模板技术只认模板表达式，JSP标签比较杂比较多</li>
-<li>Velocity、Freemarker、Thymeleaf等</li>
-</ul>
-<p>Velocity技术 ： hello.vm VTL<br><br>Freemarker技术： hello.ftl FTL<br><br>Thymeleaf技术： hello.html THTL<br></p>
-<h5 id="2-在pom-xml定义boot-web、boot-thymeleaf引入"><a href="#2-在pom-xml定义boot-web、boot-thymeleaf引入" class="headerlink" title="2. 在pom.xml定义boot-web、boot-thymeleaf引入"></a>2. 在pom.xml定义boot-web、boot-thymeleaf引入</h5><pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre><h5 id="3-在application-properties定义tomcat端口"><a href="#3-在application-properties定义tomcat端口" class="headerlink" title="3. 在application.properties定义tomcat端口"></a>3. 在application.properties定义tomcat端口</h5><pre><code>server.port=8888
-</code></pre><h5 id="4-编写HelloController组件-与JSP应用相同"><a href="#4-编写HelloController组件-与JSP应用相同" class="headerlink" title="4. 编写HelloController组件(与JSP应用相同)"></a>4. 编写HelloController组件(与JSP应用相同)</h5><pre><code>@Controller
-public class HelloController {
-    @RequestMapping(&quot;/thymeleaf/hello&quot;)
-    public ModelAndView execute(){
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName(&quot;hello&quot;);//templates/hello.html模板
-        mav.getModel().put(&quot;msg&quot;, &quot;基于Boot的Thymeleaf应用&quot;);
-        //添加一个集合
-        List&lt;Dept&gt; list = new ArrayList&lt;&gt;();
-        Dept dept1 = new Dept();
-        dept1.setDeptno(10);
-        dept1.setDname(&quot;Java&quot;);
-        dept1.setLoc(&quot;beijing&quot;);
-        Dept dept2 = new Dept();
-        dept2.setDeptno(20);
-        dept2.setDname(&quot;PHP&quot;);
-        dept2.setLoc(&quot;shanghai&quot;);
-        list.add(dept1);
-        list.add(dept2);
-        mav.getModel().put(&quot;depts&quot;, list);
-        return mav;
-    }
-}
-</code></pre><h5 id="5-在src-main-resources-templates目录下定义hello-html模板"><a href="#5-在src-main-resources-templates目录下定义hello-html模板" class="headerlink" title="5. 在src/main/resources/templates目录下定义hello.html模板"></a>5. 在src/main/resources/templates目录下定义hello.html模板</h5><pre><code>&lt;!DOCTYPE html&gt;
-&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;title&gt;Insert title here&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Boot入门案例&lt;/h1&gt;
-    &lt;h1 th:text=&quot;${msg}&quot;&gt;&lt;/h1&gt;
-    &lt;table&gt;
-        &lt;tr th:each=&quot;d,stat:${depts}&quot;&gt;
-            &lt;td th:text=&quot;${stat.count}&quot;&gt;&lt;/td&gt;
-            &lt;td th:text=&quot;${d.deptno}&quot;&gt;&lt;/td&gt;
-            &lt;td th:text=&quot;${d.dname}&quot;&gt;&lt;/td&gt;
-            &lt;td th:text=&quot;${d.loc}&quot;&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/table&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h5 id="6-编写启动类，启动测试-1"><a href="#6-编写启动类，启动测试-1" class="headerlink" title="6. 编写启动类，启动测试"></a>6. 编写启动类，启动测试</h5><pre><code>@SpringBootApplication
-public class MyBootApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(MyBootApplication.class, args);
-    }
-}
-</code></pre><h5 id="7-如果使用boot1-x版本，默认对html模板语法校验严格，取消方法如下"><a href="#7-如果使用boot1-x版本，默认对html模板语法校验严格，取消方法如下" class="headerlink" title="7. 如果使用boot1.x版本，默认对html模板语法校验严格，取消方法如下"></a>7. 如果使用boot1.x版本，默认对html模板语法校验严格，取消方法如下</h5><ul>
-<li><p>在pom.xml添加nekohtml定义</p>
-<pre><code>&lt;!--取消HTML模板严格语法校验 1.x版本需要使用;2版本不需要 --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;net.sourceforge.nekohtml&lt;/groupId&gt;
-    &lt;artifactId&gt;nekohtml&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>在application.properties添加参数定义</p>
-<pre><code>spring.thymeleaf.mode=LEGACYHTML5
-</code></pre></li>
-</ul>
-
+</code></pre><p>编写DeptController组件<br>
+        
+          <a class="article-more-a" href="/SpringBoot的网页开发.html#more">more >></a>
+        
       
 
       
@@ -1033,19 +814,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Boot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
