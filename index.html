@@ -256,54 +256,56 @@ var _hmt = _hmt || [];
         }
 </code></pre><h5 id="3-采用junit-springtest测试"><a href="#3-采用junit-springtest测试" class="headerlink" title="3. 采用junit+springtest测试"></a>3. 采用junit+springtest测试</h5><ul>
 <li><p>在pom.xml添加junit和springtest包</p>
-  <dependency><br>   <groupid>org.springframework.boot</groupid><br>      <artifactid>spring-boot-starter-test</artifactid><br>  </dependency><br>  <dependency><br>      <groupid>junit</groupid><br>      <artifactid>junit</artifactid><br>  </dependency>
+  <dependency><br>  <groupid>org.springframework.boot</groupid><br>      <artifactid>spring-boot-starter-test</artifactid><br>  </dependency><br>  <dependency><br>      <groupid>junit</groupid><br>      <artifactid>junit</artifactid><br>  </dependency>
 </li>
 <li><p>编写junit测试类</p>
-<p>  @RunWith(SpringRunner.class)<br>  @SpringBootTest(classes={MyBootApplication.class})<br>  public class TestPost {</p>
-<pre><code>@Autowired
-private DeptController controller;
-private MockMvc mock;
-@Before
-public void init(){
-    mock = MockMvcBuilders.standaloneSetup(controller).build();
+<pre><code>@RunWith(SpringRunner.class)
+@SpringBootTest(classes={MyBootApplication.class})
+public class TestPost {
+    @Autowired
+    private DeptController controller;
+    private MockMvc mock;
+    @Before
+    public void init(){
+        mock = MockMvcBuilders.standaloneSetup(controller).build();
+    }
+    @Test
+    public void test1() throws Exception{
+        //创建一个post请求/dept/post
+        RequestBuilder postRequest = 
+            MockMvcRequestBuilders.post(&quot;/dept/post&quot;)
+            .param(&quot;dname&quot;, &quot;boot&quot;)
+            .param(&quot;loc&quot;, &quot;上海&quot;);
+        //发送执行上面post请求,获取返回结果
+        MvcResult result = mock.perform(postRequest).andReturn();
+        String responseTxt = result.getResponse().getContentAsString();
+        System.out.println(responseTxt);
+    }
+    @Test
+    public void test2() throws Exception{
+        //创建一个get请求/dept/list
+        RequestBuilder getRequest = 
+            MockMvcRequestBuilders.get(&quot;/dept/list&quot;);
+        //发送执行上面post请求,获取返回结果
+        MvcResult result = mock.perform(getRequest).andReturn();
+        String responseTxt = result.getResponse().getContentAsString();
+        System.out.println(responseTxt);
+    }
+    @Test
+    public void test3() throws Exception{
+        //创建一个post请求/dept/put
+        RequestBuilder postRequest = 
+            MockMvcRequestBuilders.post(&quot;/dept/put&quot;)
+            .param(&quot;dname&quot;, &quot;BOOT&quot;)
+            .param(&quot;loc&quot;, &quot;上海&quot;)
+            .param(&quot;deptno&quot;, &quot;92&quot;);
+        //发送执行上面post请求,获取返回结果
+        MvcResult result = mock.perform(postRequest).andReturn();
+        String responseTxt = result.getResponse().getContentAsString();
+        System.out.println(responseTxt);
+    }
 }
-@Test
-public void test1() throws Exception{
-    //创建一个post请求/dept/post
-    RequestBuilder postRequest = 
-        MockMvcRequestBuilders.post(&quot;/dept/post&quot;)
-        .param(&quot;dname&quot;, &quot;boot&quot;)
-        .param(&quot;loc&quot;, &quot;上海&quot;);
-    //发送执行上面post请求,获取返回结果
-    MvcResult result = mock.perform(postRequest).andReturn();
-    String responseTxt = result.getResponse().getContentAsString();
-    System.out.println(responseTxt);
-}
-@Test
-public void test2() throws Exception{
-    //创建一个get请求/dept/list
-    RequestBuilder getRequest = 
-        MockMvcRequestBuilders.get(&quot;/dept/list&quot;);
-    //发送执行上面post请求,获取返回结果
-    MvcResult result = mock.perform(getRequest).andReturn();
-    String responseTxt = result.getResponse().getContentAsString();
-    System.out.println(responseTxt);
-}
-@Test
-public void test3() throws Exception{
-    //创建一个post请求/dept/put
-    RequestBuilder postRequest = 
-        MockMvcRequestBuilders.post(&quot;/dept/put&quot;)
-        .param(&quot;dname&quot;, &quot;BOOT&quot;)
-        .param(&quot;loc&quot;, &quot;上海&quot;)
-        .param(&quot;deptno&quot;, &quot;92&quot;);
-    //发送执行上面post请求,获取返回结果
-    MvcResult result = mock.perform(postRequest).andReturn();
-    String responseTxt = result.getResponse().getContentAsString();
-    System.out.println(responseTxt);
-}
-</code></pre><p>  }</p>
-</li>
+</code></pre></li>
 </ul>
 <h3 id="JSP应用快速开发-不建议"><a href="#JSP应用快速开发-不建议" class="headerlink" title="JSP应用快速开发(不建议)"></a>JSP应用快速开发(不建议)</h3><h5 id="1-开发一个hello示例"><a href="#1-开发一个hello示例" class="headerlink" title="1. 开发一个hello示例"></a>1. 开发一个hello示例</h5><pre><code>/jsp/hello--&gt;DispatcherServlet--&gt;HandlerMapping--&gt;HelloController--&gt;返回ModelAndView--&gt;ViewResolver--&gt;/hello.jsp
 </code></pre><h5 id="2-在pom-xml添加boot-web、jasper、jstl定义"><a href="#2-在pom-xml添加boot-web、jasper、jstl定义" class="headerlink" title="2. 在pom.xml添加boot-web、jasper、jstl定义"></a>2. 在pom.xml添加boot-web、jasper、jstl定义</h5><pre><code>&lt;dependency&gt;
@@ -371,9 +373,7 @@ html--&gt;HTML响应流
 <li>模板技术只认模板表达式，JSP标签比较杂比较多</li>
 <li>Velocity、Freemarker、Thymeleaf等</li>
 </ul>
-<p>Velocity技术 ： hello.vm VTL</p>
-<p>Freemarker技术： hello.ftl FTL</p>
-<p>Thymeleaf技术： hello.html THTL</p>
+<p>Velocity技术 ： hello.vm VTL<br><br>Freemarker技术： hello.ftl FTL<br><br>Thymeleaf技术： hello.html THTL<br></p>
 <h5 id="2-在pom-xml定义boot-web、boot-thymeleaf引入"><a href="#2-在pom-xml定义boot-web、boot-thymeleaf引入" class="headerlink" title="2. 在pom.xml定义boot-web、boot-thymeleaf引入"></a>2. 在pom.xml定义boot-web、boot-thymeleaf引入</h5><pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
@@ -1037,15 +1037,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">restful</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1057,11 +1057,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color3">restful</a>
               </li>
             
             <div class="clearfix"></div>
