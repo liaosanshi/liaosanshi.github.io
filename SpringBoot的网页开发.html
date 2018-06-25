@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.websanshi.com">
-  <title>Archives: 2018 | Have Fun</title>
+  <title>SpringBoot的网页开发 | Have Fun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="好好学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Have Fun">
-<meta property="og:url" content="http://www.websanshi.com/archives/2018/index.html">
+  <meta name="description" content="SpringBoot MVC&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;通过自动配置将SpringMVC中DispatcherServlet,HandlerMapping,ViewResolver组件定义,程序员不需要定义了. restful服务快速开发（建议）1. 开发一套部门管理的API/dept/list  列表查询 /dept/put   更新部门信息 /dept/post">
+<meta name="keywords" content="SpringBoot,restful">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot的网页开发">
+<meta property="og:url" content="http://www.websanshi.com/SpringBoot的网页开发.html">
 <meta property="og:site_name" content="Have Fun">
-<meta property="og:description" content="好好学习">
+<meta property="og:description" content="SpringBoot MVC&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;通过自动配置将SpringMVC中DispatcherServlet,HandlerMapping,ViewResolver组件定义,程序员不需要定义了. restful服务快速开发（建议）1. 开发一套部门管理的API/dept/list  列表查询 /dept/put   更新部门信息 /dept/post">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-25T11:06:34.095Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Have Fun">
-<meta name="twitter:description" content="好好学习">
+<meta name="twitter:title" content="SpringBoot的网页开发">
+<meta name="twitter:description" content="SpringBoot MVC&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;通过自动配置将SpringMVC中DispatcherServlet,HandlerMapping,ViewResolver组件定义,程序员不需要定义了. restful服务快速开发（建议）1. 开发一套部门管理的API/dept/list  列表查询 /dept/put   更新部门信息 /dept/post">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -177,36 +179,278 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SpringBoot的网页开发" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/SpringBoot的网页开发.html" class="archive-article-date">
-  	<time datetime="2018-06-25T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/SpringBoot的网页开发.html">SpringBoot的网页开发</a>
+    <h1 class="article-title" itemprop="name">
+      SpringBoot的网页开发
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/SpringBoot的网页开发.html" class="archive-article-date">
+  	<time datetime="2018-06-25T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SpringBoot-MVC"><a href="#SpringBoot-MVC" class="headerlink" title="SpringBoot MVC"></a>SpringBoot MVC</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过自动配置将SpringMVC中DispatcherServlet,HandlerMapping,ViewResolver组件定义,程序员不需要定义了.</p>
+<h3 id="restful服务快速开发（建议）"><a href="#restful服务快速开发（建议）" class="headerlink" title="restful服务快速开发（建议）"></a>restful服务快速开发（建议）</h3><h5 id="1-开发一套部门管理的API"><a href="#1-开发一套部门管理的API" class="headerlink" title="1. 开发一套部门管理的API"></a>1. 开发一套部门管理的API</h5><pre><code>/dept/list  列表查询
+/dept/put   更新部门信息
+/dept/post  创建一个部门
+/dept/get   查询某个部门
+</code></pre><h5 id="2-开发过程"><a href="#2-开发过程" class="headerlink" title="2. 开发过程"></a>2. 开发过程</h5><pre><code>- 使用spring+mybatis实现DeptDao（参考上一次课案例过程）
+
+-     在pom.xml添加boot-web开发包定义
+
+        &lt;!-- mvc、restful、tomcat --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+
+-     在application.properties配置tomcat端口
+
+        server.port=8888
+
+-     编写DeptController组件
+
+        @RestController
+        public class DeptController {
+
+            @Autowired
+            private DeptDao deptDao;
+
+            @RequestMapping(value=&quot;/dept/list&quot;,method=RequestMethod.GET)
+            public List&lt;Dept&gt; list(){
+                return deptDao.findAll();
+            }
+
+            @RequestMapping(value=&quot;/dept/get&quot;,method=RequestMethod.GET)
+            public Dept get(int no){
+                return deptDao.findById(no);
+            }
+
+            @RequestMapping(value=&quot;/dept/{id}&quot;,method=RequestMethod.GET)
+            public Dept get1(@PathVariable(&quot;id&quot;)int no){
+                return deptDao.findById(no);
+            }
+
+        }    
+
+-     运行主启动类启动Tomcat和应用
+
+        @SpringBootApplication
+        @MapperScan(basePackages={&quot;cn.xdl.dao&quot;})
+        public class MyBootApplication {
+
+            public static void main(String[] args) {
+                SpringApplication.run(MyBootApplication.class, args);
+            }
+
+        }
+</code></pre><h5 id="3-采用junit-springtest测试"><a href="#3-采用junit-springtest测试" class="headerlink" title="3. 采用junit+springtest测试"></a>3. 采用junit+springtest测试</h5><ul>
+<li><p>在pom.xml添加junit和springtest包</p>
+  <dependency><br>   <groupid>org.springframework.boot</groupid><br>      <artifactid>spring-boot-starter-test</artifactid><br>  </dependency><br>  <dependency><br>      <groupid>junit</groupid><br>      <artifactid>junit</artifactid><br>  </dependency>
+</li>
+<li><p>编写junit测试类</p>
+<p>  @RunWith(SpringRunner.class)<br>  @SpringBootTest(classes={MyBootApplication.class})<br>  public class TestPost {</p>
+<pre><code>@Autowired
+private DeptController controller;
+private MockMvc mock;
+@Before
+public void init(){
+    mock = MockMvcBuilders.standaloneSetup(controller).build();
+}
+@Test
+public void test1() throws Exception{
+    //创建一个post请求/dept/post
+    RequestBuilder postRequest = 
+        MockMvcRequestBuilders.post(&quot;/dept/post&quot;)
+        .param(&quot;dname&quot;, &quot;boot&quot;)
+        .param(&quot;loc&quot;, &quot;上海&quot;);
+    //发送执行上面post请求,获取返回结果
+    MvcResult result = mock.perform(postRequest).andReturn();
+    String responseTxt = result.getResponse().getContentAsString();
+    System.out.println(responseTxt);
+}
+@Test
+public void test2() throws Exception{
+    //创建一个get请求/dept/list
+    RequestBuilder getRequest = 
+        MockMvcRequestBuilders.get(&quot;/dept/list&quot;);
+    //发送执行上面post请求,获取返回结果
+    MvcResult result = mock.perform(getRequest).andReturn();
+    String responseTxt = result.getResponse().getContentAsString();
+    System.out.println(responseTxt);
+}
+@Test
+public void test3() throws Exception{
+    //创建一个post请求/dept/put
+    RequestBuilder postRequest = 
+        MockMvcRequestBuilders.post(&quot;/dept/put&quot;)
+        .param(&quot;dname&quot;, &quot;BOOT&quot;)
+        .param(&quot;loc&quot;, &quot;上海&quot;)
+        .param(&quot;deptno&quot;, &quot;92&quot;);
+    //发送执行上面post请求,获取返回结果
+    MvcResult result = mock.perform(postRequest).andReturn();
+    String responseTxt = result.getResponse().getContentAsString();
+    System.out.println(responseTxt);
+}
+</code></pre><p>  }</p>
+</li>
+</ul>
+<h3 id="JSP应用快速开发-不建议"><a href="#JSP应用快速开发-不建议" class="headerlink" title="JSP应用快速开发(不建议)"></a>JSP应用快速开发(不建议)</h3><h5 id="1-开发一个hello示例"><a href="#1-开发一个hello示例" class="headerlink" title="1. 开发一个hello示例"></a>1. 开发一个hello示例</h5><pre><code>/jsp/hello--&gt;DispatcherServlet--&gt;HandlerMapping--&gt;HelloController--&gt;返回ModelAndView--&gt;ViewResolver--&gt;/hello.jsp
+</code></pre><h5 id="2-在pom-xml添加boot-web、jasper、jstl定义"><a href="#2-在pom-xml添加boot-web、jasper、jstl定义" class="headerlink" title="2. 在pom.xml添加boot-web、jasper、jstl定义"></a>2. 在pom.xml添加boot-web、jasper、jstl定义</h5><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
+  &lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+  &lt;groupId&gt;jstl&lt;/groupId&gt;
+  &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+  &lt;version&gt;1.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h5 id="3-在application-properties定义server和viewresolver参数"><a href="#3-在application-properties定义server和viewresolver参数" class="headerlink" title="3. 在application.properties定义server和viewresolver参数"></a>3. 在application.properties定义server和viewresolver参数</h5><pre><code>#server
+server.port=8888
+
+#viewresolver
+spring.mvc.view.prefix=/
+spring.mvc.view.suffix=.jsp
+</code></pre><h5 id="4-编写HelloController"><a href="#4-编写HelloController" class="headerlink" title="4. 编写HelloController"></a>4. 编写HelloController</h5><pre><code>@Controller
+public class HelloController {
+
+    @RequestMapping(&quot;/jsp/hello&quot;)
+    public ModelAndView execute(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName(&quot;hello&quot;);// /hello.jsp
+        mav.getModel().put(&quot;msg&quot;, &quot;基于Boot的JSP应用&quot;);
+        return mav;
+    }
+}
+</code></pre><h5 id="5-编写hello-jsp"><a href="#5-编写hello-jsp" class="headerlink" title="5. 编写hello.jsp"></a>5. 编写hello.jsp</h5><pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot; %&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;title&gt;Insert title here&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;h1&gt;JSP应用DEMO&lt;/h1&gt;
+    &lt;h1&gt;${msg}&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h5 id="6-编写启动类，启动测试"><a href="#6-编写启动类，启动测试" class="headerlink" title="6. 编写启动类，启动测试"></a>6. 编写启动类，启动测试</h5><pre><code>@SpringBootApplication
+public class MyBootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MyBootApplication.class, args);
+    }
+}
+</code></pre><h3 id="模板应用快速开发-thymeleaf-建议"><a href="#模板应用快速开发-thymeleaf-建议" class="headerlink" title="模板应用快速开发(thymeleaf,建议)"></a>模板应用快速开发(thymeleaf,建议)</h3><pre><code>thymeleaf模板技术是JSP技术的替代品,作用相同,返回Html响应界面.
+
+JSP--&gt;Servlet--&gt;.class--&gt;HTML响应流
+
+html--&gt;HTML响应流
+
+模板技术(表达式)--&gt;HTML响应流
+</code></pre><h5 id="1-模板技术优点"><a href="#1-模板技术优点" class="headerlink" title="1. 模板技术优点"></a>1. 模板技术优点</h5><ul>
+<li>模板技术执行效率比JSP高</li>
+<li>模板技术只认模板表达式，JSP标签比较杂比较多</li>
+<li>Velocity、Freemarker、Thymeleaf等</li>
+</ul>
+<p>Velocity技术 ： hello.vm VTL</p>
+<p>Freemarker技术： hello.ftl FTL</p>
+<p>Thymeleaf技术： hello.html THTL</p>
+<h5 id="2-在pom-xml定义boot-web、boot-thymeleaf引入"><a href="#2-在pom-xml定义boot-web、boot-thymeleaf引入" class="headerlink" title="2. 在pom.xml定义boot-web、boot-thymeleaf引入"></a>2. 在pom.xml定义boot-web、boot-thymeleaf引入</h5><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre><h5 id="3-在application-properties定义tomcat端口"><a href="#3-在application-properties定义tomcat端口" class="headerlink" title="3. 在application.properties定义tomcat端口"></a>3. 在application.properties定义tomcat端口</h5><pre><code>server.port=8888
+</code></pre><h5 id="4-编写HelloController组件-与JSP应用相同"><a href="#4-编写HelloController组件-与JSP应用相同" class="headerlink" title="4. 编写HelloController组件(与JSP应用相同)"></a>4. 编写HelloController组件(与JSP应用相同)</h5><pre><code>@Controller
+public class HelloController {
+    @RequestMapping(&quot;/thymeleaf/hello&quot;)
+    public ModelAndView execute(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName(&quot;hello&quot;);//templates/hello.html模板
+        mav.getModel().put(&quot;msg&quot;, &quot;基于Boot的Thymeleaf应用&quot;);
+        //添加一个集合
+        List&lt;Dept&gt; list = new ArrayList&lt;&gt;();
+        Dept dept1 = new Dept();
+        dept1.setDeptno(10);
+        dept1.setDname(&quot;Java&quot;);
+        dept1.setLoc(&quot;beijing&quot;);
+        Dept dept2 = new Dept();
+        dept2.setDeptno(20);
+        dept2.setDname(&quot;PHP&quot;);
+        dept2.setLoc(&quot;shanghai&quot;);
+        list.add(dept1);
+        list.add(dept2);
+        mav.getModel().put(&quot;depts&quot;, list);
+        return mav;
+    }
+}
+</code></pre><h5 id="5-在src-main-resources-templates目录下定义hello-html模板"><a href="#5-在src-main-resources-templates目录下定义hello-html模板" class="headerlink" title="5. 在src/main/resources/templates目录下定义hello.html模板"></a>5. 在src/main/resources/templates目录下定义hello.html模板</h5><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Boot入门案例&lt;/h1&gt;
+    &lt;h1 th:text=&quot;${msg}&quot;&gt;&lt;/h1&gt;
+    &lt;table&gt;
+        &lt;tr th:each=&quot;d,stat:${depts}&quot;&gt;
+            &lt;td th:text=&quot;${stat.count}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${d.deptno}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${d.dname}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${d.loc}&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h5 id="6-编写启动类，启动测试-1"><a href="#6-编写启动类，启动测试-1" class="headerlink" title="6. 编写启动类，启动测试"></a>6. 编写启动类，启动测试</h5><pre><code>@SpringBootApplication
+public class MyBootApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MyBootApplication.class, args);
+    }
+}
+</code></pre><h5 id="7-如果使用boot1-x版本，默认对html模板语法校验严格，取消方法如下"><a href="#7-如果使用boot1-x版本，默认对html模板语法校验严格，取消方法如下" class="headerlink" title="7. 如果使用boot1.x版本，默认对html模板语法校验严格，取消方法如下"></a>7. 如果使用boot1.x版本，默认对html模板语法校验严格，取消方法如下</h5><ul>
+<li><p>在pom.xml添加nekohtml定义</p>
+<pre><code>&lt;!--取消HTML模板严格语法校验 1.x版本需要使用;2版本不需要 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;net.sourceforge.nekohtml&lt;/groupId&gt;
+    &lt;artifactId&gt;nekohtml&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre></li>
+<li><p>在application.properties添加参数定义</p>
+<pre><code>spring.thymeleaf.mode=LEGACYHTML5
+</code></pre></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -222,221 +466,156 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.websanshi.com/SpringBoot的网页开发.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/SpringBoot框架应用(二).html" class="archive-article-date">
-  	<time datetime="2018-06-22T09:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/SpringBoot框架应用(二).html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot框架应用(二)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/SpringBoot框架应用(二).html">SpringBoot框架应用(二)</a>
-    </h1>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SpringBoot的网页开发" data-title="SpringBoot的网页开发" data-url="http://www.websanshi.com/SpringBoot的网页开发.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
+  <section id="comments" class="comments">
+    <style>
+      .comments{margin:30px;padding:10px;background:#fff}
+      @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+    </style>
+    <div id="vcomment" class="comment"></div>
+<script src="//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js'></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+   new Valine({
+            av: AV,
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "IgOf2pIKTqcj9jS1YvyuyLvQ-gzGzoHsz",
+            app_key: "XvUL1xm2HDwnMqs7BMEJg6KA",
+            placeholder: "来说点什么吧┑(￣Д ￣)┍",
+            avatar: "retro",
+            avatar_cdn: "",
+            pageSize: 15
+    });
+</script>
+  </section>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/SpringBoot环境搭建及第一个应用.html" class="archive-article-date">
-  	<time datetime="2018-06-21T03:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/SpringBoot环境搭建及第一个应用.html">SpringBoot环境搭建及第一个应用</a>
-    </h1>
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/Mybatis第二蛋.html" class="archive-article-date">
-  	<time datetime="2018-06-20T11:39:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Mybatis第二蛋.html">Mybatis第二蛋</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/Mybatis入门.html" class="archive-article-date">
-  	<time datetime="2018-06-19T11:23:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Mybatis入门.html">Mybatis入门</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">第二个蛋 框架学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/My-第一个彩蛋.html" class="archive-article-date">
-  	<time datetime="2018-06-14T07:18:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/My-第一个彩蛋.html">My-第一个彩蛋</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">第一个蛋</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -459,8 +638,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
