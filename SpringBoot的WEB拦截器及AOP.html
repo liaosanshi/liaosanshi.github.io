@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Have Fun">
 <meta property="og:description" content="SpringBootMVC拦截器作用拦截器作用：在SpringMVC请求处理期间，特定位置做拦截，插入一些额外处理逻辑。拦截点有一下3个位置：  在controller处理前（preHandle）在controller处理后（postHandle）在处理完毕，响应输出前（afterCompletion）  规则（编写相同、配置不同）拦截器组件编写需要实现HandlerInterceptor接口，接">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-26T09:30:24.625Z">
+<meta property="og:updated_time" content="2018-06-26T09:37:32.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot的WEB拦截器及AOP">
 <meta name="twitter:description" content="SpringBootMVC拦截器作用拦截器作用：在SpringMVC请求处理期间，特定位置做拦截，插入一些额外处理逻辑。拦截点有一下3个位置：  在controller处理前（preHandle）在controller处理后（postHandle）在处理完毕，响应输出前（afterCompletion）  规则（编写相同、配置不同）拦截器组件编写需要实现HandlerInterceptor接口，接">
@@ -203,7 +203,8 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>在controller处理前（preHandle）<br><br>在controller处理后（postHandle）<br><br>在处理完毕，响应输出前（afterCompletion）<br></p>
 </blockquote>
-<h3 id="规则（编写相同、配置不同）"><a href="#规则（编写相同、配置不同）" class="headerlink" title="规则（编写相同、配置不同）"></a>规则（编写相同、配置不同）</h3><p>拦截器组件编写需要实现HandlerInterceptor接口，接口有preHandle、postHandle、afterCompletion方法分别对应前面3个拦截点。<br><br><br>在Boot中，拦截器配置需要采用Java配置模式。</p>
+<h3 id="规则（编写相同、配置不同）"><a href="#规则（编写相同、配置不同）" class="headerlink" title="规则（编写相同、配置不同）"></a>规则（编写相同、配置不同）</h3><p>拦截器组件编写需要实现HandlerInterceptor接口，接口有preHandle、postHandle、afterCompletion方法分别对应前面3个拦截点。</p>
+<p>在Boot中，拦截器配置需要采用Java配置模式。</p>
 <h3 id="案例：登录拦截器"><a href="#案例：登录拦截器" class="headerlink" title="案例：登录拦截器"></a>案例：登录拦截器</h3><h5 id="1-编写SomeInterceptor拦截器组件"><a href="#1-编写SomeInterceptor拦截器组件" class="headerlink" title="1. 编写SomeInterceptor拦截器组件"></a>1. 编写SomeInterceptor拦截器组件</h5><a id="more"></a>
 <pre><code>@Component//扫描
 public class SomeInterceptor implements HandlerInterceptor{
@@ -260,18 +261,19 @@ public class MyController {
 <li>META-INF/resources （优先级最高）</li>
 <li>resources</li>
 <li>static</li>
-<li><p>public (优先级最低)<br>自定义静态资源目录，方法如下：</p>
+<li>public (优先级最低)<br>自定义静态资源目录，方法如下：</li>
+</ul>
 <pre><code>@Configuration
 public class MyResourceConfiguration implements WebMvcConfigurer{
-
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(&quot;/my/**&quot;).addResourceLocations(&quot;classpath:/my/&quot;);
-
     }
 }
-</code></pre></li>
-</ul>
-<h2 id="SpringBoot-AOP"><a href="#SpringBoot-AOP" class="headerlink" title="SpringBoot AOP"></a>SpringBoot AOP</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Spring AOP概念：Aspect Oriented Programing面向方面（切面）编程，在共通时机执行的共通的处理。<br><br><br>优点：共通处理封装重用，将共通处理和业务组件解耦。<br><br><br>切面（Aspect）：加什么功能？<br><br>切入点（Pointcut）：给谁加？<br><br>通知（Advice）：什么时候加？</p>
+</code></pre><h2 id="SpringBoot-AOP"><a href="#SpringBoot-AOP" class="headerlink" title="SpringBoot AOP"></a>SpringBoot AOP</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Spring AOP概念：Aspect Oriented Programing面向方面（切面）编程，在共通时机执行的共通的处理。</p>
+<p>优点：共通处理封装重用，将共通处理和业务组件解耦。</p>
+<p>切面（Aspect）：加什么功能？</p>
+<p>切入点（Pointcut）：给谁加？</p>
+<p>通知（Advice）：什么时候加？</p>
 <h3 id="案例：记录每个服务调用日志（AOP编写相同，配置也相同）"><a href="#案例：记录每个服务调用日志（AOP编写相同，配置也相同）" class="headerlink" title="案例：记录每个服务调用日志（AOP编写相同，配置也相同）"></a>案例：记录每个服务调用日志（AOP编写相同，配置也相同）</h3><p>要求：记录每个服务调用时间，执行时长信息等</p>
 <p>切面：加服务调用日志</p>
 <p>切入点：within（com.520xiang.controller..*）</p>
@@ -359,7 +361,6 @@ public class MyBootApplication {
         // TODO Auto-generated method stub
 
     }
-
 }
 </code></pre><h5 id="2-使用-WebFilter配置"><a href="#2-使用-WebFilter配置" class="headerlink" title="2. 使用@WebFilter配置"></a>2. 使用@WebFilter配置</h5><pre><code>//@WebFilter(filterName=&quot;myfilter1&quot;,urlPatterns={&quot;/some/hello&quot;})
 @WebFilter(filterName=&quot;myfilter1&quot;,servletNames={&quot;someServlet&quot;})
@@ -452,6 +453,15 @@ AMyFilter2--&gt;BMyFilter1
 
   
 <nav id="article-nav">
+  
+    <a href="/SpringBoot中的组件、JPA、Radis.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringBoot中的组件、JPA、Radis
+        
+      </div>
+    </a>
   
   
     <a href="/SpringBoot的网页开发.html" id="article-nav-older" class="article-nav-link-wrap">
@@ -639,7 +649,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">restful</a>
+                <a href="javascript:void(0)" class="js-tag color1">radis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JAP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,11 +677,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Boot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color3">restful</a>
               </li>
             
             <div class="clearfix"></div>
