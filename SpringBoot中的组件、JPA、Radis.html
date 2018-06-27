@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://i.imgur.com/KKzXoJn.png">
 <meta property="og:image" content="https://i.imgur.com/FqpNJmW.png">
 <meta property="og:image" content="http://i.imgur.com/3svXQOA.png">
-<meta property="og:updated_time" content="2018-06-27T11:56:28.451Z">
+<meta property="og:updated_time" content="2018-06-27T12:01:24.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot中的组件、JPA、Radis">
 <meta name="twitter:description" content="SpringBoot任务调度项目中有些功能，需要在Tomcat启动时或指定时间进行调用。在之前一般都会采用Quartz工具包完成，现在如果使用Spring或SpringBoot可以利用Spring Schedule模块完成。 启动Tomcat时调用任务SpringBoot提供了两种方法，编写任务组件，实现ApplicationRunner或CommandLineRunner接口。  Applica">
@@ -218,7 +218,7 @@ public class MyTask1 implements ApplicationRunner{
     }
 
 }
-</code></pre></li>
+</code></pre><a id="more"></a></li>
 <li><p>CommandLineRunner</p>
 <pre><code>@Component
 @Order(1)//表示第一个执行
@@ -280,19 +280,14 @@ public class MyTask3 {
 <p>JPA是Java Persistence API的简称，中文名Java持久层API，是JDK 5.0注解或XML描述对象－关系表的映射关系，并将运行期的实体对象持久化到数据库中。</p>
 <p>Sun引入新的JPA ORM规范出于两个原因：其一，简化现有Java EE和Java SE应用开发工作；其二，Sun希望整合ORM技术，实现天下归一。</p>
 <h3 id="JPA案例"><a href="#JPA案例" class="headerlink" title="JPA案例"></a>JPA案例</h3><p>需求：基于JPA技术实现对EMP表增删改查操作。</p>
-<ol>
-<li><p>开启dataSource连接池pom.xml和application.properties定义</p>
-<p> boot-jdbc、驱动定义</p>
-<p> spring.datasource.xxx参数定义</p>
-</li>
-<li><p>在pom.xml添加boot-data-jpa定义</p>
-<pre><code>&lt;dependency&gt;
+<h5 id="1-开启dataSource连接池pom-xml和application-properties定义"><a href="#1-开启dataSource连接池pom-xml和application-properties定义" class="headerlink" title="1. 开启dataSource连接池pom.xml和application.properties定义"></a>1. 开启dataSource连接池pom.xml和application.properties定义</h5><pre><code>boot-jdbc、驱动定义
+
+spring.datasource.xxx参数定义
+</code></pre><h5 id="2-在pom-xml添加boot-data-jpa定义"><a href="#2-在pom-xml添加boot-data-jpa定义" class="headerlink" title="2. 在pom.xml添加boot-data-jpa定义"></a>2. 在pom.xml添加boot-data-jpa定义</h5><pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
 &lt;/dependency&gt;
-</code></pre></li>
-<li><p>编写实体类</p>
-<pre><code>@Entity//实体类
+</code></pre><h5 id="3-编写实体类"><a href="#3-编写实体类" class="headerlink" title="3. 编写实体类"></a>3. 编写实体类</h5><pre><code>@Entity//实体类
 @Table(name=&quot;EMP&quot;)//与EMP表对应
 public class Emp implements Serializable{
 
@@ -335,14 +330,10 @@ public class Emp implements Serializable{
     }
 
 }
-</code></pre></li>
-<li><p>定义Dao接口</p>
-<pre><code>public interface EmpDao extends JpaRepository&lt;Emp, Integer&gt;{
+</code></pre><h5 id="4-定义Dao接口"><a href="#4-定义Dao接口" class="headerlink" title="4. 定义Dao接口"></a>4. 定义Dao接口</h5><pre><code>public interface EmpDao extends JpaRepository&lt;Emp, Integer&gt;{
 
 }
-</code></pre></li>
-<li><p>测试Dao，其他地方用就直接注入使用即可</p>
-<pre><code>@Test
+</code></pre><h5 id="5-测试Dao，其他地方用就直接注入使用即可"><a href="#5-测试Dao，其他地方用就直接注入使用即可" class="headerlink" title="5. 测试Dao，其他地方用就直接注入使用即可"></a>5. 测试Dao，其他地方用就直接注入使用即可</h5><pre><code>@Test
 public void test1(){
     ApplicationContext ac = SpringApplication.run(MyBootApplication.class);
     EmpDao empDao = ac.getBean(&quot;empDao&quot;,EmpDao.class);
@@ -351,9 +342,7 @@ public void test1(){
         System.out.println(e.getEmpno()+&quot; &quot;+e.getEname()+&quot; &quot;+e.getSal());
     }
 }
-</code></pre></li>
-<li><p>扩展Dao接口操作</p>
-<pre><code>方法名构造方法
+</code></pre><h5 id="6-扩展Dao接口操作"><a href="#6-扩展Dao接口操作" class="headerlink" title="6. 扩展Dao接口操作"></a>6. 扩展Dao接口操作</h5><pre><code>方法名构造方法
 find+全局修饰+By+实体的属性名称+限定词+连接词+ ...(其它实体属性)+OrderBy+排序属性+排序方向
 例如：findDistinctByFirstNameIgnoreCaseAndLastNameOrderByAgeDesc(String firstName,String lastName){......}
 其中：Distinct是全局修饰（非必须），FirstName和LastName是实体的属性名，
@@ -365,9 +354,7 @@ And是连接词，IgnoreCase是限定词，Age是排序属性，Desc是排序方
     IgnoreCase，Between，Equals，LessThan，GreaterThan，After，Before...
 排序方向：Asc，Desc
 连接词：And，Or
-</code></pre></li>
-</ol>
-<p><img src="https://i.imgur.com/FqpNJmW.png" alt=""></p>
+</code></pre><p><img src="https://i.imgur.com/FqpNJmW.png" alt=""></p>
 <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><p>Redis是NoSQL数据库之一。</p>
 <h2 id="NoSQL概念"><a href="#NoSQL概念" class="headerlink" title="NoSQL概念"></a>NoSQL概念</h2><p>Not Only SQL简称，被称为非关系型数据库。</p>
 <p>什么是关系型数据库？</p>
@@ -703,6 +690,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
@@ -720,18 +719,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">

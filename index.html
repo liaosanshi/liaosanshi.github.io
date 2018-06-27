@@ -214,219 +214,10 @@ public class MyTask1 implements ApplicationRunner{
     }
 
 }
-</code></pre></li>
-<li><p>CommandLineRunner</p>
-<pre><code>@Component
-@Order(1)//表示第一个执行
-public class MyTask2 implements CommandLineRunner{
-
-    @Override
-    public void run(String... args) throws Exception {
-        System.out.println(&quot;启动时自动调用任务2功能&quot;+new Date());
-    }
-
-}
-</code></pre></li>
-</ol>
-<p>提示：多个任务可以通过@Order指定调用顺序，1,2,3…</p>
-<h3 id="定时或周期调用任务"><a href="#定时或周期调用任务" class="headerlink" title="定时或周期调用任务"></a>定时或周期调用任务</h3><p>Spring引入Schedule任务调用模块，可以方便的定时或周期调用任务功能。涉及@Scheduled、@EnableScheduling</p>
-<pre><code>@Component
-@EnableScheduling//启用计划任务调度
-public class MyTask3 {
-
-//  @Scheduled(fixedRate=5000)//指定本次任务开始到下一次任务开始间隔（实际延迟不算方法执行时间）
-    public void run1(){
-        System.out.println(&quot;fixedRate周期调用任务3功能run1&quot;+new Date());
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-//  @Scheduled(fixedDelay=5000)//指定本次任务结束后到下一次任务开始间隔（实际延迟包含方法执行时间）
-    public void run2(){
-        System.out.println(&quot;fixedDelay周期调用任务3功能run2&quot;+new Date());
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    @Scheduled(cron=&quot;0/5 * * * * ?&quot;)
-    public void run3(){
-        System.out.println(&quot;cron周期调用任务3功能run3&quot;+new Date());
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-}
-</code></pre><p>Cron表达式使用规则如下:</p>
-<p><img src="https://i.imgur.com/KKzXoJn.png" alt=""></p>
-<h2 id="SpringBoot-Data"><a href="#SpringBoot-Data" class="headerlink" title="SpringBoot Data"></a>SpringBoot Data</h2><p>SpringBoot对SpringData子项目做了封装。</p>
-<p>SpringData项目主要用于简化数据访问。可以访问传统关系型数据库Oracle、MySQL、DB2；还可以访问非关系型数据库Redis、MongoDB；还可以集成ORM、JPA、云存储等等。</p>
-<h3 id="SpringBoot-Data-JPA使用"><a href="#SpringBoot-Data-JPA使用" class="headerlink" title="SpringBoot Data JPA使用"></a>SpringBoot Data JPA使用</h3><p>可用于访问Oracle、MySQL、DB等数据库，不适合非关系型数据库。功能等价于JDBC、MyBatis等技术。</p>
-<p>JPA是Java Persistence API的简称，中文名Java持久层API，是JDK 5.0注解或XML描述对象－关系表的映射关系，并将运行期的实体对象持久化到数据库中。</p>
-<p>Sun引入新的JPA ORM规范出于两个原因：其一，简化现有Java EE和Java SE应用开发工作；其二，Sun希望整合ORM技术，实现天下归一。</p>
-<h3 id="JPA案例"><a href="#JPA案例" class="headerlink" title="JPA案例"></a>JPA案例</h3><p>需求：基于JPA技术实现对EMP表增删改查操作。</p>
-<ol>
-<li><p>开启dataSource连接池pom.xml和application.properties定义</p>
-<p> boot-jdbc、驱动定义</p>
-<p> spring.datasource.xxx参数定义</p>
-</li>
-<li><p>在pom.xml添加boot-data-jpa定义</p>
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>编写实体类</p>
-<pre><code>@Entity//实体类
-@Table(name=&quot;EMP&quot;)//与EMP表对应
-public class Emp implements Serializable{
-
-    @Id//主键
-    @Column(name=&quot;EMPNO&quot;)
-    private Integer empno;
-
-    @Column(name=&quot;ENAME&quot;)
-    private String ename;
-
-    @Column(name=&quot;SAL&quot;)
-    private Double sal;
-
-    @Column(name=&quot;DEPTNO&quot;)
-    private Integer deptno;
-    //其他省略
-    public Integer getEmpno() {
-        return empno;
-    }
-    public void setEmpno(Integer empno) {
-        this.empno = empno;
-    }
-    public String getEname() {
-        return ename;
-    }
-    public void setEname(String ename) {
-        this.ename = ename;
-    }
-    public Double getSal() {
-        return sal;
-    }
-    public void setSal(Double sal) {
-        this.sal = sal;
-    }
-    public Integer getDeptno() {
-        return deptno;
-    }
-    public void setDeptno(Integer deptno) {
-        this.deptno = deptno;
-    }
-
-}
-</code></pre></li>
-<li><p>定义Dao接口</p>
-<pre><code>public interface EmpDao extends JpaRepository&lt;Emp, Integer&gt;{
-
-}
-</code></pre></li>
-<li><p>测试Dao，其他地方用就直接注入使用即可</p>
-<pre><code>@Test
-public void test1(){
-    ApplicationContext ac = SpringApplication.run(MyBootApplication.class);
-    EmpDao empDao = ac.getBean(&quot;empDao&quot;,EmpDao.class);
-    List&lt;Emp&gt; list = empDao.findAll();
-    for(Emp e:list){
-        System.out.println(e.getEmpno()+&quot; &quot;+e.getEname()+&quot; &quot;+e.getSal());
-    }
-}
-</code></pre></li>
-<li><p>扩展Dao接口操作</p>
-<pre><code>方法名构造方法
-find+全局修饰+By+实体的属性名称+限定词+连接词+ ...(其它实体属性)+OrderBy+排序属性+排序方向
-例如：findDistinctByFirstNameIgnoreCaseAndLastNameOrderByAgeDesc(String firstName,String lastName){......}
-其中：Distinct是全局修饰（非必须），FirstName和LastName是实体的属性名，
-And是连接词，IgnoreCase是限定词，Age是排序属性，Desc是排序方向，限定词和连接词统称为“关键词”。
-
-目前支持的关键词,常用词如下：
-全局修饰：Distinct，Top，First
-关键词：IsNull，IsNotNull，Like，NotLike，Containing，In，NotIn，
-    IgnoreCase，Between，Equals，LessThan，GreaterThan，After，Before...
-排序方向：Asc，Desc
-连接词：And，Or
-</code></pre></li>
-</ol>
-<p><img src="https://i.imgur.com/FqpNJmW.png" alt=""></p>
-<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><p>Redis是NoSQL数据库之一。</p>
-<h2 id="NoSQL概念"><a href="#NoSQL概念" class="headerlink" title="NoSQL概念"></a>NoSQL概念</h2><p>Not Only SQL简称，被称为非关系型数据库。</p>
-<p>什么是关系型数据库？</p>
-<p>关系型数据库特征，基于表存储，表是多行多列。</p>
-<p>非关系型数据库种类如下：<img src="http://i.imgur.com/3svXQOA.png" alt=""></p>
-<ol>
-<li><p>键值对类型</p>
-<p> redis，适合做缓存，查询速度快。</p>
-</li>
-<li><p>列存储类型</p>
-<p> HBase，适合HDFS分布式文件系统，适合扩展。</p>
-</li>
-<li><p>文档存储类型</p>
-<p> MongoDB，适合动态表单，存储结构灵活。</p>
-</li>
-<li><p>图形存储类型</p>
-<p> Neo4J，适合最短寻址，图结构算法等。</p>
-</li>
-</ol>
-<h3 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h3><ol>
-<li>Redis是完全基于内存存储的数据库，采用C开发</li>
-<li>Redis存储结构为Key-Value，Value值可以为字符 串、哈希、列表、集合、有序集合类型</li>
-<li>Redis可以跟Java、PHP、Python等多种语言访问</li>
-<li>Redis访问异常快速，写操作每秒11万次，读操作81000次</li>
-<li>Redis支持持久化策略，例如RDB、AOF等</li>
-<li>Redis常用于做系统缓存，还提供了消息传递功能</li>
-</ol>
-<h3 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h3><h4 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h4><ul>
-<li>set key value //存值</li>
-<li>get key //取值</li>
-<li>strlen key //获取值字符长度</li>
-<li>incr key //将value值加1</li>
-<li>incrby key n //将value值加n</li>
-<li>decr key //将value值减1</li>
-<li>decrby key n //将value值减n</li>
-<li>append key value //字符串拼接value</li>
-</ul>
-<h4 id="key操作"><a href="#key操作" class="headerlink" title="key操作"></a>key操作</h4><ul>
-<li>keys * //查看所有key</li>
-<li>del key //删除key</li>
-<li>type key //查看value类型</li>
-<li>expire key n //设置n秒有效期</li>
-<li>rename key newkey //修改key名</li>
-</ul>
-<h4 id="哈希操作"><a href="#哈希操作" class="headerlink" title="哈希操作"></a>哈希操作</h4><ul>
-<li>hset key field value //存一组字段值</li>
-<li>hmset key field value … //存多组字段值</li>
-<li>hget key field //获取一个字段值</li>
-<li>hmget key field1 field2 //获取多个字段值</li>
-<li>hlen key //获取字段个数</li>
-<li>hkeys key //查看所有字段名</li>
-<li>hdel key field //删除某个字段</li>
-</ul>
-<h4 id="列表操作"><a href="#列表操作" class="headerlink" title="列表操作"></a>列表操作</h4><p>字符串列表结构。</p>
-<ul>
-<li>lpush key value //从头部添加元素</li>
-<li>rpush key value //从尾部添加元素</li>
-<li>lpop key //从头部删除元素</li>
-<li>rpop key //从尾部删除元素</li>
-<li>llen key //获取元素数量</li>
-<li>lrange key 0 -1 //获取所有元素</li>
-</ul>
-
+</code></pre>
+        
+          <a class="article-more-a" href="/SpringBoot中的组件、JPA、Radis.html#more">more >></a>
+        
       
 
       
@@ -500,7 +291,7 @@ And是连接词，IgnoreCase是限定词，Age是排序属性，Desc是排序方
 
         
         <a href="/SpringBoot的WEB拦截器及AOP.html" class="archive-article-date">
-  	<time datetime="2018-06-25T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
+  	<time datetime="2018-06-26T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
 </a>
         
       </header>
@@ -1204,6 +995,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
@@ -1221,18 +1024,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
