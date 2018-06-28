@@ -179,6 +179,119 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-NoSQL——Radis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/NoSQL——Radis.html">NoSQL——Radis</a>
+    </h1>
+  
+
+        
+        <a href="/NoSQL——Radis.html" class="archive-article-date">
+  	<time datetime="2018-06-28T11:02:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Redis集合"><a href="#Redis集合" class="headerlink" title="Redis集合"></a>Redis集合</h2><ol>
+<li><p>集合操作</p>
+<ul>
+<li>sadd key value value    //创建或添加集合元素</li>
+<li>srem key value        //移除元素</li>
+<li>smembers key    //查看集合元素</li>
+<li>scard key //返回元素个数</li>
+<li>srandmember key count //随机返回count个元素</li>
+<li>sdiff key1 key2    //key1-key2差集运算</li>
+<li>sinter key1 key2    //交集运算</li>
+<li>sunion key1 key2    //并集运算</li>
+</ul>
+</li>
+<li><p>有序集合操作</p>
+<ul>
+<li>zadd key score value score value //创建或者添加元素</li>
+<li>zcard key //集合元素个数</li>
+<li>zrange key start stop //由小到大排序</li>
+<li>zrevrange key start stop //由大到小排序</li>
+<li>zcount key min max //统计score区间元素个数</li>
+<li>zrem key value //移除元素</li>
+</ul>
+</li>
+</ol>
+<h2 id="Java访问Redis"><a href="#Java访问Redis" class="headerlink" title="Java访问Redis"></a>Java访问Redis</h2><h3 id="基于jedis-jar访问"><a href="#基于jedis-jar访问" class="headerlink" title="基于jedis.jar访问"></a>基于jedis.jar访问</h3><h5 id="1-引入jedis-jar"><a href="#1-引入jedis-jar" class="headerlink" title="1. 引入jedis.jar"></a>1. 引入jedis.jar</h5><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+    &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+    &lt;version&gt;2.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h5 id="2-使用Jedis对象操作"><a href="#2-使用Jedis对象操作" class="headerlink" title="2. 使用Jedis对象操作"></a>2. 使用Jedis对象操作</h5>
+        
+          <a class="article-more-a" href="/NoSQL——Radis.html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">radis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JAP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/NoSQL——Radis.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SpringBoot中的组件、JPA、Radis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -995,18 +1108,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
@@ -1016,6 +1117,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JAP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">

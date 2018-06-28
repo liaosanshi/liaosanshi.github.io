@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.websanshi.com">
-  <title>SpringBoot的WEB拦截器及AOP | Have Fun</title>
+  <title>NoSQL——Radis | Have Fun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SpringBootMVC拦截器作用拦截器作用：在SpringMVC请求处理期间，特定位置做拦截，插入一些额外处理逻辑。拦截点有一下3个位置：  在controller处理前（preHandle）在controller处理后（postHandle）在处理完毕，响应输出前（afterCompletion）  规则（编写相同、配置不同）拦截器组件编写需要实现HandlerInterceptor接口，接">
-<meta name="keywords" content="SpringBoot,restful">
+  <meta name="description" content="Redis集合 集合操作  sadd key value value    //创建或添加集合元素 srem key value        //移除元素 smembers key    //查看集合元素 scard key //返回元素个数 srandmember key count //随机返回count个元素 sdiff key1 key2    //key1-key2差集运算 sinte">
+<meta name="keywords" content="SpringBoot,radis,JAP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot的WEB拦截器及AOP">
-<meta property="og:url" content="http://www.websanshi.com/SpringBoot的WEB拦截器及AOP.html">
+<meta property="og:title" content="NoSQL——Radis">
+<meta property="og:url" content="http://www.websanshi.com/NoSQL——Radis.html">
 <meta property="og:site_name" content="Have Fun">
-<meta property="og:description" content="SpringBootMVC拦截器作用拦截器作用：在SpringMVC请求处理期间，特定位置做拦截，插入一些额外处理逻辑。拦截点有一下3个位置：  在controller处理前（preHandle）在controller处理后（postHandle）在处理完毕，响应输出前（afterCompletion）  规则（编写相同、配置不同）拦截器组件编写需要实现HandlerInterceptor接口，接">
+<meta property="og:description" content="Redis集合 集合操作  sadd key value value    //创建或添加集合元素 srem key value        //移除元素 smembers key    //查看集合元素 scard key //返回元素个数 srandmember key count //随机返回count个元素 sdiff key1 key2    //key1-key2差集运算 sinte">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-27T11:59:09.159Z">
+<meta property="og:updated_time" content="2018-06-28T11:04:23.214Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot的WEB拦截器及AOP">
-<meta name="twitter:description" content="SpringBootMVC拦截器作用拦截器作用：在SpringMVC请求处理期间，特定位置做拦截，插入一些额外处理逻辑。拦截点有一下3个位置：  在controller处理前（preHandle）在controller处理后（postHandle）在处理完毕，响应输出前（afterCompletion）  规则（编写相同、配置不同）拦截器组件编写需要实现HandlerInterceptor接口，接">
+<meta name="twitter:title" content="NoSQL——Radis">
+<meta name="twitter:description" content="Redis集合 集合操作  sadd key value value    //创建或添加集合元素 srem key value        //移除元素 smembers key    //查看集合元素 scard key //返回元素个数 srandmember key count //随机返回count个元素 sdiff key1 key2    //key1-key2差集运算 sinte">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -179,194 +179,267 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SpringBoot的WEB拦截器及AOP" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-NoSQL——Radis" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      SpringBoot的WEB拦截器及AOP
+      NoSQL——Radis
     </h1>
   
 
         
-        <a href="/SpringBoot的WEB拦截器及AOP.html" class="archive-article-date">
-  	<time datetime="2018-06-26T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
+        <a href="/NoSQL——Radis.html" class="archive-article-date">
+  	<time datetime="2018-06-28T11:02:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="SpringBootMVC拦截器"><a href="#SpringBootMVC拦截器" class="headerlink" title="SpringBootMVC拦截器"></a>SpringBootMVC拦截器</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>拦截器作用：在SpringMVC请求处理期间，特定位置做拦截，插入一些额外处理逻辑。拦截点有一下3个位置：<br></p>
-<blockquote>
-<p>在controller处理前（preHandle）<br><br>在controller处理后（postHandle）<br><br>在处理完毕，响应输出前（afterCompletion）<br></p>
-</blockquote>
-<h3 id="规则（编写相同、配置不同）"><a href="#规则（编写相同、配置不同）" class="headerlink" title="规则（编写相同、配置不同）"></a>规则（编写相同、配置不同）</h3><p>拦截器组件编写需要实现HandlerInterceptor接口，接口有preHandle、postHandle、afterCompletion方法分别对应前面3个拦截点。</p>
-<p>在Boot中，拦截器配置需要采用Java配置模式。</p>
-<h3 id="案例：登录拦截器"><a href="#案例：登录拦截器" class="headerlink" title="案例：登录拦截器"></a>案例：登录拦截器</h3><h5 id="1-编写SomeInterceptor拦截器组件"><a href="#1-编写SomeInterceptor拦截器组件" class="headerlink" title="1. 编写SomeInterceptor拦截器组件"></a>1. 编写SomeInterceptor拦截器组件</h5><a id="more"></a>
-<pre><code>@Component//扫描
-public class SomeInterceptor implements HandlerInterceptor{
-
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
-        System.out.println(&quot;-----进入SomeInterceptor拦截器的PreHandle处理------&quot;);
-        HttpSession session = request.getSession();
-        if(session.getAttribute(&quot;user&quot;)==null){
-            //未登录，拦截器后续处理
-            response.setContentType(&quot;text/plain;charset=UTF-8&quot;);
-            PrintWriter out = response.getWriter();
-            out.print(&quot;{\&quot;msg\&quot;:\&quot;未登录用户,身份不合法\&quot;}&quot;);
-            return false;
-        }else{
-            return true;//登录了，放过去
-        }
-    }
-}
-</code></pre><h5 id="2-利用Java配置SomeInterceptor"><a href="#2-利用Java配置SomeInterceptor" class="headerlink" title="2. 利用Java配置SomeInterceptor"></a>2. 利用Java配置SomeInterceptor</h5><pre><code>@Configuration//配置类,也具有扫描功能
-public class InterceptorConfiguration implements WebMvcConfigurer{
-    @Autowired
-    private SomeInterceptor some;
-
-    public void addInterceptors(InterceptorRegistry registry) {
-        String[] patterns = {
-            &quot;/dept/list&quot;,
-            &quot;/dept/get&quot;};
-        registry.addInterceptor(some).addPathPatterns(patterns);
-    }
-}
-</code></pre><h2 id="SpringMVC异常处理"><a href="#SpringMVC异常处理" class="headerlink" title="SpringMVC异常处理"></a>SpringMVC异常处理</h2><h3 id="BasicErrorController"><a href="#BasicErrorController" class="headerlink" title="BasicErrorController"></a>BasicErrorController</h3><p>处理所有Controller异常，全局性的。</p>
-<h5 id="1-原理"><a href="#1-原理" class="headerlink" title="1. 原理"></a>1. 原理</h5><p>服务器启动后，自动加载框架内置的BasicErrorController组件，内部定义了两个/error请求，一个是Html响应，另一个是json响应。如果框架中抛出异常，会采用转发方式自动调用对应的/error请求处理。显示一个”whitelabel Error Page”。</p>
-<h3 id="ExceptionHandler"><a href="#ExceptionHandler" class="headerlink" title="@ExceptionHandler"></a>@ExceptionHandler</h3><p>处理某个Controller异常。</p>
-<pre><code>@RestController
-public class MyController {
-
-    @RequestMapping(&quot;/demo&quot;)
-    public Object execute(){
-        String s = null;
-        return s.length();
-    }
-    @ExceptionHandler
-    public Object errorHandle(Exception e){
-        Map map = new HashMap&lt;&gt;();
-        map.put(&quot;msg&quot;, &quot;MyController发生了异常&quot;);
-        map.put(&quot;type&quot;, e.getClass().getName());
-        return map;
-    }
-}
-</code></pre><p>提示：Controller抛出异常，先找@ExceptionHandler处理，找不到再调用全局的ErrorController处理。</p>
-<h3 id="图片路径"><a href="#图片路径" class="headerlink" title="图片路径"></a>图片路径</h3><p>在Boot应用的src/main/resources目录下有几个约定的存放目录。</p>
+        <h2 id="Redis集合"><a href="#Redis集合" class="headerlink" title="Redis集合"></a>Redis集合</h2><ol>
+<li><p>集合操作</p>
 <ul>
-<li>META-INF/resources （优先级最高）</li>
-<li>resources</li>
-<li>static</li>
-<li>public (优先级最低)<br>自定义静态资源目录，方法如下：</li>
+<li>sadd key value value    //创建或添加集合元素</li>
+<li>srem key value        //移除元素</li>
+<li>smembers key    //查看集合元素</li>
+<li>scard key //返回元素个数</li>
+<li>srandmember key count //随机返回count个元素</li>
+<li>sdiff key1 key2    //key1-key2差集运算</li>
+<li>sinter key1 key2    //交集运算</li>
+<li>sunion key1 key2    //并集运算</li>
 </ul>
-<pre><code>@Configuration
-public class MyResourceConfiguration implements WebMvcConfigurer{
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler(&quot;/my/**&quot;).addResourceLocations(&quot;classpath:/my/&quot;);
-    }
-}
-</code></pre><h2 id="SpringBoot-AOP"><a href="#SpringBoot-AOP" class="headerlink" title="SpringBoot AOP"></a>SpringBoot AOP</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Spring AOP概念：Aspect Oriented Programing面向方面（切面）编程，在共通时机执行的共通的处理。</p>
-<p>优点：共通处理封装重用，将共通处理和业务组件解耦。</p>
-<p>切面（Aspect）：加什么功能？</p>
-<p>切入点（Pointcut）：给谁加？</p>
-<p>通知（Advice）：什么时候加？</p>
-<h3 id="案例：记录每个服务调用日志（AOP编写相同，配置也相同）"><a href="#案例：记录每个服务调用日志（AOP编写相同，配置也相同）" class="headerlink" title="案例：记录每个服务调用日志（AOP编写相同，配置也相同）"></a>案例：记录每个服务调用日志（AOP编写相同，配置也相同）</h3><p>要求：记录每个服务调用时间，执行时长信息等</p>
-<p>切面：加服务调用日志</p>
-<p>切入点：within（com.520xiang.controller..*）</p>
-<p>通知：环绕通知</p>
-<h5 id="1-在pom-xml定义boot-aop"><a href="#1-在pom-xml定义boot-aop" class="headerlink" title="1. 在pom.xml定义boot-aop"></a>1. 在pom.xml定义boot-aop</h5><pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-aop&lt;/artifactId&gt;
+</li>
+<li><p>有序集合操作</p>
+<ul>
+<li>zadd key score value score value //创建或者添加元素</li>
+<li>zcard key //集合元素个数</li>
+<li>zrange key start stop //由小到大排序</li>
+<li>zrevrange key start stop //由大到小排序</li>
+<li>zcount key min max //统计score区间元素个数</li>
+<li>zrem key value //移除元素</li>
+</ul>
+</li>
+</ol>
+<h2 id="Java访问Redis"><a href="#Java访问Redis" class="headerlink" title="Java访问Redis"></a>Java访问Redis</h2><h3 id="基于jedis-jar访问"><a href="#基于jedis-jar访问" class="headerlink" title="基于jedis.jar访问"></a>基于jedis.jar访问</h3><h5 id="1-引入jedis-jar"><a href="#1-引入jedis-jar" class="headerlink" title="1. 引入jedis.jar"></a>1. 引入jedis.jar</h5><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+    &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+    &lt;version&gt;2.9.0&lt;/version&gt;
 &lt;/dependency&gt;
-</code></pre><h5 id="2-编写切面组件使用-Component、-Aspect、-Around等注解"><a href="#2-编写切面组件使用-Component、-Aspect、-Around等注解" class="headerlink" title="2. 编写切面组件使用@Component、@Aspect、@Around等注解"></a>2. 编写切面组件使用@Component、@Aspect、@Around等注解</h5><pre><code>@Component
-@Aspect//切面
-public class WatchBean {
+</code></pre><h5 id="2-使用Jedis对象操作"><a href="#2-使用Jedis对象操作" class="headerlink" title="2. 使用Jedis对象操作"></a>2. 使用Jedis对象操作</h5><a id="more"></a>
+<p>key操作</p>
+<pre><code>@Test
+public void test2(){
+    Jedis jedis = new Jedis(&quot;localhost&quot;,6379);
+    //keys *
+    Set&lt;String&gt; keys = jedis.keys(&quot;*&quot;);
+    for(String key : keys){
+        System.out.println(key);
+    }
+    jedis.close();
+}
+</code></pre><p>字符串操作</p>
+<pre><code>@Test
+public void test3(){
+    Jedis jedis = new Jedis(&quot;localhost&quot;,6379);
+    //set city beijing
+    jedis.set(&quot;city&quot;, &quot;北京&quot;);
+    String value = jedis.get(&quot;city&quot;);
+    System.out.println(&quot;获取:&quot;+value);
+    jedis.close();
+}
+</code></pre><p>哈希操作</p>
+<pre><code>@Test
+public void test4(){
+    Jedis jedis = new Jedis(&quot;localhost&quot;,6379);
+    //hkeys dept20
+    Set&lt;String&gt; fields = jedis.hkeys(&quot;dept10&quot;);
+    for(String field:fields){
+        String value = jedis.hget(&quot;dept10&quot;, field);
+        System.out.println(field+&quot;字段:&quot;+value);
+    }
+    jedis.close();
+}
+</code></pre><p>Java对象存取(基于对象序列化+字符串操作)</p>
+<pre><code>public class RedisUtil {
 
-    //环绕通知+切入点
-    @Around(&quot;within(cn.xdl.controller..*)&quot;)
-    public Object around(ProceedingJoinPoint pjp) throws Throwable{
-        //前置逻辑
-        StopWatch watch = new StopWatch();
-        watch.start();
-        Object retVal = pjp.proceed();//调用Controller组件方法
-        //后置逻辑
-        watch.stop();
-        //获取请求地址
-        String methodName = pjp.getSignature().getName();//获取方法名
-        Object target = pjp.getTarget();//获取Controller对象
-        Class[] argsTypes = new Class[pjp.getArgs().length];
-        for(int i=0;i&lt;argsTypes.length;i++){
-            argsTypes[i] = pjp.getArgs()[i].getClass();
+    /**
+     * 将obj对象保存到redis
+     * @param key
+     * @param obj
+     */
+    public static void save(String key,Object obj){
+        Jedis jedis = new Jedis(&quot;localhost&quot;,6379);
+        //保存
+        byte[] value = objectToBytes(obj);//序列化
+        byte[] keys = key.getBytes();
+        jedis.set(keys, value);
+        jedis.close();
+    }
+
+    /**
+     * 根据key从redis获取对象信息
+     * @param key
+     * @return
+     */
+    public static Object load(String key){
+        Jedis jedis = new Jedis(&quot;localhost&quot;,6379);
+        byte[] keys = key.getBytes();
+        byte[] value = jedis.get(keys);//获取序列化内容
+        //反序列化，将字节数组转成Object对象
+        Object obj = bytesToObject(value);
+        jedis.close();
+        return obj;
+    }
+
+    private static Object bytesToObject(byte[] value){
+        ByteArrayInputStream bytesIn = null;
+        ObjectInputStream in = null;
+        try{
+            bytesIn = new ByteArrayInputStream(value);
+            in = new ObjectInputStream(bytesIn);
+            Object obj = in.readObject();
+            return obj;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }finally{
+            try {
+                bytesIn.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        //获取目标组件的方法对象
-        Method targetMethod = target.getClass().getMethod(methodName, argsTypes);
-        System.out.println(&quot;执行目标方法：&quot;+targetMethod);
-        RequestMapping mapping = targetMethod.getAnnotation(RequestMapping.class);
-        String[] uri = mapping.value();
-        System.out.println(&quot;执行的URI请求:&quot;+uri[0]);
-        //统计执行时长
-        long totalTime = watch.getTotalTimeMillis();
-        System.out.println(&quot;执行时间为：&quot;+totalTime+&quot;毫秒&quot;);
-        return retVal;
+    }
+
+    private static byte[] objectToBytes(Object obj){
+        ByteArrayOutputStream bytesOut = null;
+        ObjectOutputStream out = null;
+        try{
+            bytesOut = new ByteArrayOutputStream(); 
+            out = new ObjectOutputStream(bytesOut);
+            out.writeObject(obj);//序列化，将obj写入ByteArray数组流中
+            byte[] bytes = bytesOut.toByteArray();
+            return bytes;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }finally{
+            try {
+                bytesOut.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
-</code></pre><h2 id="SpringBoot-JavaWeb"><a href="#SpringBoot-JavaWeb" class="headerlink" title="SpringBoot JavaWeb"></a>SpringBoot JavaWeb</h2><p>SpringBoot中，可以使用Servlet、Filter、Listener等组件。它们采用@WebServlet、@WebFilter、@WebListener定义，需要在主启动类前加@ServletComponentScan</p>
-<h3 id="Servlet应用"><a href="#Servlet应用" class="headerlink" title="Servlet应用"></a>Servlet应用</h3><h5 id="1-编写Servlet组件，继承HttpServlet"><a href="#1-编写Servlet组件，继承HttpServlet" class="headerlink" title="1. 编写Servlet组件，继承HttpServlet"></a>1. 编写Servlet组件，继承HttpServlet</h5><pre><code>public class SomeServlet extends HttpServlet{
+</code></pre><h3 id="基于SpringData访问"><a href="#基于SpringData访问" class="headerlink" title="基于SpringData访问"></a>基于SpringData访问</h3><p>SpringData项目提供了一个RedisTemplate，可以方便的对Redis操作。</p>
+<h5 id="1-在pom-xml添加boot-data-redis引入"><a href="#1-在pom-xml添加boot-data-redis引入" class="headerlink" title="1. 在pom.xml添加boot-data-redis引入"></a>1. 在pom.xml添加boot-data-redis引入</h5><pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
 
-    public void service(
-        HttpServletRequest request,HttpServletResponse response) throws IOException{
-        PrintWriter out = response.getWriter();
-        out.println(&quot;Hello SomeServlet&quot;);
-        out.close();
-    }
+&lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+    &lt;java.version&gt;1.8&lt;/java.version&gt;
+&lt;/properties&gt;
 
-}
-</code></pre><h5 id="2-利用-WebServlet配置"><a href="#2-利用-WebServlet配置" class="headerlink" title="2. 利用@WebServlet配置"></a>2. 利用@WebServlet配置</h5><pre><code>@WebServlet(name=&quot;someServlet&quot;,urlPatterns={&quot;/some/hello&quot;,&quot;/some/hello.do&quot;})
-public class SomeServlet extends HttpServlet{
-    ... ...
-}
-</code></pre><h5 id="3-在主启动类前追加-ServletComponentScan"><a href="#3-在主启动类前追加-ServletComponentScan" class="headerlink" title="3. 在主启动类前追加@ServletComponentScan"></a>3. 在主启动类前追加@ServletComponentScan</h5><pre><code>@SpringBootApplication
-@MapperScan(basePackages={&quot;cn.xdl.dao&quot;})
-@ServletComponentScan//扫描@WebServlet、@WebFilter、@WebListener
+&lt;dependencies&gt;
+        &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;!-- boot+junit测试工具 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre><h5 id="2-在application-properties定义redis参数"><a href="#2-在application-properties定义redis参数" class="headerlink" title="2. 在application.properties定义redis参数"></a>2. 在application.properties定义redis参数</h5><pre><code>spring.redis.host=localhost
+spring.redis.port=6379
+</code></pre><h5 id="3-编写启动类"><a href="#3-编写启动类" class="headerlink" title="3. 编写启动类"></a>3. 编写启动类</h5><pre><code>@SpringBootApplication
 public class MyBootApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MyBootApplication.class, args);
-    }
 }
-</code></pre><h3 id="Filter应用"><a href="#Filter应用" class="headerlink" title="Filter应用"></a>Filter应用</h3><h5 id="1-编写Filter组件，实现Filter接口"><a href="#1-编写Filter组件，实现Filter接口" class="headerlink" title="1. 编写Filter组件，实现Filter接口"></a>1. 编写Filter组件，实现Filter接口</h5><pre><code>public class BMyFilter1 implements Filter{
+</code></pre><h5 id="4-注入RedisTemplate对象操作redis"><a href="#4-注入RedisTemplate对象操作redis" class="headerlink" title="4. 注入RedisTemplate对象操作redis"></a>4. 注入RedisTemplate对象操作redis</h5><pre><code>@RunWith(SpringRunner.class)
+@SpringBootTest(classes={MyBootApplication.class})
+public class TestRedisTemplate {
 
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        // TODO Auto-generated method stub
+    @Autowired
+    private RedisTemplate redisTemplate;
 
+    @Test
+    public void test1(){
+        Dept dept = new Dept();
+        dept.setDeptno(1);
+        dept.setDname(&quot;Boot&quot;);
+        dept.setLoc(&quot;北京&quot;);
+        redisTemplate.opsForValue().set(&quot;dept_1&quot;, dept);
     }
 
-    @Override
-    public void doFilter(ServletRequest request, 
-            ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
-        System.out.println(&quot;进入MyFilter1过滤器&quot;);
-        chain.doFilter(request, response);//调用后续Filter、Servlet、JSP组件
-        System.out.println(&quot;退出MyFilter1过滤器&quot;);
+    @Test
+    public void test2(){
+        Dept dept = (Dept)redisTemplate.opsForValue().get(&quot;dept_1&quot;);
+        System.out.println(dept.getDeptno()+&quot; &quot;+dept.getDname()+&quot; &quot;+dept.getLoc());
     }
 
-    @Override
-    public void destroy() {
-        // TODO Auto-generated method stub
-
-    }
 }
-</code></pre><h5 id="2-使用-WebFilter配置"><a href="#2-使用-WebFilter配置" class="headerlink" title="2. 使用@WebFilter配置"></a>2. 使用@WebFilter配置</h5><pre><code>//@WebFilter(filterName=&quot;myfilter1&quot;,urlPatterns={&quot;/some/hello&quot;})
-@WebFilter(filterName=&quot;myfilter1&quot;,servletNames={&quot;someServlet&quot;})
-</code></pre><h5 id="3-多个Filter顺序按组件名字典顺序执行-A-Z"><a href="#3-多个Filter顺序按组件名字典顺序执行-A-Z" class="headerlink" title="3. 多个Filter顺序按组件名字典顺序执行(A-Z)"></a>3. 多个Filter顺序按组件名字典顺序执行(A-Z)</h5><pre><code>MyFilter1--&gt;MyFilter2
+</code></pre><h2 id="使用Redis做缓存"><a href="#使用Redis做缓存" class="headerlink" title="使用Redis做缓存"></a>使用Redis做缓存</h2><p>使用思想：</p>
+<pre><code>缓存优点：基于缓存可以优化查询操作。
 
-AMyFilter2--&gt;BMyFilter1
+业务在查询时，先查询Redis缓存，如果有数据直接返回；如果没有数据再查询DB并将结果放入Redis缓存。
+</code></pre><p>示例代码：</p>
+<pre><code>public List&lt;Dept&gt; list(){
+    //访问redis中的数据
+        List&lt;Dept&gt; list = (List)redis.opsForValue().get(&quot;dept:list&quot;);
+    if(list==null){
+        //如果没有再调用deptDao.findAll
+        list = deptDao.findAll();
+        //将查询结果放入redis
+        redis.opsForValue().set(&quot;dept:list&quot;, list);
+    }
+    return list;
+}
+</code></pre><p>注意问题：</p>
+<pre><code>在进行增删改操作时，需要保持Redis缓存和DB数据同步。例如对DB删除记录也需要将Redis对应记录删除。
+</code></pre><p>##Redis持久化机制（备份机制）</p>
+<p>Redis有RDB和AOF两种持久化机制。</p>
+<h5 id="1-RDB机制"><a href="#1-RDB机制" class="headerlink" title="1. RDB机制"></a>1. RDB机制</h5><pre><code>快照模式，按特定时间或频率将内存数据生成rdb文件。默认参数如下：
+
+    save 900 1  //15分钟key改变1次
+    save 300 10 //5分钟key改变10次
+    save 60 10000 //1分钟key改变10000次
+
+快照模式特点：节省资源，恢复速度快，数据丢失风险大
+</code></pre><h5 id="2-AOF机制"><a href="#2-AOF机制" class="headerlink" title="2. AOF机制"></a>2. AOF机制</h5><pre><code>日志模式，将所执行的命令全部记录到日志文件中。
+默认是关闭，可以修改config文件开启。
+
+    #appendfsync always //一个命令记录一次
+    appendfsync everysec //一秒向日志文件记录一次
+    #appendfsync no
+
+日志模式特点：费资源，恢复速度慢，数据完整性好
+
+提示：RDB和AOF都启用，备份时都起作用，但是恢复时按AOF。
 </code></pre>
       
 
@@ -384,7 +457,11 @@ AMyFilter2--&gt;BMyFilter1
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">radis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JAP</a>
         		</li>
       		
 		</ul>
@@ -440,7 +517,7 @@ AMyFilter2--&gt;BMyFilter1
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://www.websanshi.com/SpringBoot的WEB拦截器及AOP.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.websanshi.com/NoSQL——Radis.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -454,18 +531,9 @@ AMyFilter2--&gt;BMyFilter1
   
 <nav id="article-nav">
   
-    <a href="/SpringBoot中的组件、JPA、Radis.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SpringBoot中的组件、JPA、Radis
-        
-      </div>
-    </a>
   
-  
-    <a href="/SpringBoot的网页开发.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringBoot的网页开发</div>
+    <a href="/SpringBoot中的组件、JPA、Radis.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot中的组件、JPA、Radis</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -493,7 +561,7 @@ AMyFilter2--&gt;BMyFilter1
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="SpringBoot的WEB拦截器及AOP" data-title="SpringBoot的WEB拦截器及AOP" data-url="http://www.websanshi.com/SpringBoot的WEB拦截器及AOP.html"></div>
+	<div class="ds-thread" data-thread-key="NoSQL——Radis" data-title="NoSQL——Radis" data-url="http://www.websanshi.com/NoSQL——Radis.html"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
