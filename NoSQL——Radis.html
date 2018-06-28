@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://www.websanshi.com">
   <title>NoSQL——Radis | Have Fun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Redis集合 集合操作  sadd key value value    //创建或添加集合元素 srem key value        //移除元素 smembers key    //查看集合元素 scard key //返回元素个数 srandmember key count //随机返回count个元素 sdiff key1 key2    //key1-key2差集运算 sinte">
+  <meta name="description" content="Redis集合1. 集合操作sadd key value value    //创建或添加集合元素 srem key value        //移除元素 smembers key    //查看集合元素 scard key //返回元素个数 srandmember key count //随机返回count个元素 sdiff key1 key2    //key1-key2差集运算 sinte">
 <meta name="keywords" content="SpringBoot,radis,JAP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NoSQL——Radis">
 <meta property="og:url" content="http://www.websanshi.com/NoSQL——Radis.html">
 <meta property="og:site_name" content="Have Fun">
-<meta property="og:description" content="Redis集合 集合操作  sadd key value value    //创建或添加集合元素 srem key value        //移除元素 smembers key    //查看集合元素 scard key //返回元素个数 srandmember key count //随机返回count个元素 sdiff key1 key2    //key1-key2差集运算 sinte">
+<meta property="og:description" content="Redis集合1. 集合操作sadd key value value    //创建或添加集合元素 srem key value        //移除元素 smembers key    //查看集合元素 scard key //返回元素个数 srandmember key count //随机返回count个元素 sdiff key1 key2    //key1-key2差集运算 sinte">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-28T11:04:23.214Z">
+<meta property="og:updated_time" content="2018-06-28T11:07:26.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NoSQL——Radis">
-<meta name="twitter:description" content="Redis集合 集合操作  sadd key value value    //创建或添加集合元素 srem key value        //移除元素 smembers key    //查看集合元素 scard key //返回元素个数 srandmember key count //随机返回count个元素 sdiff key1 key2    //key1-key2差集运算 sinte">
+<meta name="twitter:description" content="Redis集合1. 集合操作sadd key value value    //创建或添加集合元素 srem key value        //移除元素 smembers key    //查看集合元素 scard key //返回元素个数 srandmember key count //随机返回count个元素 sdiff key1 key2    //key1-key2差集运算 sinte">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -199,31 +199,21 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Redis集合"><a href="#Redis集合" class="headerlink" title="Redis集合"></a>Redis集合</h2><ol>
-<li><p>集合操作</p>
-<ul>
-<li>sadd key value value    //创建或添加集合元素</li>
-<li>srem key value        //移除元素</li>
-<li>smembers key    //查看集合元素</li>
-<li>scard key //返回元素个数</li>
-<li>srandmember key count //随机返回count个元素</li>
-<li>sdiff key1 key2    //key1-key2差集运算</li>
-<li>sinter key1 key2    //交集运算</li>
-<li>sunion key1 key2    //并集运算</li>
-</ul>
-</li>
-<li><p>有序集合操作</p>
-<ul>
-<li>zadd key score value score value //创建或者添加元素</li>
-<li>zcard key //集合元素个数</li>
-<li>zrange key start stop //由小到大排序</li>
-<li>zrevrange key start stop //由大到小排序</li>
-<li>zcount key min max //统计score区间元素个数</li>
-<li>zrem key value //移除元素</li>
-</ul>
-</li>
-</ol>
-<h2 id="Java访问Redis"><a href="#Java访问Redis" class="headerlink" title="Java访问Redis"></a>Java访问Redis</h2><h3 id="基于jedis-jar访问"><a href="#基于jedis-jar访问" class="headerlink" title="基于jedis.jar访问"></a>基于jedis.jar访问</h3><h5 id="1-引入jedis-jar"><a href="#1-引入jedis-jar" class="headerlink" title="1. 引入jedis.jar"></a>1. 引入jedis.jar</h5><pre><code>&lt;dependency&gt;
+        <h2 id="Redis集合"><a href="#Redis集合" class="headerlink" title="Redis集合"></a>Redis集合</h2><h5 id="1-集合操作"><a href="#1-集合操作" class="headerlink" title="1. 集合操作"></a>1. 集合操作</h5><pre><code>sadd key value value    //创建或添加集合元素
+srem key value        //移除元素
+smembers key    //查看集合元素
+scard key //返回元素个数
+srandmember key count //随机返回count个元素
+sdiff key1 key2    //key1-key2差集运算
+sinter key1 key2    //交集运算
+sunion key1 key2    //并集运算
+</code></pre><h5 id="2-有序集合操作"><a href="#2-有序集合操作" class="headerlink" title="2. 有序集合操作"></a>2. 有序集合操作</h5><pre><code>zadd key score value score value //创建或者添加元素
+zcard key //集合元素个数
+zrange key start stop //由小到大排序
+zrevrange key start stop //由大到小排序
+zcount key min max //统计score区间元素个数
+zrem key value //移除元素
+</code></pre><h2 id="Java访问Redis"><a href="#Java访问Redis" class="headerlink" title="Java访问Redis"></a>Java访问Redis</h2><h3 id="基于jedis-jar访问"><a href="#基于jedis-jar访问" class="headerlink" title="基于jedis.jar访问"></a>基于jedis.jar访问</h3><h5 id="1-引入jedis-jar"><a href="#1-引入jedis-jar" class="headerlink" title="1. 引入jedis.jar"></a>1. 引入jedis.jar</h5><pre><code>&lt;dependency&gt;
     &lt;groupId&gt;redis.clients&lt;/groupId&gt;
     &lt;artifactId&gt;jedis&lt;/artifactId&gt;
     &lt;version&gt;2.9.0&lt;/version&gt;
@@ -713,6 +703,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
@@ -722,18 +724,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JAP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
