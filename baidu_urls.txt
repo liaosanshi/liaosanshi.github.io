@@ -1,4 +1,3 @@
-http://www.websanshi.com/Spring笔记，考试用.html
 http://www.websanshi.com/MongoDB的使用.html
 http://www.websanshi.com/NoSQL——Radis.html
 http://www.websanshi.com/SpringBoot中的组件、JPA、Radis.html

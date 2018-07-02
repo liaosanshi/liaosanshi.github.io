@@ -179,109 +179,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Spring笔记，考试用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Spring笔记，考试用.html">Spring</a>
-    </h1>
-  
-
-        
-        <a href="/Spring笔记，考试用.html" class="archive-article-date">
-  	<time datetime="2018-07-02T00:57:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.Spring 框架的构成  10<br>  IOC   控制反转 构成Spring框架的基础<br>  DAO   Spring 对 Jdbc 的封装<br>  Web MVC  Spring 对 MVC 的支持<br>            还有对其它的mvc 框架的支持<br>  AOP  面向切面编程<br>  ORM  对象关系映射  操作数据库面向对象化<br>2.什么IOC  10<em>10</em>10<br>  Inversion  Of  Control   控制反转    程序中对象创建方式  由原来的new<br>  的方式 变成了 由容器来进行对象 创建 管理 和 对象之间关系维护,把程序的控制权<br>  交给容器的过程 叫控制反转。这样的作的目的 降低组件之间的耦合度。    </p>
-<p>3.Spring 容器  10*10<br>     任何的java 类  都可以在Spring 容器中创建对象,并由Spring 管理 和 使用<br>  Spring 容器 实现了 IOC  和 AOP 机制<br>  Spring 容器的类型 有 ApplicationContext  和 BeanFactory<br>4.Spring 容器的使用步骤  1000<br>  4.1 建立一个项目   导入对应的jar(ioc)  并拷贝 Spring 容器对应的配置文件到src下<br>  4.2 在配置文件 编写组件的配置信息<br>     <bean id="合法java标识符" class="包名.类名"></bean><br>  4.3 构建Spring 容器对象  通过容器的API  获取容器中的组件<br>     ClassPathXmlApplicationContext<br>     getBean<br>5.把com.xdl.bean.Emp 这个类型通过 IOC 方式 在Spring 容器构建对象<br>并通过容器的API 获取这个对象。Emp 类型的字段 有  int  id  String name<br>int  age  double  salary  提供get set方法  无参 和 全参构造  和序列化。</p>
-<p>6.Spring 容器创建对象的三种形式 10<em>10</em>10<br> 6.1 构造器方式实例化,默认调用类型对应的无参构造<br>    <bean id="java标识符" class="包名.类名"><br> 6.2 静态工厂方法实例化<br>    <bean id="java对象标识符" class="包名.工厂类名" factory-method="静态工厂方法的名字"><br> 6.3 实例工厂方法实例化<br>     通过一个工厂类型的对象  获取对应的目标对象<br>  <bean id="java对象标识符" class="包名.目标类型" factory-method="实例化工厂方法的名字" factory-bean="工厂对象的id"><br>7.Bean 对象的作用域<br>  Spring 容器 对象默认是单例的  可以通过bean 标签的 scope 属性指定对象的作用域<br>  prototype  就是非单例的   singleton 就是单例的 其它的在web 部分中涉及。<br>8.bean 对象的初始化<br>  构造方法调用完成之后,可以通过 beans 标签中设定  default-init-method 属性 指定初始化<br>  方法的名字来完成初始化  由于这样影响的范围比较大 所以类型中如果没有出现对应的初始化<br>  方法 也不会报错。也可以在bean 标签中 通过 init-method 指定初始化方法的名字 由于这个<br>  指定比较精准 所以如果类型中没有对应的初始化方法则会报错。<br>9.bean 对象的销毁<br>  可以通过 beans 标签中设定  default-destroy-method 属性 指定销毁<br>  方法的名字来完成销毁  由于这样影响的范围比较大 所以类型中如果没有出现对应的销毁<br>  方法 也不会报错。也可以在bean 标签中 通过 destroy-method 指定销毁方法的名字 由于这个<br>  指定比较精准 所以如果类型中没有对应的销毁方法则会报错。  </bean></bean></bean></p>
-<p>10.bean 对象的延迟实例化<br>  针对单例对象而言 默认是容器启动时 创建对应的对象，可以通过 beans 标签中<br>  default-lazy-init 默认是”false”  可以指定为 “true”  这个设定针对所有的类型的<br>  影响范围比较大 不建议使用。还可以通过 bean 标签中 指定 lazy-init 指定成”true”<br>  来完成延迟实例化  推荐使用的方式。</p>
-<p> 11.要求定义一个 Card类代表一张扑克牌类  有代表花色的  String  suit<br> 还有代表点数的  String   point。 提供get  set 方法  toString  无参 和 全参构造<br> 实现序列化  要求在Spring 容器创建 Card 类型的对象  并通过 Spring 容器获取这个对象<br> 打印。还要求定义一个 Player 类 代表一个玩家类  这个类中  有  String  name<br> int  age   Card  card 提供get  set 方法  toString  无参 和 全参构造<br> 实现序列化  要求在Spring 容器创建  Player 对象   并通过 Spring 容器获取这个对象<br> 打印。</p>
-<p>1.要求定义一个 Card类代表一张扑克牌类  有代表花色的  String  suit<br> 还有代表点数的  String   point。 提供get  set 方法  toString  无参 和 全参构造<br> 实现序列化  要求在Spring 容器创建 Card 类型的对象  并通过 Spring 容器获取这个对象<br> 打印。还要求定义一个 Player 类 代表一个玩家类  这个类中  有  String  name<br> int  age   Card  card 提供get  set 方法  toString  无参 和 全参构造<br> 实现序列化  要求在Spring 容器创建  Player 对象   并通过 Spring 容器获取这个对象<br> 打印。</p>
-<p>2.什么是DI  10000<br>  Dependence  Injection   依赖注入(依赖注射)<br>    解决的问题就是  组件之间的装配问题  实际上 DI 是 IOC 一种具体实现<br>3.DI的实现方式    100000<br>  3.1 setter 注入  基于set方法的注入<br>  <property name="参考set方法 去掉set后首字母小写" value="值 注意枚举值直接写常量值 和java 略有不同"></property><br>  复杂的对象注入<br>  <property name="参考set方法 去掉set后首字母小写" ref="容器中对象的id"></property><br>  3.2 构造器注入  参考的是构造方法<br>    <constructor-arg index="构造方法的参数下标" value="值"></constructor-arg><br>    <constructor-arg name="构造方法参数的名字" value="值"></constructor-arg><br>   使用构造器注入的方式 完成 Player 对象值的注入  注意把card3 注入给Player<br>   名字 是 李伟杰   年龄 16<br>    如果是复杂的对象类型 使用 ref 属性进行赋值<br>  3.3  自动化注入  (了解  9)<br>    在bean 标签上 加一个属性 叫 autowire<br>     取值有 byName   根据成员变量的名字进行查找<br>  byType   根据成员变量的类型 查找  可能有多个选择就冲突报错<br>  constructor    根据构造方法的参数进行自动匹配<br>      优先按照类型 匹配一次  如果找不到 还可以启用名字进行处理<br>   第一个参数找不到 放弃后面查找  可以通过 constructor-arg 进行参数占位  </p>
-<p> 4.bean 参数的注入<br>  4.1 简单值的注入<br>     String   枚举  基本类型的值<br>     以setter 注入为例<br>     <property name="" value="abc"><br>     <property name=""><br>         <value>abc</value><br>     </property><br>     特例赋值 null<br>     <property name=""><br>        <null><br>     </null></property><br>  4.2 复杂对象值的注入<br>     Card  Order   Item  Book  等<br>  4.3 集合类型参数的注入<br>     a.如何注入一个 List<br>      <list><br>          <value>值</value><br>          <value>值</value><br>      </list><br>      b.如何注入一个Set<br>      <set><br>          <value>值</value><br>          <value>值</value><br>      </set><br>      c.如何注入一个 Map<br>       <map><br>           <entry key="" value=""><br>           <entry key="" value=""><br>       </entry></entry></map><br>      d.如何注入一个 Properties<br>        <props><br>            <prop key="">值</prop><br>            <prop key="">值</prop><br>            <prop key="">值</prop><br>        </props> </property></p>
-<p>   4.4 集合的单独定义<br>       &lt;util:list  id=”集合对象标识符” &gt;<br>          <value>值</value><br>          <value>值</value><br>      &lt;/util:list&gt;  </p>
-<pre><code>&lt;util:set  id=&quot;集合对象标识符&quot;&gt;
-    &lt;value&gt;值&lt;/value&gt;
-    &lt;value&gt;值&lt;/value&gt;
-&lt;/util:set&gt;
-
-&lt;util:map  id=&quot;集合对象标识&quot;&gt;
-     &lt;entry    key=&quot;&quot;   value=&quot;&quot; /&gt;
-     &lt;entry    key=&quot;&quot;   value=&quot;&quot; /&gt; 
-&lt;/util:map&gt;  
-
-&lt;util:properties id=&quot;集合对象标识&quot;&gt;
-      &lt;prop  key=&quot;&quot; &gt;值&lt;/prop&gt; 
-      &lt;prop  key=&quot;&quot; &gt;值&lt;/prop&gt; 
-      &lt;prop  key=&quot;&quot; &gt;值&lt;/prop&gt;  
-&lt;/util:properties&gt; 
-</code></pre><p>  4.5 Properties 可以和一个属性文件关联在一起<br>    &lt;util:properties  id=””  location=”classpath:文件名”&gt;<br>    &lt;/util:properties&gt;<br>  4.6 Spring 的EL 表达式<br>    从容器中取对象 或者对象属性对应的值  语法是把之前的$ 换成 #</p>
-<p> 5.组件扫描  100000<br>   5.1 什么是组件扫描<br>   Spring 提供了一套基于 标注(注解)的使用方式,这种技术出现 可以大大简化XML的配置。<br>   5.2 组件扫描的实现步骤<br>   a.建立一个项目  导入对应的jar包(ioc aop)<br>          拷贝Spring 容器对应的配置文件到src下<br>   b.在Spring 配置文件中  开启组件扫描<br>      &lt;context:component-scan   base-package=”包名”  /&gt;<br>   c.编写一个类   在类上加组件创建相关的标注<br>     @Component    通用层标注<br>     @Repository   持久层标注<br>     @Service      服务层标注<br>     @Controller   控制层标注<br>   d. 创建Spring 容器  从容器中获取对应的组件<br>     默认的组件id 是类名首字母小写 当然也可以指定组件名 </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Spring笔记，考试用.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-MongoDB的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1122,10 +1019,83 @@ SqlSession   负责编写程序的核心API
 
 
   
+    <article id="post-My-第一个彩蛋" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+    <h1 itemprop="name">
+      <a class="article-title" href="/My-第一个彩蛋.html">My-第一个彩蛋</a>
+    </h1>
+  
+
+        
+        <a href="/My-第一个彩蛋.html" class="archive-article-date">
+  	<time datetime="2018-06-14T07:18:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="四级标题哟"><a href="#四级标题哟" class="headerlink" title="四级标题哟"></a>四级标题哟</h4><h5 id="五级标题哟"><a href="#五级标题哟" class="headerlink" title="五级标题哟"></a>五级标题哟</h5><h6 id="貌似没有六级标题了"><a href="#貌似没有六级标题了" class="headerlink" title="貌似没有六级标题了"></a>貌似没有六级标题了</h6><p>####### 看看七级有没有<br>    好吧..没有七级的了</p>
+<blockquote>
+<p>溜了溜了…</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">第一个蛋</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/My-第一个彩蛋.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
 
 
@@ -1219,15 +1189,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
               </li>
              
               <li class="article-tag-list-item">
