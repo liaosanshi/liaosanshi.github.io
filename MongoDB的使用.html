@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.websanshi.com">
-  <title>Archives | Have Fun</title>
+  <title>MongoDB的使用 | Have Fun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="好好学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Have Fun">
-<meta property="og:url" content="http://www.websanshi.com/archives/index.html">
+  <meta name="description" content="MongoDB简介 Mongo是一个分布式系统数据库，易于拓展 Mongo采用C++开发，基于文件存储数据库 Mongo具有强大的数据查询过滤功能 Mongo还具有索引等机制 Mongo存储格式为BSON，结构灵活可变  关系型数据库：强大SQL、事务、数据库编程。 非关系型数据库：读写快、易于拓展、结构灵活。 操作命令Oracle结构：库—&amp;gt;用户空间—&amp;gt;表 scott用户—&amp;gt;s">
+<meta name="keywords" content="MongoDB,SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB的使用">
+<meta property="og:url" content="http://www.websanshi.com/MongoDB的使用.html">
 <meta property="og:site_name" content="Have Fun">
-<meta property="og:description" content="好好学习">
+<meta property="og:description" content="MongoDB简介 Mongo是一个分布式系统数据库，易于拓展 Mongo采用C++开发，基于文件存储数据库 Mongo具有强大的数据查询过滤功能 Mongo还具有索引等机制 Mongo存储格式为BSON，结构灵活可变  关系型数据库：强大SQL、事务、数据库编程。 非关系型数据库：读写快、易于拓展、结构灵活。 操作命令Oracle结构：库—&amp;gt;用户空间—&amp;gt;表 scott用户—&amp;gt;s">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-02T00:44:03.090Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Have Fun">
-<meta name="twitter:description" content="好好学习">
+<meta name="twitter:title" content="MongoDB的使用">
+<meta name="twitter:description" content="MongoDB简介 Mongo是一个分布式系统数据库，易于拓展 Mongo采用C++开发，基于文件存储数据库 Mongo具有强大的数据查询过滤功能 Mongo还具有索引等机制 Mongo存储格式为BSON，结构灵活可变  关系型数据库：强大SQL、事务、数据库编程。 非关系型数据库：读写快、易于拓展、结构灵活。 操作命令Oracle结构：库—&amp;gt;用户空间—&amp;gt;表 scott用户—&amp;gt;s">
   
   
     <link rel="icon" href="/img/favicon.png">
@@ -177,36 +179,234 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MongoDB的使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/MongoDB的使用.html" class="archive-article-date">
-  	<time datetime="2018-06-29T00:49:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/MongoDB的使用.html">MongoDB的使用</a>
+    <h1 class="article-title" itemprop="name">
+      MongoDB的使用
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/MongoDB的使用.html" class="archive-article-date">
+  	<time datetime="2018-06-29T00:49:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>Mongo是一个分布式系统数据库，易于拓展</li>
+<li>Mongo采用C++开发，基于文件存储数据库</li>
+<li>Mongo具有强大的数据查询过滤功能</li>
+<li>Mongo还具有索引等机制</li>
+<li>Mongo存储格式为BSON，结构灵活可变</li>
+</ul>
+<p>关系型数据库：强大SQL、事务、数据库编程。</p>
+<p>非关系型数据库：读写快、易于拓展、结构灵活。</p>
+<h3 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h3><p>Oracle结构：库—&gt;用户空间—&gt;表</p>
+<p>scott用户—&gt;scott空间—&gt;表、视图、索引</p>
+<p>Mongo结构：库—&gt;集合</p>
+<p>用户—&gt;选择使用哪个库—&gt;进入库中—&gt;对集合操作</p>
+<h5 id="1-库-db"><a href="#1-库-db" class="headerlink" title="1. 库(db)"></a>1. 库(db)</h5><p>show dbs //查看mongo所有库名</p>
+<p>use xxx  //创建或使用某个库</p>
+<p>db.dropDatabase() //删除当前库<br><a id="more"></a><br>    示例</p>
+<pre><code>//创建并进入java19库
+use java19
+//删除当前库
+db.dropDatabase()
+</code></pre><h5 id="2-集合-collection"><a href="#2-集合-collection" class="headerlink" title="2. 集合(collection)"></a>2. 集合(collection)</h5><p>show collections //查看当前库所有集合名</p>
+<p>db.xxx.find()        //查询集合所有记录</p>
+<p>db.xxx.insert()  //创建集合或添加记录</p>
+<p>db.xxx.remove()  //删除记录</p>
+<p>db.xxx.update()  //更新记录</p>
+<p>db.xxx.drop()    //删除集合</p>
+<pre><code>示例
+
+    //创建集合并添加记录
+    db.dept.insert({&quot;deptno&quot;:10,&quot;dname&quot;:&quot;JAVA&quot;})
+    //查询所有记录
+    db.dept.find()
+    //删除deptno=20记录
+    db.dept.remove({&quot;deptno&quot;:20})
+    //更新deptno=10的记录（整体更新）
+    db.dept.update({&quot;deptno&quot;:10},{&quot;dname&quot;:&quot;java&quot;})
+    //查看库中集合名
+    show collections
+    //删除dept集合
+    db.dept.drop()
+</code></pre><h5 id="3-其他操作"><a href="#3-其他操作" class="headerlink" title="3. 其他操作"></a>3. 其他操作</h5><p>示例:</p>
+<pre><code>//插入多条记录
+db.dept.insert([{...},{...}])
+
+//插入多条记录
+for(i=0;i&lt;100;i++){
+    db.dept.insert({...});
+}
+
+//&gt;、&lt;、&lt;=、&gt;=、!=条件使用$gt、$lt、$lte、$gte、$ne
+db.dept.find({&quot;deptno&quot;:{$lt:10}});
+//模糊查询
+db.dept.find({&quot;dname&quot;:/^java$/})
+
+//按指定条件删除deptno=10
+db.dept.remove({&quot;deptno&quot;:10})
+
+//删除所有记录
+db.dept.remove({})
+
+//局部更新,将deptno=10的记录dname更新为JAVA
+db.dept.update({&quot;deptno&quot;:10},{$set:{&quot;dname&quot;:&quot;JAVA&quot;}})
+
+//update更新默认只更新第一条记录，更新多条,第四个参数设置为true。第三个为true表示没有符合条件记录做Insert；false表示不做insert。
+db.dept.update({&quot;deptno&quot;:{$lt:10}},{$set:{&quot;dname&quot;:&quot;JAVA&quot;}},fasle|true,true)
+
+//统计数量
+db.dept.count()
+//返回非重复的dname值
+db.dept.distinct(&quot;dname&quot;)
+//创建索引,deptno升序索引
+db.dept.ensureIndex({&quot;deptno&quot;:1})
+//创建索引,deptno降序索引
+db.dept.ensureIndex({&quot;deptno&quot;:-1})
+//删除索引
+db.dept.dropIndexes(&quot;xxx&quot;)
+</code></pre><h2 id="Java访问MongoDB"><a href="#Java访问MongoDB" class="headerlink" title="Java访问MongoDB"></a>Java访问MongoDB</h2><h3 id="基于mongo-java-driver-jar访问"><a href="#基于mongo-java-driver-jar访问" class="headerlink" title="基于mongo-java-driver.jar访问"></a>基于mongo-java-driver.jar访问</h3><h5 id="1-API介绍"><a href="#1-API介绍" class="headerlink" title="1. API介绍"></a>1. API介绍</h5><pre><code>- 连接对象MongoClient（新）、Mongo（旧）
+- 库对象MongoDatabase（新）、DB（旧）
+- 集合对象MongoCollection（新）、DbCollection（旧）
+- 记录对象Document（新）、DbObject（旧）
+- 结果集对象MongoCursor（新）、DbCursor（旧）
+- 条件对象Filters.xx
+</code></pre><h5 id="2-示例代码"><a href="#2-示例代码" class="headerlink" title="2. 示例代码"></a>2. 示例代码</h5><pre><code>- 查看所有库名
+
+        @Test
+        public void test1(){
+            MongoClient mongo = new MongoClient(&quot;localhost&quot;, 27017);
+            MongoIterable&lt;String&gt; dbs = mongo.listDatabaseNames();
+            MongoCursor&lt;String&gt; cursor = dbs.iterator();
+            while(cursor.hasNext()){
+                System.out.println(&quot;库名:&quot;+cursor.next());
+            }
+            mongo.close();
+        }
+
+- 查询集合所有记录
+
+        @Test
+        public void test2(){
+            MongoClient mongo = new MongoClient(&quot;localhost&quot;, 27017);
+            MongoDatabase db  =mongo.getDatabase(&quot;java19&quot;);//use java19
+            MongoCollection&lt;Document&gt; dept = db.getCollection(&quot;dept&quot;);
+            MongoCursor&lt;Document&gt; cursor = dept.find().iterator();//db.dept.find()
+            while(cursor.hasNext()){
+                Document doc = cursor.next();
+                System.out.println(doc.get(&quot;_id&quot;)+&quot; &quot;
+                    +doc.getDouble(&quot;deptno&quot;)+&quot; &quot;+doc.getString(&quot;dname&quot;));
+            }
+            mongo.close();
+        }
+
+- 按条件查询集合记录
+
+        @Test
+        public void test3(){
+            MongoClient mongo = new MongoClient(&quot;localhost&quot;, 27017);
+            MongoDatabase db  =mongo.getDatabase(&quot;java19&quot;);//use java19
+            MongoCollection&lt;Document&gt; dept = db.getCollection(&quot;dept&quot;);
+            //创建查询条件
+            Bson filter = Filters.lt(&quot;deptno&quot;, 10);//{&quot;deptno&quot;:{$lt:10}}
+            MongoCursor&lt;Document&gt; cursor = dept.find(filter).iterator();//db.dept.find()
+            while(cursor.hasNext()){
+                Document doc = cursor.next();
+                System.out.println(doc.get(&quot;_id&quot;)+&quot; &quot;
+                    +doc.getDouble(&quot;deptno&quot;)+&quot; &quot;+doc.getString(&quot;dname&quot;));
+            }
+            mongo.close();
+        }
+
+- 添加记录
+
+- 更新记录
+
+- 删除记录
+</code></pre><h3 id="基于SpringData工具包访问"><a href="#基于SpringData工具包访问" class="headerlink" title="基于SpringData工具包访问"></a>基于SpringData工具包访问</h3><h5 id="1-引入boot-data-mongodb包定义"><a href="#1-引入boot-data-mongodb包定义" class="headerlink" title="1. 引入boot-data-mongodb包定义"></a>1. 引入boot-data-mongodb包定义</h5><pre><code>&lt;parent&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+      &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+  &lt;/parent&gt;
+
+  &lt;properties&gt;
+      &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+      &lt;java.version&gt;1.8&lt;/java.version&gt;
+  &lt;/properties&gt;
+
+  &lt;dependencies&gt;
+          &lt;dependency&gt;
+              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+              &lt;artifactId&gt;spring-boot-starter-data-mongodb&lt;/artifactId&gt;
+          &lt;/dependency&gt;
+          &lt;dependency&gt;
+              &lt;groupId&gt;junit&lt;/groupId&gt;
+              &lt;artifactId&gt;junit&lt;/artifactId&gt;
+          &lt;/dependency&gt;
+          &lt;dependency&gt;
+              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+              &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+          &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+</code></pre><h5 id="2-在application-properties定义mongodb连接参数"><a href="#2-在application-properties定义mongodb连接参数" class="headerlink" title="2. 在application.properties定义mongodb连接参数"></a>2. 在application.properties定义mongodb连接参数</h5><pre><code>#spring.data.mongodb.uri=mongodb://localhost:27017/java19
+spring.data.mongodb.host=localhost
+spring.data.mongodb.port=27017
+spring.data.mongodb.database=java19
+</code></pre><h5 id="3-注入MongoTemplate对象进行CRUD操作"><a href="#3-注入MongoTemplate对象进行CRUD操作" class="headerlink" title="3. 注入MongoTemplate对象进行CRUD操作"></a>3. 注入MongoTemplate对象进行CRUD操作</h5><pre><code>    @RunWith(SpringRunner.class)
+    @SpringBootTest(classes={MyBootApplication.class})
+    public class TestMongo {
+
+        @Autowired
+        private MongoTemplate mongo;
+
+        @Test//添加记录
+        public void test1(){
+            Book book = new Book(&quot;PHP语言基础&quot;,&quot;XDL&quot;,25.0);
+            mongo.insert(book);//默认集合名类型小写book
+    //        mongo.insert(book,&quot;mybook&quot;);//集合mybook
+        }
+
+        @Test//查询所有记录
+        public void test2(){
+            List&lt;Book&gt; list = mongo.findAll(Book.class);//默认查集合book
+    //        mongo.findAll(Book.class, &quot;mybook&quot;);//查询集合mybook
+            for(Book book:list){
+                System.out.println(book.getName()+&quot; &quot;+book.getPrice());
+            }
+        }
+
+        @Test//按条件查询记录
+        public void test3(){
+            Query query = new Query();
+            query.addCriteria(Criteria.where(&quot;price&quot;).gt(30.0));//where price&gt;30.0
+            List&lt;Book&gt; list = mongo.find(query,Book.class);//默认查集合book
+            for(Book book:list){
+                System.out.println(book.getName()+&quot; &quot;+book.getPrice());
+            }
+        }
+
+    }
+
+提示：通过MongoTemplate的updateXxx和remove方法也可以实现更新和删除操作。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -222,397 +422,156 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.websanshi.com/MongoDB的使用.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/NoSQL——Radis.html" class="archive-article-date">
-  	<time datetime="2018-06-28T11:02:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/NoSQL——Radis.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NoSQL——Radis</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/NoSQL——Radis.html">NoSQL——Radis</a>
-    </h1>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="MongoDB的使用" data-title="MongoDB的使用" data-url="http://www.websanshi.com/MongoDB的使用.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">radis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JAP</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
+  <section id="comments" class="comments">
+    <style>
+      .comments{margin:30px;padding:10px;background:#fff}
+      @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+    </style>
+    <div id="vcomment" class="comment"></div>
+<script src="//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js'></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+   new Valine({
+            av: AV,
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "IgOf2pIKTqcj9jS1YvyuyLvQ-gzGzoHsz",
+            app_key: "XvUL1xm2HDwnMqs7BMEJg6KA",
+            placeholder: "来说点什么吧┑(￣Д ￣)┍",
+            avatar: "retro",
+            avatar_cdn: "",
+            pageSize: 15
+    });
+</script>
+  </section>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/SpringBoot中的组件、JPA、Radis.html" class="archive-article-date">
-  	<time datetime="2018-06-27T11:56:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/SpringBoot中的组件、JPA、Radis.html">SpringBoot中的组件、JPA、Radis</a>
-    </h1>
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">radis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JAP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/SpringBoot的WEB拦截器及AOP.html" class="archive-article-date">
-  	<time datetime="2018-06-26T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/SpringBoot的WEB拦截器及AOP.html">SpringBoot的WEB拦截器及AOP</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/SpringBoot的网页开发.html" class="archive-article-date">
-  	<time datetime="2018-06-25T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/SpringBoot的网页开发.html">SpringBoot的网页开发</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/SpringBoot框架应用(二).html" class="archive-article-date">
-  	<time datetime="2018-06-22T09:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/SpringBoot框架应用(二).html">SpringBoot框架应用(二)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/SpringBoot环境搭建及第一个应用.html" class="archive-article-date">
-  	<time datetime="2018-06-21T03:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/SpringBoot环境搭建及第一个应用.html">SpringBoot环境搭建及第一个应用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/Mybatis第二蛋.html" class="archive-article-date">
-  	<time datetime="2018-06-20T11:39:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Mybatis第二蛋.html">Mybatis第二蛋</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/Mybatis入门.html" class="archive-article-date">
-  	<time datetime="2018-06-19T11:23:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Mybatis入门.html">Mybatis入门</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">第二个蛋 框架学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/My-第一个彩蛋.html" class="archive-article-date">
-  	<time datetime="2018-06-14T07:18:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/My-第一个彩蛋.html">My-第一个彩蛋</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">第一个蛋</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -635,8 +594,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
