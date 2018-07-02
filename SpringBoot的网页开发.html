@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Have Fun">
 <meta property="og:description" content="SpringBoot MVC&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;通过自动配置将SpringMVC中DispatcherServlet,HandlerMapping,ViewResolver组件定义,程序员不需要定义了. restful服务快速开发（建议）1. 开发一套部门管理的API/dept/list  列表查询 /dept/put   更新部门信息 /dept/post">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-02T10:48:08.347Z">
+<meta property="og:updated_time" content="2018-07-02T10:56:03.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot的网页开发">
 <meta name="twitter:description" content="SpringBoot MVC&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;通过自动配置将SpringMVC中DispatcherServlet,HandlerMapping,ViewResolver组件定义,程序员不需要定义了. restful服务快速开发（建议）1. 开发一套部门管理的API/dept/list  列表查询 /dept/put   更新部门信息 /dept/post">
@@ -213,8 +213,12 @@ var _hmt = _hmt || [];
 &lt;/dependency&gt;
 </code></pre><p>在application.properties配置tomcat端口</p>
 <pre><code>server.port=8888
-</code></pre><p>编写DeptController组件<br><a id="more"></a><br>    @RestController<br>    public class DeptController {</p>
-<pre><code>    @Autowired
+</code></pre><p>编写DeptController组件</p>
+<a id="more"></a>
+<pre><code>@RestController
+public class DeptController {
+
+    @Autowired
     private DeptDao deptDao;
 
     @RequestMapping(value=&quot;/dept/list&quot;,method=RequestMethod.GET)
@@ -696,6 +700,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
@@ -704,19 +712,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
               </li>
              
               <li class="article-tag-list-item">
