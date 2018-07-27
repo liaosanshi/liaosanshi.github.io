@@ -179,292 +179,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-SpringBoot的网页开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SpringBoot的网页开发.html">SpringBoot的网页开发</a>
-    </h1>
-  
-
-        
-        <a href="/SpringBoot的网页开发.html" class="archive-article-date">
-  	<time datetime="2018-07-22T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="SpringBoot-MVC"><a href="#SpringBoot-MVC" class="headerlink" title="SpringBoot MVC"></a>SpringBoot MVC</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过自动配置将SpringMVC中DispatcherServlet,HandlerMapping,ViewResolver组件定义,程序员不需要定义了.</p>
-<h3 id="restful服务快速开发（建议）"><a href="#restful服务快速开发（建议）" class="headerlink" title="restful服务快速开发（建议）"></a>restful服务快速开发（建议）</h3><h5 id="1-开发一套部门管理的API"><a href="#1-开发一套部门管理的API" class="headerlink" title="1. 开发一套部门管理的API"></a>1. 开发一套部门管理的API</h5><pre><code>/dept/list  列表查询
-/dept/put   更新部门信息
-/dept/post  创建一个部门
-/dept/get   查询某个部门
-</code></pre><h5 id="2-开发过程"><a href="#2-开发过程" class="headerlink" title="2. 开发过程"></a>2. 开发过程</h5><p>使用spring+mybatis实现DeptDao（参考上一次课案例过程）</p>
-<p>在pom.xml添加boot-web开发包定义</p>
-<pre><code>&lt;!-- mvc、restful、tomcat --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre><p>在application.properties配置tomcat端口</p>
-<pre><code>server.port=8888
-</code></pre><p>编写DeptController组件</p>
-        
-          <a class="article-more-a" href="/SpringBoot的网页开发.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/SpringBoot的网页开发.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot框架应用(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SpringBoot框架应用(二).html">SpringBoot框架应用(二)</a>
-    </h1>
-  
-
-        
-        <a href="/SpringBoot框架应用(二).html" class="archive-article-date">
-  	<time datetime="2018-07-18T09:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Spring容器对象来源"><a href="#Spring容器对象来源" class="headerlink" title="Spring容器对象来源"></a>Spring容器对象来源</h2><ol>
-<li><p>Spring原始框架中</p>
-<ul>
-<li><bean>定义的组件对象</bean></li>
-<li><p><a href="context:componentscan/" target="_blank" rel="noopener">context:componentscan/</a>组件扫描</p>
-<p>创建Spring容器</p>
-<p>  ApplicationContext ac = </p>
-<pre><code>new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
-</code></pre></li>
-</ul>
-</li>
-<li><p>Boot框架中</p>
-<ul>
-<li>@Configuration+@Bean定义组件对象</li>
-<li>@ComponentScan组件扫描</li>
-<li><p>@EnabledAutoConfiguration自动配置</p>
-<p>创建Boot中Spring容器</p>
-<p>  //@SpringBootApplication<br>  SpringApplication.run(启动类.class);</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>自动配置就是在Boot程序启动时，能自动创建一些组件对象纳入Spring容器中。自动配置底层就是采用了@Configuration+@Bean技术，提前内置很多配置组件，在Boot启动时加载到Spring容器中。</p>
-<p>Boot启动时，会自动加载spring-boot-autoconfigure-2.0.1.RELEASE.jar包中META-INF/spring.factories定义的配置组件，在Spring容器中创建出dispatcherServlet、dataSource、jdbcTemplate等对象。<br>
-        
-          <a class="article-more-a" href="/SpringBoot框架应用(二).html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/SpringBoot框架应用(二).html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot环境搭建及第一个应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SpringBoot环境搭建及第一个应用.html">SpringBoot环境搭建及第一个应用</a>
-    </h1>
-  
-
-        
-        <a href="/SpringBoot环境搭建及第一个应用.html" class="archive-article-date">
-  	<time datetime="2018-07-17T03:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="SpringBoot框架"><a href="#SpringBoot框架" class="headerlink" title="SpringBoot框架"></a>SpringBoot框架</h2><p>目的:简化新Spring应用的初始搭建以及开发过程.</p>
-<p>特点:<br></p>
-<ol>
-<li>快速创建独立的Spring应用程序</li>
-<li>嵌入的Tomcat,无需部署WAR文件</li>
-<li>简化Maven配置</li>
-<li>自动配置Spring</li>
-<li>没有XML配置,完全采用JAVA配置</li>
-</ol>
-<h3 id="Maven安装和配置"><a href="#Maven安装和配置" class="headerlink" title="Maven安装和配置"></a>Maven安装和配置</h3><p>使用maven管理jar包,编译项目<br>
-        
-          <a class="article-more-a" href="/SpringBoot环境搭建及第一个应用.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/SpringBoot环境搭建及第一个应用.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-MongoDB的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -720,6 +434,292 @@ zrem key value //移除元素
       
         <p class="article-more-link">
           <a class="article-more-a" href="/SpringBoot的WEB拦截器及AOP.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBoot的网页开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SpringBoot的网页开发.html">SpringBoot的网页开发</a>
+    </h1>
+  
+
+        
+        <a href="/SpringBoot的网页开发.html" class="archive-article-date">
+  	<time datetime="2016-07-22T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SpringBoot-MVC"><a href="#SpringBoot-MVC" class="headerlink" title="SpringBoot MVC"></a>SpringBoot MVC</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过自动配置将SpringMVC中DispatcherServlet,HandlerMapping,ViewResolver组件定义,程序员不需要定义了.</p>
+<h3 id="restful服务快速开发（建议）"><a href="#restful服务快速开发（建议）" class="headerlink" title="restful服务快速开发（建议）"></a>restful服务快速开发（建议）</h3><h5 id="1-开发一套部门管理的API"><a href="#1-开发一套部门管理的API" class="headerlink" title="1. 开发一套部门管理的API"></a>1. 开发一套部门管理的API</h5><pre><code>/dept/list  列表查询
+/dept/put   更新部门信息
+/dept/post  创建一个部门
+/dept/get   查询某个部门
+</code></pre><h5 id="2-开发过程"><a href="#2-开发过程" class="headerlink" title="2. 开发过程"></a>2. 开发过程</h5><p>使用spring+mybatis实现DeptDao（参考上一次课案例过程）</p>
+<p>在pom.xml添加boot-web开发包定义</p>
+<pre><code>&lt;!-- mvc、restful、tomcat --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre><p>在application.properties配置tomcat端口</p>
+<pre><code>server.port=8888
+</code></pre><p>编写DeptController组件</p>
+        
+          <a class="article-more-a" href="/SpringBoot的网页开发.html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/SpringBoot的网页开发.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBoot框架应用(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SpringBoot框架应用(二).html">SpringBoot框架应用(二)</a>
+    </h1>
+  
+
+        
+        <a href="/SpringBoot框架应用(二).html" class="archive-article-date">
+  	<time datetime="2016-07-18T09:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring容器对象来源"><a href="#Spring容器对象来源" class="headerlink" title="Spring容器对象来源"></a>Spring容器对象来源</h2><ol>
+<li><p>Spring原始框架中</p>
+<ul>
+<li><bean>定义的组件对象</bean></li>
+<li><p><a href="context:componentscan/" target="_blank" rel="noopener">context:componentscan/</a>组件扫描</p>
+<p>创建Spring容器</p>
+<p>  ApplicationContext ac = </p>
+<pre><code>new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+</code></pre></li>
+</ul>
+</li>
+<li><p>Boot框架中</p>
+<ul>
+<li>@Configuration+@Bean定义组件对象</li>
+<li>@ComponentScan组件扫描</li>
+<li><p>@EnabledAutoConfiguration自动配置</p>
+<p>创建Boot中Spring容器</p>
+<p>  //@SpringBootApplication<br>  SpringApplication.run(启动类.class);</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>自动配置就是在Boot程序启动时，能自动创建一些组件对象纳入Spring容器中。自动配置底层就是采用了@Configuration+@Bean技术，提前内置很多配置组件，在Boot启动时加载到Spring容器中。</p>
+<p>Boot启动时，会自动加载spring-boot-autoconfigure-2.0.1.RELEASE.jar包中META-INF/spring.factories定义的配置组件，在Spring容器中创建出dispatcherServlet、dataSource、jdbcTemplate等对象。<br>
+        
+          <a class="article-more-a" href="/SpringBoot框架应用(二).html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/SpringBoot框架应用(二).html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBoot环境搭建及第一个应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SpringBoot环境搭建及第一个应用.html">SpringBoot环境搭建及第一个应用</a>
+    </h1>
+  
+
+        
+        <a href="/SpringBoot环境搭建及第一个应用.html" class="archive-article-date">
+  	<time datetime="2016-07-17T03:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SpringBoot框架"><a href="#SpringBoot框架" class="headerlink" title="SpringBoot框架"></a>SpringBoot框架</h2><p>目的:简化新Spring应用的初始搭建以及开发过程.</p>
+<p>特点:<br></p>
+<ol>
+<li>快速创建独立的Spring应用程序</li>
+<li>嵌入的Tomcat,无需部署WAR文件</li>
+<li>简化Maven配置</li>
+<li>自动配置Spring</li>
+<li>没有XML配置,完全采用JAVA配置</li>
+</ol>
+<h3 id="Maven安装和配置"><a href="#Maven安装和配置" class="headerlink" title="Maven安装和配置"></a>Maven安装和配置</h3><p>使用maven管理jar包,编译项目<br>
+        
+          <a class="article-more-a" href="/SpringBoot环境搭建及第一个应用.html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Boot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/SpringBoot环境搭建及第一个应用.html">展开全文 >></a>
         </p>
       
 
@@ -1197,6 +1197,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">radis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JAP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
@@ -1209,23 +1221,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Boot</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">radis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JAP</a>
               </li>
              
               <li class="article-tag-list-item">
