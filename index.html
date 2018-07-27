@@ -179,389 +179,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-MongoDB的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/MongoDB的使用.html">MongoDB的使用</a>
-    </h1>
-  
-
-        
-        <a href="/MongoDB的使用.html" class="archive-article-date">
-  	<time datetime="2018-06-29T00:49:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
-<li>Mongo是一个分布式系统数据库，易于拓展</li>
-<li>Mongo采用C++开发，基于文件存储数据库</li>
-<li>Mongo具有强大的数据查询过滤功能</li>
-<li>Mongo还具有索引等机制</li>
-<li>Mongo存储格式为BSON，结构灵活可变</li>
-</ul>
-<p>关系型数据库：强大SQL、事务、数据库编程。</p>
-<p>非关系型数据库：读写快、易于拓展、结构灵活。</p>
-<h3 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h3><p>Oracle结构：库—&gt;用户空间—&gt;表</p>
-<p>scott用户—&gt;scott空间—&gt;表、视图、索引</p>
-<p>Mongo结构：库—&gt;集合</p>
-<p>用户—&gt;选择使用哪个库—&gt;进入库中—&gt;对集合操作</p>
-<h5 id="1-库-db"><a href="#1-库-db" class="headerlink" title="1. 库(db)"></a>1. 库(db)</h5><p>show dbs //查看mongo所有库名</p>
-<p>use xxx  //创建或使用某个库</p>
-<p>db.dropDatabase() //删除当前库<br>
-        
-          <a class="article-more-a" href="/MongoDB的使用.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/MongoDB的使用.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-NoSQL——Radis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/NoSQL——Radis.html">NoSQL——Radis</a>
-    </h1>
-  
-
-        
-        <a href="/NoSQL——Radis.html" class="archive-article-date">
-  	<time datetime="2018-06-28T11:02:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Redis集合"><a href="#Redis集合" class="headerlink" title="Redis集合"></a>Redis集合</h2><h5 id="1-集合操作"><a href="#1-集合操作" class="headerlink" title="1. 集合操作"></a>1. 集合操作</h5><pre><code>sadd key value value    //创建或添加集合元素
-srem key value        //移除元素
-smembers key    //查看集合元素
-scard key //返回元素个数
-srandmember key count //随机返回count个元素
-sdiff key1 key2    //key1-key2差集运算
-sinter key1 key2    //交集运算
-sunion key1 key2    //并集运算
-</code></pre><h5 id="2-有序集合操作"><a href="#2-有序集合操作" class="headerlink" title="2. 有序集合操作"></a>2. 有序集合操作</h5><pre><code>zadd key score value score value //创建或者添加元素
-zcard key //集合元素个数
-zrange key start stop //由小到大排序
-zrevrange key start stop //由大到小排序
-zcount key min max //统计score区间元素个数
-zrem key value //移除元素
-</code></pre><h2 id="Java访问Redis"><a href="#Java访问Redis" class="headerlink" title="Java访问Redis"></a>Java访问Redis</h2><h3 id="基于jedis-jar访问"><a href="#基于jedis-jar访问" class="headerlink" title="基于jedis.jar访问"></a>基于jedis.jar访问</h3><h5 id="1-引入jedis-jar"><a href="#1-引入jedis-jar" class="headerlink" title="1. 引入jedis.jar"></a>1. 引入jedis.jar</h5><pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
-    &lt;artifactId&gt;jedis&lt;/artifactId&gt;
-    &lt;version&gt;2.9.0&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><h5 id="2-使用Jedis对象操作"><a href="#2-使用Jedis对象操作" class="headerlink" title="2. 使用Jedis对象操作"></a>2. 使用Jedis对象操作</h5>
-        
-          <a class="article-more-a" href="/NoSQL——Radis.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">radis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JAP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/NoSQL——Radis.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot中的组件、JPA、Radis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SpringBoot中的组件、JPA、Radis.html">SpringBoot中的组件、JPA、Radis</a>
-    </h1>
-  
-
-        
-        <a href="/SpringBoot中的组件、JPA、Radis.html" class="archive-article-date">
-  	<time datetime="2018-06-27T11:56:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="SpringBoot任务调度"><a href="#SpringBoot任务调度" class="headerlink" title="SpringBoot任务调度"></a>SpringBoot任务调度</h2><p>项目中有些功能，需要在Tomcat启动时或指定时间进行调用。在之前一般都会采用Quartz工具包完成，现在如果使用Spring或SpringBoot可以利用Spring Schedule模块完成。</p>
-<h3 id="启动Tomcat时调用任务"><a href="#启动Tomcat时调用任务" class="headerlink" title="启动Tomcat时调用任务"></a>启动Tomcat时调用任务</h3><p>SpringBoot提供了两种方法，编写任务组件，实现ApplicationRunner或CommandLineRunner接口。</p>
-<ol>
-<li><p>ApplicationRunner</p>
-<pre><code>@Component
-@Order(2)//第二个执行
-public class MyTask1 implements ApplicationRunner{
-
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        //添加任务逻辑代码
-        System.out.println(&quot;启动时自动调用任务1功能&quot;+new Date());
-    }
-
-}
-</code></pre>
-        
-          <a class="article-more-a" href="/SpringBoot中的组件、JPA、Radis.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">radis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JAP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/SpringBoot中的组件、JPA、Radis.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot的WEB拦截器及AOP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SpringBoot的WEB拦截器及AOP.html">SpringBoot的WEB拦截器及AOP</a>
-    </h1>
-  
-
-        
-        <a href="/SpringBoot的WEB拦截器及AOP.html" class="archive-article-date">
-  	<time datetime="2018-06-26T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="SpringBootMVC拦截器"><a href="#SpringBootMVC拦截器" class="headerlink" title="SpringBootMVC拦截器"></a>SpringBootMVC拦截器</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>拦截器作用：在SpringMVC请求处理期间，特定位置做拦截，插入一些额外处理逻辑。拦截点有一下3个位置：<br></p>
-<blockquote>
-<p>在controller处理前（preHandle）<br><br>在controller处理后（postHandle）<br><br>在处理完毕，响应输出前（afterCompletion）<br></p>
-</blockquote>
-<h3 id="规则（编写相同、配置不同）"><a href="#规则（编写相同、配置不同）" class="headerlink" title="规则（编写相同、配置不同）"></a>规则（编写相同、配置不同）</h3><p>拦截器组件编写需要实现HandlerInterceptor接口，接口有preHandle、postHandle、afterCompletion方法分别对应前面3个拦截点。</p>
-<p>在Boot中，拦截器配置需要采用Java配置模式。</p>
-<h3 id="案例：登录拦截器"><a href="#案例：登录拦截器" class="headerlink" title="案例：登录拦截器"></a>案例：登录拦截器</h3><h5 id="1-编写SomeInterceptor拦截器组件"><a href="#1-编写SomeInterceptor拦截器组件" class="headerlink" title="1. 编写SomeInterceptor拦截器组件"></a>1. 编写SomeInterceptor拦截器组件</h5>
-        
-          <a class="article-more-a" href="/SpringBoot的WEB拦截器及AOP.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/SpringBoot的WEB拦截器及AOP.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-SpringBoot的网页开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -575,7 +192,7 @@ public class MyTask1 implements ApplicationRunner{
 
         
         <a href="/SpringBoot的网页开发.html" class="archive-article-date">
-  	<time datetime="2018-06-25T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
+  	<time datetime="2018-07-22T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-22</time>
 </a>
         
       </header>
@@ -669,7 +286,7 @@ public class MyTask1 implements ApplicationRunner{
 
         
         <a href="/SpringBoot框架应用(二).html" class="archive-article-date">
-  	<time datetime="2018-06-22T09:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-22</time>
+  	<time datetime="2018-07-18T09:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
 </a>
         
       </header>
@@ -772,7 +389,7 @@ public class MyTask1 implements ApplicationRunner{
 
         
         <a href="/SpringBoot环境搭建及第一个应用.html" class="archive-article-date">
-  	<time datetime="2018-06-21T03:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-21</time>
+  	<time datetime="2018-07-17T03:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
 </a>
         
       </header>
@@ -848,6 +465,389 @@ public class MyTask1 implements ApplicationRunner{
 
 
   
+    <article id="post-MongoDB的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/MongoDB的使用.html">MongoDB的使用</a>
+    </h1>
+  
+
+        
+        <a href="/MongoDB的使用.html" class="archive-article-date">
+  	<time datetime="2017-03-29T00:49:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>Mongo是一个分布式系统数据库，易于拓展</li>
+<li>Mongo采用C++开发，基于文件存储数据库</li>
+<li>Mongo具有强大的数据查询过滤功能</li>
+<li>Mongo还具有索引等机制</li>
+<li>Mongo存储格式为BSON，结构灵活可变</li>
+</ul>
+<p>关系型数据库：强大SQL、事务、数据库编程。</p>
+<p>非关系型数据库：读写快、易于拓展、结构灵活。</p>
+<h3 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h3><p>Oracle结构：库—&gt;用户空间—&gt;表</p>
+<p>scott用户—&gt;scott空间—&gt;表、视图、索引</p>
+<p>Mongo结构：库—&gt;集合</p>
+<p>用户—&gt;选择使用哪个库—&gt;进入库中—&gt;对集合操作</p>
+<h5 id="1-库-db"><a href="#1-库-db" class="headerlink" title="1. 库(db)"></a>1. 库(db)</h5><p>show dbs //查看mongo所有库名</p>
+<p>use xxx  //创建或使用某个库</p>
+<p>db.dropDatabase() //删除当前库<br>
+        
+          <a class="article-more-a" href="/MongoDB的使用.html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/MongoDB的使用.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-NoSQL——Radis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/NoSQL——Radis.html">NoSQL——Radis</a>
+    </h1>
+  
+
+        
+        <a href="/NoSQL——Radis.html" class="archive-article-date">
+  	<time datetime="2016-08-28T11:02:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Redis集合"><a href="#Redis集合" class="headerlink" title="Redis集合"></a>Redis集合</h2><h5 id="1-集合操作"><a href="#1-集合操作" class="headerlink" title="1. 集合操作"></a>1. 集合操作</h5><pre><code>sadd key value value    //创建或添加集合元素
+srem key value        //移除元素
+smembers key    //查看集合元素
+scard key //返回元素个数
+srandmember key count //随机返回count个元素
+sdiff key1 key2    //key1-key2差集运算
+sinter key1 key2    //交集运算
+sunion key1 key2    //并集运算
+</code></pre><h5 id="2-有序集合操作"><a href="#2-有序集合操作" class="headerlink" title="2. 有序集合操作"></a>2. 有序集合操作</h5><pre><code>zadd key score value score value //创建或者添加元素
+zcard key //集合元素个数
+zrange key start stop //由小到大排序
+zrevrange key start stop //由大到小排序
+zcount key min max //统计score区间元素个数
+zrem key value //移除元素
+</code></pre><h2 id="Java访问Redis"><a href="#Java访问Redis" class="headerlink" title="Java访问Redis"></a>Java访问Redis</h2><h3 id="基于jedis-jar访问"><a href="#基于jedis-jar访问" class="headerlink" title="基于jedis.jar访问"></a>基于jedis.jar访问</h3><h5 id="1-引入jedis-jar"><a href="#1-引入jedis-jar" class="headerlink" title="1. 引入jedis.jar"></a>1. 引入jedis.jar</h5><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+    &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+    &lt;version&gt;2.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h5 id="2-使用Jedis对象操作"><a href="#2-使用Jedis对象操作" class="headerlink" title="2. 使用Jedis对象操作"></a>2. 使用Jedis对象操作</h5>
+        
+          <a class="article-more-a" href="/NoSQL——Radis.html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">radis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JAP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/NoSQL——Radis.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBoot的WEB拦截器及AOP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SpringBoot的WEB拦截器及AOP.html">SpringBoot的WEB拦截器及AOP</a>
+    </h1>
+  
+
+        
+        <a href="/SpringBoot的WEB拦截器及AOP.html" class="archive-article-date">
+  	<time datetime="2016-07-26T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SpringBootMVC拦截器"><a href="#SpringBootMVC拦截器" class="headerlink" title="SpringBootMVC拦截器"></a>SpringBootMVC拦截器</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>拦截器作用：在SpringMVC请求处理期间，特定位置做拦截，插入一些额外处理逻辑。拦截点有一下3个位置：<br></p>
+<blockquote>
+<p>在controller处理前（preHandle）<br><br>在controller处理后（postHandle）<br><br>在处理完毕，响应输出前（afterCompletion）<br></p>
+</blockquote>
+<h3 id="规则（编写相同、配置不同）"><a href="#规则（编写相同、配置不同）" class="headerlink" title="规则（编写相同、配置不同）"></a>规则（编写相同、配置不同）</h3><p>拦截器组件编写需要实现HandlerInterceptor接口，接口有preHandle、postHandle、afterCompletion方法分别对应前面3个拦截点。</p>
+<p>在Boot中，拦截器配置需要采用Java配置模式。</p>
+<h3 id="案例：登录拦截器"><a href="#案例：登录拦截器" class="headerlink" title="案例：登录拦截器"></a>案例：登录拦截器</h3><h5 id="1-编写SomeInterceptor拦截器组件"><a href="#1-编写SomeInterceptor拦截器组件" class="headerlink" title="1. 编写SomeInterceptor拦截器组件"></a>1. 编写SomeInterceptor拦截器组件</h5>
+        
+          <a class="article-more-a" href="/SpringBoot的WEB拦截器及AOP.html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/SpringBoot的WEB拦截器及AOP.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBoot中的组件、JPA、Radis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SpringBoot中的组件、JPA、Radis.html">SpringBoot中的组件、JPA、Radis</a>
+    </h1>
+  
+
+        
+        <a href="/SpringBoot中的组件、JPA、Radis.html" class="archive-article-date">
+  	<time datetime="2016-06-27T11:56:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SpringBoot任务调度"><a href="#SpringBoot任务调度" class="headerlink" title="SpringBoot任务调度"></a>SpringBoot任务调度</h2><p>项目中有些功能，需要在Tomcat启动时或指定时间进行调用。在之前一般都会采用Quartz工具包完成，现在如果使用Spring或SpringBoot可以利用Spring Schedule模块完成。</p>
+<h3 id="启动Tomcat时调用任务"><a href="#启动Tomcat时调用任务" class="headerlink" title="启动Tomcat时调用任务"></a>启动Tomcat时调用任务</h3><p>SpringBoot提供了两种方法，编写任务组件，实现ApplicationRunner或CommandLineRunner接口。</p>
+<ol>
+<li><p>ApplicationRunner</p>
+<pre><code>@Component
+@Order(2)//第二个执行
+public class MyTask1 implements ApplicationRunner{
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        //添加任务逻辑代码
+        System.out.println(&quot;启动时自动调用任务1功能&quot;+new Date());
+    }
+
+}
+</code></pre>
+        
+          <a class="article-more-a" href="/SpringBoot中的组件、JPA、Radis.html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">radis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JAP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/SpringBoot中的组件、JPA、Radis.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mybatis第二蛋" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -861,7 +861,7 @@ public class MyTask1 implements ApplicationRunner{
 
         
         <a href="/Mybatis第二蛋.html" class="archive-article-date">
-  	<time datetime="2018-06-20T11:39:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+  	<time datetime="2016-06-20T11:39:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-20</time>
 </a>
         
       </header>
@@ -947,7 +947,7 @@ public class MyTask1 implements ApplicationRunner{
 
         
         <a href="/Mybatis入门.html" class="archive-article-date">
-  	<time datetime="2018-06-19T11:23:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
+  	<time datetime="2016-06-19T11:23:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-19</time>
 </a>
         
       </header>
@@ -1032,7 +1032,7 @@ SqlSession   负责编写程序的核心API
 
         
         <a href="/My-第一个彩蛋.html" class="archive-article-date">
-  	<time datetime="2018-06-14T07:18:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-14</time>
+  	<time datetime="2016-03-14T07:18:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-14</time>
 </a>
         
       </header>
@@ -1197,14 +1197,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
@@ -1213,11 +1205,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">radis</a>
+                <a href="javascript:void(0)" class="js-tag color5">第一个蛋</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JAP</a>
+                <a href="javascript:void(0)" class="js-tag color5">第二个蛋 框架学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1226,6 +1218,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">radis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JAP</a>
               </li>
              
               <li class="article-tag-list-item">
